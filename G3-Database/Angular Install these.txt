@@ -1,0 +1,10 @@
+Install Commands for Angular 
+
+Naazim-Gani-22:21
+
+npm i -g --save
+npm i ngx-toastr
+npm i @angular/material 
+npm i @material/dialog
+
+

@@ -1,0 +1,280 @@
+<div class="wrapper">
+  <div class="sidebar">
+  <h2><img width="170"  src="https://www.ordra.co.za/image/catalog/info/ORDRAA1%20(2).png"></h2>
+        
+ <ul style="width: 200px; height: 600px; overflow-y: scroll;">
+      
+      <li><i class="tiny material-icons">people_outline</i><a [routerLink]="'/employee-management'"> <i class="fas fa-home"></i>Employee Management </a></li>
+      <li><i class="tiny material-icons">store</i><a [routerLink]="'/container-management'"><i class="fas fa-user"></i>Container Management</a></li>
+      <li><i class="tiny material-icons">person_pin</i><a [routerLink]="'/manager-management'"><i class="fas fa-address-card"></i>Manager Profile Management</a></li>
+      <li><i class="tiny material-icons">add_location</i><a [routerLink]="'/gps-management'"><i class="fas fa-project-diagram"></i>GPS Management</a></li>
+      <li><i class="tiny material-icons">shopping_basket</i><a [routerLink]="'/sales-management'"><i class="fas fa-blog"></i>Sales </a></li>
+      <li><i class="tiny material-icons">contacts</i><a [routerLink]="'/customer-management'"><i class="fas fa-address-book"></i>Customer Management </a></li>
+      <li><i class="tiny material-icons">shopping_cart</i><a [routerLink]="'/customer-order-management'"><i class="fas fa-map-pin"></i>Customer Order Management </a></li>
+      <li><i class="tiny material-icons">settings_ethernet</i><a [routerLink]="'/supplier-management'"><i class="fas fa-map-pin"></i>Supplier Management </a></li>
+      <li><i class="tiny material-icons">local_shipping</i><a [routerLink]="'/supplier-order-management'"><i class="fas fa-map-pin"></i>Supplier Order Management </a></li>
+      <li><i class="tiny material-icons">layers</i><a [routerLink]="'/product-management'"><i class="fas fa-map-pin"></i>Product Management </a></li>
+      <li><i class="tiny material-icons">card_giftcard</i><a [routerLink]="'/donation-management'"><i class="fas fa-map-pin"></i>Donation Management </a></li>
+      <li><i class="tiny material-icons">attach_money</i><a [routerLink]="'/creditor-management'"><i class="fas fa-map-pin"></i>Creditor Management </a></li>
+      <li><i class="tiny material-icons">timeline</i><a [routerLink]="'/reporting-management'"><i class="fas fa-map-pin"></i>Reporting </a></li>
+  
+ </ul> 
+ </div>
+
+ <div class="main_content">
+   <div class="header-section">
+      <div class="header-section-1">
+          Operating from Container: 
+          <br>Betha Mamelodi
+      </div>
+  
+      <div class="header-section-2">
+          Date:  {{dateVal | date: 'dd/MM/yyyy'}}
+      </div>
+  
+      <div class="header-section-3">
+          Peter Smith <br> <i class="tiny material-icons" (click)="onLogout()">power_settings_new</i>
+      </div>
+
+   </div> 
+  <div class="info">   
+    <h1>Employee Management</h1>
+    <br/>
+         <!--Location-->
+    <div class="card" id="location" *ngIf='location'>
+
+        <label>Location</label>
+        <br>
+        <button  type="submit" (click)="Create()" >Create Employee Profile</button>
+        <br>
+        <button  type="submit" (click)="Update()" >Update Employee Profile</button>
+        <br>
+        <button  type="submit" (click)="Search()" >Search Employee Profile</button>
+        <br>
+        <button  type="submit" (click)="Delete()" >Delete Employee Profile</button>
+            
+    </div>
+         <!--Search-->
+         <div *ngIf='search'>
+          <h1>Search Employee</h1>
+        <br>
+        <form class="mb-4"  #form='ngForm' autocomplete="off" (submit)="onSubmit(form)">
+        <div class="card"> 
+          <p style="text-align: left;color: orange;"><u>Enter Name and Surname to search:</u></p>
+          <br>
+             <div class="row">
+              <div class="input-field col s6">
+                <label>Employee Name:</label>
+                <input type="text"  #EmployeeName="ngModel" name="EmployeeName" [(ngModel)]="formModel.EmployeeName" required >
+              </div>
+        
+              <div class="input-field col s6">
+                  <label>Employee Surame:</label>
+                  <input type="text" #EmployeeSurname="ngModel" name="EmployeeSurname" [(ngModel)]="formModel.EmployeeSurname" required   >
+             </div>
+           <div class="row">
+              <div class="input-field col s12">
+              <button style="background-color:rgba(251,113,0,1);color:white" type="submit" class="btn btn-lg btn-block" [disabled]="form.invalid">Search</button>
+              </div>
+          </div>
+        </div>
+        </div>
+        </form>
+        <button class="btn-large btn-submit" (click)="clear()">Cancel</button>
+        </div>
+        
+    <div *ngIf='main'>
+        <h1>Update Employee Profile</h1>
+      <br>
+      <form class="mb-4"  #form='ngForm' autocomplete="off" (submit)="onSubmit(form)">
+      <div class="card"> 
+        <p style="text-align: left;color: orange;"><u>Enter Name and Surname to search:</u></p>
+        <br>
+           <div class="row">
+            <div class="input-field col s6">
+              <label>Employee Name:</label>
+              <input type="text"  #EmployeeName="ngModel" name="EmployeeName" [(ngModel)]="formModel.EmployeeName" required >
+            </div>
+      
+            <div class="input-field col s6">
+                <label>Employee Surame:</label>
+                <input type="text" #EmployeeSurname="ngModel" name="EmployeeSurname" [(ngModel)]="formModel.EmployeeSurname" required   >
+           </div>
+         <div class="row">
+            <div class="input-field col s12">
+            <button style="background-color:rgba(251,113,0,1);color:white" type="submit" class="btn btn-lg btn-block" [disabled]="form.invalid">Search</button>
+            </div>
+        </div>
+      </div>
+      </div>
+      </form>
+      <button class="btn-large btn-submit" (click)="clear()">Cancel</button>
+      </div>
+      
+          <!--Update-->
+      <div *ngIf='variable'>
+        <h1>Found Employee Profile</h1>
+      <br>
+      <form class="mb-4"  #form='ngForm' autocomplete="off" (submit)="submitEmployee(form)">
+      <div class="card"> 
+          <!--Hide dive above on  succesful find of employee-->
+          <p style="text-align: left;color: orange;"><u>General Details:</u></p>
+          <div style="width: 50%; overflow: hidden;">
+               
+              <div style="width: 300px; float: left;">
+                    <label>Employee Name:</label>
+                    <input type="text"name="EmpName"  #EmpName="ngModel"[(ngModel)]="service.empList.EmpName"  value="{{service.empList.EmpName}}">
+                    <label>Cell Number:</label>
+                    <input type="text"  name="EmpCellNo"  #EmpCellNo="ngModel"[(ngModel)]="service.empList.EmpCellNo"  value="{{service.empList.EmpCellNo}}"  >
+                    <p type="text" name="cellno"></p>
+               </div>
+      
+               <div style="width: 300px; float: right;">
+                  <label>Employee Surname:</label>
+                  <input type="text"  name="EmpSurname"  #EmpSurname="ngModel"[(ngModel)]="service.empList.EmpSurname" value="{{service.empList.EmpSurname}}">
+                  <label>Employee Email:</label>
+                  <input type="email"  name="EmpEmail" #EmpEmail="ngModel"[(ngModel)]="service.empList.EmpEmail" value="{{service.empList.EmpEmail}}">
+                  <p type="text" name="employeeemail"></p>
+             </div>
+      
+          </div>
+      
+          <p style="text-align: left;color: orange;"><u>Enter Employee Details:</u></p>
+       <div class="row">
+            <div class="input-field col s6">
+              <label>Start Date:</label>
+              <input  type="date" name="EmpStartDate" #EmpStartDate="ngModel"[(ngModel)]="service.empList.EmpStartDate" value="{{service.empList.EmpStartDate}}">
+            </div>
+            <div class="input-field col s6">
+                <label>Shifts Completed:</label>
+           <input type="number" name="EmpShiftsCompleted" #EmpShiiftsCompleted="ngModel"[(ngModel)]="service.empList.EmpShiftsCompleted" value="{{service.empList.EmpShiftsCompleted}}">
+        </div>
+      
+        <div class="row">
+          <div class="input-field col s12">
+            <button class="btn-large btn-submit" type="submit" class="btn btn-lg btn-block" [disabled]="form.invalid">Update Profile</button>
+            <button class="btn-large btn-submit" (click)="clear()">Cancel</button>
+          </div>
+        </div>
+      
+      </div>
+      </div>
+    </form>
+      </div>
+      
+          <!--Create-->
+      <div *ngIf='add'>
+        <h1>Create Employee Profile</h1>
+      <br>
+        <form class="mb-4"  #form='ngForm' autocomplete="off" (submit)="submitEmployee(form)">
+        <h3>Please add Employee one below :)</h3>
+        <div class="card"> 
+        
+          <!--Hide dive above on  succesful find of employee-->
+          <p style="text-align: left;color: orange;"><u>General Details:</u></p>
+          <div style="width: 50%; overflow: hidden;">
+              <div style="width: 300px; float: left;">
+                    <label>Employee Name:</label>
+                    <input type="text"name="EmpName" #EmpName="ngModel"[(ngModel)]="formModel1.EmpName" >
+                    <label>Cell Number:</label>
+                    <input type="text"  name="EmpCellNo" #EmpCellNo="ngModel"[(ngModel)]="formModel1.EmpCellNo"  >
+                    <p type="text" name="cellno"></p>
+               </div>
+      
+               <div style="width: 300px; float: right;">
+                  <label>Employee Surname:</label>
+                  <input type="text"  name="EmpSurname" #EmpSurname="ngModel"[(ngModel)]="formModel1.EmpSurname">
+                  <label>Employee Email:</label>
+                  <input type="email" name="EmpEmail" #EmpEmail="ngModel"[(ngModel)]="formModel1.EmpEmail" >
+                  <p type="text" name="employeeemail"></p>
+             </div>
+      
+          </div>
+      
+       <p style="text-align: left;color: orange;"><u>Enter Employee Details:</u></p>
+       <div class="row">
+      
+            <div class="input-field col s6">
+              <label>Start Date:</label>
+              <input type="date" name="EmpStartDate" #EmpStartDate="ngModel"[(ngModel)]="formModel1.EmpStartDate" >
+            </div>
+            <div class="input-field col s6">
+                <label>Shifts Completed:</label>
+           <input type="number"  name="EmpShiftsCompleted" #EmpShiiftsCompleted="ngModel"[(ngModel)]="formModel1.EmpShiftsCompleted">
+        </div>
+      
+        <div class="row">
+          <div class="input-field col s12">
+            <button class="btn-large btn-submit" type="submit" [disabled]="form.invalid">Save Profile</button>
+          </div>
+        </div>
+      
+        </div>
+      
+        </div>
+      </form>
+      <button class="btn-large btn-submit"   (click)="clear()">Cancel</button>
+      
+      </div>
+
+          <!--SearchDelete-->
+
+      <div *ngIf='searchdelete'>
+        <h1>Search Employee Profile</h1>
+      <br>
+      <form class="mb-4"  #form='ngForm' autocomplete="off" (submit)="onSubmitDelete(form)">
+      <div class="card"> 
+        <p style="text-align: left;color: orange;"><u>Enter Name and Surname to search:</u></p>
+        <br>
+           <div class="row">
+            <div class="input-field col s6">
+              <label>Employee Name:</label>
+              <input type="text"  #EmployeeName="ngModel" name="EmployeeName" [(ngModel)]="formModel.EmployeeName" required >
+            </div>
+      
+            <div class="input-field col s6">
+                <label>Employee Surame:</label>
+                <input type="text" #EmployeeSurname="ngModel" name="EmployeeSurname" [(ngModel)]="formModel.EmployeeSurname" required   >
+           </div>
+         <div class="row">
+            <div class="input-field col s12">
+            <button style="background-color:rgba(251,113,0,1);color:white" type="submit" class="btn btn-lg btn-block" [disabled]="form.invalid">Search</button>
+            </div>
+        </div>
+      </div>
+      </div>
+      </form>
+      <button class="btn-large btn-submit" (click)="clear()">Cancel</button>
+      </div>
+          <!--Delete-->
+          <div *ngIf='delete'>
+            <h1>Delete Employee Profile</h1>
+          <br>
+          <form class="mb-4"  #form='ngForm' autocomplete="off" (submit)="submitEmployeeDelete(form)">
+          <div class="card"> 
+              <!--Hide dive above on  succesful find of employee-->
+              <p style="text-align: left;color: orange;"><u>Confirm Delete Profile</u></p>
+              <div style="width: 50%; overflow: hidden;">
+                   
+                  <div style="width: 300px; float: left;">
+                        <label>Employee Name:</label>
+                        <input type="text"name="EmployeeName"  #EmployeeName="ngModel"[(ngModel)]="service.empList.EmpName"  value="{{service.empList.EmpName}}" disabled >
+                        <label>Employee Surname:</label>
+                        <input type="text"  name="EmployeeSurname"  #EmployeeSurname="ngModel"[(ngModel)]="service.empList.EmpSurname" value="{{service.empList.EmpSurname}}" disabled>
+                   </div>        
+            <div class="row">
+              <div class="input-field col s12">
+                <button class="btn-large btn-submit" type="submit" class="btn btn-lg btn-block" [disabled]="form.invalid">Delete Profile</button>
+                <button class="btn-large btn-submit" (click)="clear()">Cancel</button>
+              </div>
+            </div>
+          
+          </div>
+          </div>
+        </form>
+          </div>
+          
+  </div>
+ </div>
+</div>
+

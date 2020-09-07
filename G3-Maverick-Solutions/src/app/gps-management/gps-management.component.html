@@ -1,0 +1,236 @@
+<div class="wrapper">
+  <div class="sidebar">
+    <h2><img width="170"  src="https://www.ordra.co.za/image/catalog/info/ORDRAA1%20(2).png"></h2>         
+    <ul style="width: 200px; height: 600px; overflow-y: scroll;">
+        
+        <li><i class="tiny material-icons">people_outline</i><a [routerLink]="'/employee-management'"> <i class="fas fa-home"></i>Employee Management </a></li>
+        <li><i class="tiny material-icons">store</i><a [routerLink]="'/container-management'"><i class="fas fa-user"></i>Container Management</a></li>
+        <li><i class="tiny material-icons">person_pin</i><a [routerLink]="'/manager-management'"><i class="fas fa-address-card"></i>Manager Profile Management</a></li>
+        <li><i class="tiny material-icons">add_location</i><a [routerLink]="'/gps-management'"><i class="fas fa-project-diagram"></i>GPS Management</a></li>
+        <li><i class="tiny material-icons">shopping_basket</i><a [routerLink]="'/sales-management'"><i class="fas fa-blog"></i>Sales </a></li>
+        <li><i class="tiny material-icons">contacts</i><a [routerLink]="'/customer-management'"><i class="fas fa-address-book"></i>Customer Management </a></li>
+        <li><i class="tiny material-icons">shopping_cart</i><a [routerLink]="'/customer-order-management'"><i class="fas fa-map-pin"></i>Customer Order Management </a></li>
+        <li><i class="tiny material-icons">settings_ethernet</i><a [routerLink]="'/supplier-management'"><i class="fas fa-map-pin"></i>Supplier Management </a></li>
+        <li><i class="tiny material-icons">local_shipping</i><a [routerLink]="'/supplier-order-management'"><i class="fas fa-map-pin"></i>Supplier Order Management </a></li>
+        <li><i class="tiny material-icons">layers</i><a [routerLink]="'/product-management'"><i class="fas fa-map-pin"></i>Product Management </a></li>
+        <li><i class="tiny material-icons">card_giftcard</i><a [routerLink]="'/donation-management'"><i class="fas fa-map-pin"></i>Donation Management </a></li>
+        <li><i class="tiny material-icons">attach_money</i><a [routerLink]="'/creditor-management'"><i class="fas fa-map-pin"></i>Creditor Management </a></li>
+        <li><i class="tiny material-icons">timeline</i><a [routerLink]="'/reporting-management'"><i class="fas fa-map-pin"></i>Reporting </a></li>
+    
+   </ul> 
+    </div>
+     <div class="main_content">
+     <div class="header-section">
+        <div class="header-section-1">
+            Operating from Container: 
+            <br>Betha Mamelodi
+        </div>
+    
+        <div class="header-section-2">
+            Date:  {{dateVal | date: 'dd/MM/yyyy'}}
+        </div>
+    
+        <div class="header-section-3">
+            Peter Smith <br> <i class="tiny material-icons" (click)="onLogout()">power_settings_new</i>
+        </div>
+
+     </div> 
+     <div class="info">   
+        <body>
+            <h1>GPS Management</h1>
+            <div *ngIf='main'>
+            <form>
+                <br/>
+                <div class="card" id="location">
+                    <label>Location</label>
+                    <br>
+                    <button routerLink="/create-location" type="submit" >Add Location</button>
+                   
+                    <button routerLink="/search-location" type="submit">Search Location</button>
+                   
+                    <button routerLink="/searchLocation" type="submit">Update Location</button>
+                      
+                </div>
+                <br><br>
+                <div class="card" id="area ">
+                    <label>Area</label>
+                    <br>
+                    <button (click)="Create()" type="submit">Add Area</button>
+                    
+                    <button (click)="Search()" type="submit">Search Area</button>
+                    
+                    <button  (click)="Update()" type="submit">Update Area</button>
+                   
+                    <button (click)="Delete()" type="submit">Remove Area</button>
+                    
+                    
+                </div>
+                <br><br>
+                <div class="card" id="province ">
+                    <label>Province </label>
+                    <br>
+                    <button routerLink="/addProvince" type="submit">Add Province</button>
+                    
+                    <button routerLink="/searchProvince" type="submit">Search Province</button>
+                    
+                    <button routerLink="/searchProvince" type="submit">Update Province </button>
+                   
+                    <button routerLink="/searchProvince" type="submit">Remove Province </button>
+                               
+                </div>
+            </form>
+           </div>
+        <!--Put Div-->
+        <!--Create-->
+      <div *ngIf='add'>
+        <h1>Create Area </h1>
+      <br>
+        <form class="mb-4"  #form='ngForm' autocomplete="off" (submit)="submitArea(form)">
+        <h3>Please add Area below :)</h3>
+        <div class="card"> 
+         <p style="text-align: left;color: orange;"><u>Area Details:</u></p>
+          <div style="width: 50%; overflow: hidden;">
+              <div style="width: 300px; float: left;">
+                    <label>Area Name:</label>
+                    <input type="text"name="ArName" #ArName="ngModel"[(ngModel)]="formModel1.ArName" >
+                    <label>Province</label>
+                    <div class="input-field col s6">
+                    <select name="ProvinceID" #ProvinceID="ngModel" [(ngModel)]="service.provinceList.ProvinceID"  (change)="selectProvince($event.target)">
+                        <option value="0">-- Select --</option>
+                        <option *ngFor="let item of service.provinceList" value="{{item.ProvinceID}}">{{item.ProvName}}
+                        </option>
+                    </select>
+                    </div>
+               </div>  
+               <div style="width: 300px; float: right;">
+                <label>Postal Code:</label>
+                <input type="text" name="ArPostalCode" #ArPostalCode="ngModel" [(ngModel)]="formModel1.ArPostalCode" >
+                <div class="input-field col s6">
+                <label>Area Status ID</label>
+                <select name="AreaStatusID" #AreaStatusID="ngModel" [(ngModel)]="service.statusList.AreaStatusID"  (change)="selectStatus($event.target)">
+                    <option value="0">-- Select --</option>
+                    <option *ngFor="let item of service.statusList" value="{{item.AreaStatusID}}">{{item.ASDescription}}
+                    </option>
+                </select>
+                </div>
+             </div> 
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <button class="btn-large btn-submit" type="submit" [disabled]="form.invalid">Create Area</button>
+            </div>
+          </div>      
+        </div>
+      </form>
+      <button class="btn-large btn-submit" (click)="clear()">Cancel</button>  
+      </div>
+         <!--Search-->
+         <div *ngIf='search'>
+          <h1>Search Area</h1>
+        <br>
+        <form class="mb-4"  #form='ngForm' autocomplete="off" (submit)="onSearchArea(form)">
+          <h3>Please Search below :)</h3>
+          <div class="card"> 
+           <p style="text-align: left;color: orange;"><u>Area Details:</u></p>
+            <div style="width: 50%; overflow: hidden;">
+                <div style="width: 300px; float: left;">
+                      <label>Area Name:</label>
+                      <input type="text"name="ArName" #ArName="ngModel"[(ngModel)]="formModel2.ArName" >
+                      <label>Province</label>
+                      <div class="input-field col s6">
+                      <select name="ProvinceID" #ProvinceID="ngModel" [(ngModel)]="service.provinceList.ProvinceID"  (change)="selectProvince($event.target)">
+                          <option value="0">-- Select --</option>
+                          <option *ngFor="let item of service.provinceList" value="{{item.ProvinceID}}">{{item.ProvName}}
+                          </option>
+                      </select>
+                      </div>
+                 </div>  
+                 <div style="width: 300px; float: right;">
+                  <label>Postal Code:</label>
+                  <input type="text" name="ArPostalCode" #ArPostalCode="ngModel" [(ngModel)]="formModel2.ArPostalCode" >
+                  <div class="input-field col s6">
+                  <label>Area Status ID</label>
+                  <select name="AreaStatusID" #AreaStatusID="ngModel" [(ngModel)]="service.statusList.AreaStatusID"  (change)="selectStatus($event.target)">
+                      <option value="0">-- Select --</option>
+                      <option *ngFor="let item of service.statusList" value="{{item.AreaStatusID}}">{{item.ASDescription}}
+                      </option>
+                  </select>
+                  </div>
+               </div> 
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <button class="btn-large btn-submit" type="submit" [disabled]="form.invalid">Search Area</button>
+              </div>
+            </div>      
+          </div>
+        </form>
+        <button class="btn-large btn-submit" (click)="clear()">Cancel</button>
+        <!-- table -->
+       <div class="row">
+      <div class="col-md-8 offset-md-2">
+      <table class="table">
+        <tr>
+          <th>Area Name</th>
+          <th>Province</th>
+          <th>Postal Code</th>
+          <th>AreaStatus</th>
+        </tr>
+
+        <tr *ngFor="let item of service.allareaList">
+          <td>{{item.ArName}}</td>
+          <td>{{item.ProvinceID}}</td>
+          <td>{{item.PostalCode}}</td>
+          <td>{{item.AreaID}}</td>
+      </table>
+    </div>
+</div>
+
+        </div>
+
+         <div *ngIf='searchFound'>
+          <h1>Area Found</h1>
+        <br>
+        <form class="mb-4"  #form='ngForm' autocomplete="off" (submit)="submitArea(form)">
+          <h3>Area Information</h3>
+          <div class="card"> 
+           <p style="text-align: left;color: orange;"><u>Area Details:</u></p>
+            <div style="width: 50%; overflow: hidden;">
+                <div style="width: 300px; float: left;">
+                      <label>Area Name:</label>
+                      <input type="text"name="ArName" #ArName="ngModel"[(ngModel)]="service.areaList.ArName" value="{{service.areaList.ArName}}" >
+                      <div class="input-field col s6">
+                        <label>Province</label>
+                        <input type="text"name="ProvinceID" #ProvinceID="ngModel"[(ngModel)]="service.areaList.ProvinceID" value="{{service.areaList.ProvinceID}}" >
+                      </div>
+                 </div>  
+                 <div style="width: 300px; float: right;">
+                  <label>Postal Code:</label>
+                  <input type="text" name="ArPostalCode" #ArPostalCode="ngModel" [(ngModel)]="service.areaList.ArPostalCode" value="{{service.areaList.ArPostalCode}}" >
+
+                  <div class="input-field col s6">
+                  <label>Area Status ID</label>
+                  <input type="text"name="AreaStatusID" #AreaStatusID="ngModel"[(ngModel)]="service.areaList.AreaStatusID" value="{{service.areaList.AreaStatusID}}" >
+                  </div>
+
+               </div> 
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <button class="btn-large btn-submit" type="submit" [disabled]="form.invalid">Update Area</button>
+              </div>
+            </div>      
+          </div>
+        </form>
+        <button class="btn-large btn-submit" (click)="clear()">Cancel</button>
+        </div>
+         <!--Delete-->
+
+
+        <!--Put Div-->
+
+        </body>        
+    </div>
+   </div>
+</div>
+

@@ -1,0 +1,93 @@
+<body>
+    <h1>Customer Details</h1>
+    <form>
+        <div class="card">
+        
+        <div class="divleft" >
+            <label class="subheadinglabel" >Enter Name and Surname To search </label>
+        <br>
+            <label for="cusName">Customer Name:       </label>
+            <input class="searchinput" type="text" id="cusName" name="cusName" required>
+       
+            <label for="cusSurname">Customer Surname:   </label>
+            <input class="searchinput" type="text" id="cusSurname" name="cusSurname" required>
+        </div>
+        <br>
+
+        <div class="divleft">
+            <button type="submit">Search</button>
+            <button type="submit">Cancel</button>
+        </div>
+
+    </div>
+    <br><br>
+
+    <div class="card">
+       
+
+        br><br>
+        <label class="subheadinglabel"> Searched Customer Details:</label>
+
+        <br>
+        <div class="divleft" >
+            <label for="cusName">Name:       </label>
+            <input type="text" id="cusName" name="cusName" required disabled= inputEnabled>
+        </div>
+
+        <br>
+        <div class="divleft" >
+            <label for="cusSurname">Surname:   </label>
+            <input type="text" id="cusSurname" name="cusSurname" required disabled= inputEnabled >
+        </div>
+        <br>
+        <div class="divleft" >
+            <label for="cusCell">Cell Number:  </label>
+            <input type="text" id="cusCell" name="cusCell" required disabled= inputEnabled>
+        </div>
+
+        <br>
+        <div class="divleft" >
+            <label for="cusEmail">Email:      </label>
+            <input type="text" id="cusEmail" name="cusEmail" required disabled= inputEnabled>
+        </div>
+
+        <br>
+        <div class="divleft" >
+            <label for="cusStreetNr">Street No: </label>
+            <input type="text" id="cusStreetNr" name="cusStreetNr" required disabled= inputEnabled> 
+        </div>
+
+        <br>
+        <div class="divleft" >
+            <label for="cusStreet">Street:    </label>
+            <input type="text" id="cusStreet" name="cusStreet" required disabled= inputEnabled> 
+        </div>
+        
+        <br><br>
+        <div class="divleft" >
+            <label for="cusCode">Postal Code:   </label>
+            <input type="text" id="cusCode" name="cusCode" placeholder="0000" required disabled= inputEnabled> 
+        </div>
+ 
+        <br><br>
+        <div class="divleft" >
+            <label for="cusSurburb">Surbub:   </label>
+            <input type="text" id="cusSurburb" name="cusSurburb" required disabled= inputEnabled> 
+        </div>
+
+        <div class="divleft" >
+            <button type="submit" (click)="enableInputs()">Update</button>
+            <button type="submit">Save</button>
+            <button type="submit">Delete</button>
+            <button type="submit">Place Order</button>
+         </div>
+        
+    </div>
+    
+    </form>
+</body>
+
+
+
+
+
