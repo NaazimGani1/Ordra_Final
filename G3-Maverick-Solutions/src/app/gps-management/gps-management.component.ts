@@ -41,6 +41,11 @@ export class GPSManagementComponent implements OnInit {
    this.refreshList();
    console.log(this.service.provinceList)
   }
+  
+  onHome() {
+    this.router.navigate(['/home']);
+  }
+
 
   refreshList() {
     this.service.getAreas().then(res => this.service.allareaList = res as Area[]);

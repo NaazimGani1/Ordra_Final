@@ -598,8 +598,9 @@ CREATE TABLE [dbo].[Price](
 	[PriceID] [int] IDENTITY(1,1) NOT NULL,
 	[ProductID] [int] NULL,
 	[UPriceR] [real] NULL,
-	[PriceDate] [date] NULL,
 	[CPriceR] [real] NULL,
+	[PriceStartDate] [date] NULL,
+	[PriceEndDate] [date] NULL,
 PRIMARY KEY CLUSTERED 
 (
 	[PriceID] ASC
@@ -902,7 +903,8 @@ GO
 CREATE TABLE [dbo].[VAT](
 	[VATID] [int] IDENTITY(1,1) NOT NULL,
 	[VATPerc] [real] NULL,
-	[VATDate] [date] NULL,
+	[VATStartDate] [date] NULL,
+	[VATEndDate] [date],
 PRIMARY KEY CLUSTERED 
 (
 	[VATID] ASC
@@ -999,13 +1001,13 @@ SET IDENTITY_INSERT [dbo].[Customer_Order] OFF
 GO
 SET IDENTITY_INSERT [dbo].[Customer_Order_Status] ON 
 GO
-INSERT [dbo].[Customer_Order_Status] ([CustomerOrderStatusID], [CODescription]) VALUES (1, N'Fulfilled')
+INSERT [dbo].[Customer_Order_Status] ([CustomerOrderStatusID], [CODescription]) VALUES (1, N'placed')
 GO
-INSERT [dbo].[Customer_Order_Status] ([CustomerOrderStatusID], [CODescription]) VALUES (2, N'Awaiting supplier delivery')
+INSERT [dbo].[Customer_Order_Status] ([CustomerOrderStatusID], [CODescription]) VALUES (2, N'collected')
 GO
-INSERT [dbo].[Customer_Order_Status] ([CustomerOrderStatusID], [CODescription]) VALUES (3, N'Placed')
+INSERT [dbo].[Customer_Order_Status] ([CustomerOrderStatusID], [CODescription]) VALUES (3, N'cancelled')
 GO
-INSERT [dbo].[Customer_Order_Status] ([CustomerOrderStatusID], [CODescription]) VALUES (4, N'Retrieved')
+INSERT [dbo].[Customer_Order_Status] ([CustomerOrderStatusID], [CODescription]) VALUES (4, N'fulfilled')
 GO
 SET IDENTITY_INSERT [dbo].[Customer_Order_Status] OFF
 GO
