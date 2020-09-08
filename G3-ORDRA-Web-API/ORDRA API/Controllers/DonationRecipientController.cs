@@ -11,25 +11,26 @@ using ORDRA_API.Models;
 
 namespace ORDRA_API.Controllers
 {
+
     [EnableCors(origins: "*", headers: "*", methods: "*")]
 
-    [RoutePrefix("API/Container")]
-    public class ContainerController : ApiController
+    [RoutePrefix("API/DonationRecipient")]
+    public class DonationRecipientController : ApiController
     {
         //database initializing
         OrdraDBEntities db = new OrdraDBEntities();
 
-        //Getting all container
+        //Getting all donation recipients
         [HttpGet]
-        [Route("GetAllContainers")]
-        public object GetAllContainers()
+        [Route("GetAllDonationRecipients")]
+        public object GetAllDonationRecipients()
         {
             db.Configuration.ProxyCreationEnabled = false;
             dynamic toReturn = new ExpandoObject();
 
             try
             {
-                toReturn = db.Containers.ToList();
+                toReturn = db.Donation_Recipient.ToList();
             }
             catch (Exception error)
             {
@@ -40,29 +41,29 @@ namespace ORDRA_API.Controllers
 
         }
 
-        //Getting container by id
+        //Getting donation recipient by id
         [HttpGet]
-        [Route("GetContainer/{id}")]
+        [Route("GetDonationRecipient/{id}")]
 
-        public object GetContainer(int id)
+        public object GetDonationRecipient(int id)
         {
             db.Configuration.ProxyCreationEnabled = false;
 
-            Container objectContainer = new Container();
+            Donation_Recipient objectDonationRecipient = new Donation_Recipient();
             dynamic toReturn = new ExpandoObject();
 
             try
             {
-                objectContainer = db.Containers.Find(id);
+                objectDonationRecipient = db.Donation_Recipient.Find(id);
 
-                if (objectContainer == null)
+                if (objectDonationRecipient == null)
                 {
                     toReturn.Message = "Record Not Found";
                 }
                 else
                 {
 
-                    toReturn = objectContainer;
+                    toReturn = objectDonationRecipient;
                 }
 
             }
@@ -72,14 +73,12 @@ namespace ORDRA_API.Controllers
             }
 
             return toReturn;
-
-
         }
 
-        //searching container by name 
+        //searching donation recipient by name and surname
         [HttpGet]
-        [Route("SearchContainer")]
-        public object SearchContainer(string name)
+        [Route("searchDonationRecipient")]
+        public object searchDonationRecipient(string name, string surname)
         {
 
             db.Configuration.ProxyCreationEnabled = false;
@@ -87,13 +86,12 @@ namespace ORDRA_API.Controllers
 
             try
             {
+                var donationRecipient = db.Donation_Recipient.Where((x => (x.DrName == name && x.DrSurname == surname))).FirstOrDefault();
 
-                var Container = db.Containers.Where(x => x.ConName == name).FirstOrDefault();
-
-                if (Container != null)
+                if (donationRecipient != null)
                 {
 
-                    toReturn = Container;
+                    toReturn = donationRecipient;
                 }
                 else
                 {
@@ -109,14 +107,12 @@ namespace ORDRA_API.Controllers
             }
 
             return toReturn;
-
-
         }
 
-        //add container
+        //add donation recipient
         [HttpPost]
-        [Route("AddContainer")]
-        public object AddContainer(Container newConatiner)
+        [Route("AddDonationRecipient")]
+        public object AddDonationRecipient(Donation_Recipient newDonationRecipient)
         {
 
             db.Configuration.ProxyCreationEnabled = false;
@@ -124,7 +120,7 @@ namespace ORDRA_API.Controllers
 
             try
             {
-                db.Containers.Add(newConatiner);
+                db.Donation_Recipient.Add(newDonationRecipient);
                 db.SaveChanges();
                 toReturn.Message = "Add Succsessful";
             }
@@ -138,24 +134,30 @@ namespace ORDRA_API.Controllers
             return toReturn;
         }
 
-        //Update container
+        //Update donation recipient
         [HttpPut]
-        [Route("UpdateContainer")]
-        public object UpdateContainer(Container ContainerUpdate)
+        [Route("UpdateDonationRecipient")]
+        public object UpdateDonationRecipient(Donation_Recipient donationRecipientUpdate)
         {
             db.Configuration.ProxyCreationEnabled = false;
 
-            Container objectContainer = new Container();
+            Donation_Recipient objectDonationRecipient = new Donation_Recipient();
             dynamic toReturn = new ExpandoObject();
-            var id = ContainerUpdate.ContainerID;
+            var id = donationRecipientUpdate.RecipientID;
 
             try
             {
-                objectContainer = db.Containers.Where(x => x.ContainerID == id).FirstOrDefault();
-                if (objectContainer != null)
+                objectDonationRecipient = db.Donation_Recipient.Where(x => x.RecipientID == id).FirstOrDefault();
+                if (objectDonationRecipient != null)
                 {
-                    objectContainer.ConName = ContainerUpdate.ConName;
-                    objectContainer.ConDescription = ContainerUpdate.ConDescription;
+                    objectDonationRecipient.DrName = donationRecipientUpdate.DrName;
+                    objectDonationRecipient.DrSurname = donationRecipientUpdate.DrSurname;
+                    objectDonationRecipient.DrCell = donationRecipientUpdate.DrCell;
+                    objectDonationRecipient.DrEmail = donationRecipientUpdate.DrEmail;
+                    objectDonationRecipient.DrStreetNr = donationRecipientUpdate.DrStreetNr;
+                    objectDonationRecipient.DrStreet = donationRecipientUpdate.DrStreet;
+                    objectDonationRecipient.DrCode = donationRecipientUpdate.DrCode;
+                    objectDonationRecipient.DrArea = donationRecipientUpdate.DrArea;
 
                     db.SaveChanges();
 
@@ -175,27 +177,27 @@ namespace ORDRA_API.Controllers
             return toReturn;
         }
 
-        //Delete container
+        //Delete donation recipient
         [HttpDelete]
-        [Route("DeleteContainer")]
-        public object DeleteContainer(int id)
+        [Route("DeleteDonationRecipient")]
+        public object DeleteDonationRecipient(int id)
         {
             db.Configuration.ProxyCreationEnabled = false;
 
-            Container objectContainer = new Container();
+            Donation_Recipient objectDonationRecipient = new Donation_Recipient();
             dynamic toReturn = new ExpandoObject();
 
             try
             {
-                objectContainer = db.Containers.Find(id);
+                objectDonationRecipient = db.Donation_Recipient.Find(id);
 
-                if (objectContainer == null)
+                if (objectDonationRecipient == null)
                 {
                     toReturn.Message = "Record Not Found";
                 }
                 else
                 {
-                    db.Containers.Remove(objectContainer);
+                    db.Donation_Recipient.Remove(objectDonationRecipient);
                     db.SaveChanges();
                     toReturn.Message = "Delete Successful";
                 }
@@ -208,6 +210,5 @@ namespace ORDRA_API.Controllers
 
             return toReturn;
         }
-
     }
 }
