@@ -334,6 +334,7 @@
     <Compile Include="Controllers\AppEmployeesController.cs" />
     <Compile Include="Controllers\AreasController.cs" />
     <Compile Include="Controllers\Area_StatusController.cs" />
+    <Compile Include="Controllers\ContainerController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\DeleteController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
