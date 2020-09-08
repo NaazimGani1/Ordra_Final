@@ -318,6 +318,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="App_Start\WebApiConfig2.cs" />
+    <Compile Include="App_Start\WebApiConfig3.cs" />
     <Compile Include="Areas\HelpPage\ApiDescriptionExtensions.cs" />
     <Compile Include="Areas\HelpPage\App_Start\HelpPageConfig.cs" />
     <Compile Include="Areas\HelpPage\Controllers\HelpController.cs" />
@@ -360,6 +361,7 @@
     <Compile Include="Controllers\LocationController.cs" />
     <Compile Include="Controllers\ManagerController.cs" />
     <Compile Include="Controllers\ProductCategoryController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\ProvincesController.cs" />
     <Compile Include="Controllers\SaleController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
