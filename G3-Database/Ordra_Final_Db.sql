@@ -598,8 +598,9 @@ CREATE TABLE [dbo].[Price](
 	[PriceID] [int] IDENTITY(1,1) NOT NULL,
 	[ProductID] [int] NULL,
 	[UPriceR] [real] NULL,
-	[PriceDate] [date] NULL,
 	[CPriceR] [real] NULL,
+	[PriceStartDate] [date] NULL,
+	[PriceEndDate] [date] NULL,
 PRIMARY KEY CLUSTERED 
 (
 	[PriceID] ASC
@@ -902,7 +903,8 @@ GO
 CREATE TABLE [dbo].[VAT](
 	[VATID] [int] IDENTITY(1,1) NOT NULL,
 	[VATPerc] [real] NULL,
-	[VATDate] [date] NULL,
+	[VATStartDate] [date] NULL,
+	[VATEndDate] [date],
 PRIMARY KEY CLUSTERED 
 (
 	[VATID] ASC
