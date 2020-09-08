@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\PC\Documents\370\Naazim\G3-ORDRA-Web-API\ORDRA API\Models\Model.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\zande\Source\Repos\Ordra_Final\G3-ORDRA-Web-API\ORDRA API\Models\Model.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

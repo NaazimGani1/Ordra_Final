@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="OrdraDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="OrdraDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="__MigrationHistory">
           <Key>
             <PropertyRef Name="MigrationId" />
@@ -310,8 +310,9 @@
           <Property Name="PriceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ProductID" Type="int" />
           <Property Name="UPriceR" Type="real" />
-          <Property Name="PriceDate" Type="date" />
           <Property Name="CPriceR" Type="real" />
+          <Property Name="PriceStartDate" Type="date" />
+          <Property Name="PriceEndDate" Type="date" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -481,7 +482,8 @@
           </Key>
           <Property Name="VATID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="VATPerc" Type="real" />
-          <Property Name="VATDate" Type="date" />
+          <Property Name="VATStartDate" Type="date" />
+          <Property Name="VATEndDate" Type="date" />
         </EntityType>
         <Association Name="FK_AAreaStatus">
           <End Role="Area_Status" Type="Self.Area_Status" Multiplicity="0..1" />
@@ -1376,8 +1378,7 @@
             <End Role="User_Shift" EntitySet="User_Shift" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="OrdraDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1721,9 +1722,10 @@
           <Property Name="PriceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ProductID" Type="Int32" />
           <Property Name="UPriceR" Type="Single" />
-          <Property Name="PriceDate" Type="DateTime" Precision="0" />
           <Property Name="CPriceR" Type="Single" />
           <NavigationProperty Name="Product" Relationship="Self.FK_ProductPrice" FromRole="Price" ToRole="Product" />
+          <Property Name="PriceStartDate" Type="DateTime" Precision="0" />
+          <Property Name="PriceEndDate" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -1921,7 +1923,8 @@
           </Key>
           <Property Name="VATID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="VATPerc" Type="Single" />
-          <Property Name="VATDate" Type="DateTime" Precision="0" />
+          <Property Name="VATStartDate" Type="DateTime" Precision="0" />
+          <Property Name="VATEndDate" Type="DateTime" Precision="0" />
         </EntityType>
         <Association Name="FK_dbo_AppUserClaim_dbo_AppUser_UserId">
           <End Role="AppUser" Type="Self.AppUser" Multiplicity="1">
@@ -3027,10 +3030,11 @@
           <EntitySetMapping Name="Prices">
             <EntityTypeMapping TypeName="OrdraDBModel.Price">
               <MappingFragment StoreEntitySet="Price">
+                <ScalarProperty Name="PriceEndDate" ColumnName="PriceEndDate" />
+                <ScalarProperty Name="PriceStartDate" ColumnName="PriceStartDate" />
                 <ScalarProperty Name="PriceID" ColumnName="PriceID" />
                 <ScalarProperty Name="ProductID" ColumnName="ProductID" />
                 <ScalarProperty Name="UPriceR" ColumnName="UPriceR" />
-                <ScalarProperty Name="PriceDate" ColumnName="PriceDate" />
                 <ScalarProperty Name="CPriceR" ColumnName="CPriceR" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -3197,9 +3201,10 @@
           <EntitySetMapping Name="VATs">
             <EntityTypeMapping TypeName="OrdraDBModel.VAT">
               <MappingFragment StoreEntitySet="VAT">
+                <ScalarProperty Name="VATEndDate" ColumnName="VATEndDate" />
+                <ScalarProperty Name="VATStartDate" ColumnName="VATStartDate" />
                 <ScalarProperty Name="VATID" ColumnName="VATID" />
                 <ScalarProperty Name="VATPerc" ColumnName="VATPerc" />
-                <ScalarProperty Name="VATDate" ColumnName="VATDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

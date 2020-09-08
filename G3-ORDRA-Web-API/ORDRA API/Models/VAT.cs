@@ -16,6 +16,7 @@ namespace ORDRA_API.Models
     {
         public int VATID { get; set; }
         public Nullable<float> VATPerc { get; set; }
-        public Nullable<System.DateTime> VATDate { get; set; }
+        public Nullable<System.DateTime> VATStartDate { get; set; }
+        public Nullable<System.DateTime> VATEndDate { get; set; }
     }
 }
