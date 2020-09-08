@@ -29,7 +29,7 @@ namespace ORDRA_API.Controllers
 
             try
             {
-                toReturn = db.Locations.ToList();
+                toReturn = db.Locations.Include(x => x.Area).Include(x => x.Container).Include(x => x.Location_Status).ToList();
             }
             catch (Exception error)
             {
@@ -40,29 +40,81 @@ namespace ORDRA_API.Controllers
 
         }
 
-        //Getting Location by id
+        //Get all areas for select
         [HttpGet]
-        [Route("getLocation/{id}")]
+        [Route("GetAllAreas")]
+        public object GetAllAreas()
+        {
+            db.Configuration.ProxyCreationEnabled = false;
+            dynamic toReturn = new ExpandoObject();
+            try
+            {
+                toReturn = db.Areas.ToList();
+            }
+            catch (Exception error)
+            {
+                toReturn = "Something went wrong";
+            }
+            return toReturn;
+        }
 
+        //Get all statusses for select
+        [HttpGet]
+        [Route("GetAllStatusses")]
+        public object GetAllStatusses()
+        {
+            db.Configuration.ProxyCreationEnabled = false;
+            dynamic toReturn = new ExpandoObject();
+            try
+            {
+                toReturn = db.Location_Status.ToList();
+            }
+            catch (Exception error)
+            {
+                toReturn = "Something went wrong";
+            }
+            return toReturn;
+        }
+
+        //Get all containers for select
+        [HttpGet]
+        [Route("GetAllContainers")]
+        public object GetAllContainers()
+        {
+            db.Configuration.ProxyCreationEnabled = false;
+            dynamic toReturn = new ExpandoObject();
+            try
+            {
+                toReturn = db.Containers.ToList();
+            }
+            catch (Exception error)
+            {
+                toReturn = "Something went wrong";
+            }
+            return toReturn;
+        }
+
+        //Getting Location by id
+        [Route("getLocation/{id}")]
         public object getLocation(int id)
         {
             db.Configuration.ProxyCreationEnabled = false;
 
-            Location objectLocation = new Location();
+            Location location = new Location();
             dynamic toReturn = new ExpandoObject();
 
             try
             {
-                objectLocation = db.Locations.Find(id);
+                location = db.Locations.Include(x => x.Area).Include(x => x.Container).Include(x => x.Location_Status).Where(x => x.LocationID == id).FirstOrDefault();
 
-                if (objectLocation == null)
+                if (location == null)
                 {
-                    toReturn.Message = "Record Not Found";
+                    toReturn.Message = "Location Not Found.";
                 }
                 else
                 {
 
-                    toReturn = objectLocation;
+                    toReturn = searchLocation(location.LocName);
                 }
 
             }
@@ -72,6 +124,8 @@ namespace ORDRA_API.Controllers
             }
 
             return toReturn;
+
+
         }
 
         //searching Location by name
@@ -82,21 +136,31 @@ namespace ORDRA_API.Controllers
 
             db.Configuration.ProxyCreationEnabled = false;
             dynamic toReturn = new ExpandoObject();
+            toReturn.location = new ExpandoObject();
 
             try
             {
                 //Search Location in database
-                var Location = db.Locations.Where(x => x.LocName == name).FirstOrDefault();
+                Location location = db.Locations.Where(x => x.LocName == name).FirstOrDefault();
 
-                if (Location != null)
+                if (location != null)
                 {
 
-                    toReturn = Location;
+                    Area area = db.Areas.Where(x => x.AreaID == location.AreaID).FirstOrDefault();
+                    Container container = db.Containers.Where(x => x.ContainerID == location.ContainerID).FirstOrDefault();
+                    Location_Status status = db.Location_Status.Where(x => x.LocationStatusID == location.LocationStatusID).FirstOrDefault();
+
+                    dynamic locationDetails = new ExpandoObject();
+                    locationDetails.LocName = location.LocName;
+                    locationDetails.ArName = area.ArName;
+                    locationDetails.ConName = container.ConName;
+                    locationDetails.LSDescription = status.LSDescription;
+                    toReturn.location = locationDetails;
                 }
                 else
                 {
 
-                    toReturn.Message = "Record Not Found";
+                    toReturn.Message = "Location Not Found";
 
                 }
             }
@@ -106,31 +170,50 @@ namespace ORDRA_API.Controllers
                 toReturn = "Something Went Wrong " + error.Message;
             }
 
-            return toReturn;
+            return toReturn.location;
         }
 
 
         //add location
         [HttpPost]
         [Route("addLocation")]
-        public object addLocation(Location newLocation)
+        public object addLocation(Location location)
         {
 
             db.Configuration.ProxyCreationEnabled = false;
             dynamic toReturn = new ExpandoObject();
 
-            try
+            ////try
+            ////{
+            Area area = db.Areas.Where(x => x.AreaID == location.AreaID).FirstOrDefault();
+            Container container = db.Containers.Where(x => x.ContainerID == location.ContainerID).FirstOrDefault();
+            Location_Status status = db.Location_Status.Where(x => x.LocationStatusID == location.LocationStatusID).FirstOrDefault();
+
+            //Location details for object
+            Location locationDetails = new Location();
+            if (location != null)
             {
-                db.Locations.Add(newLocation);
+                locationDetails.Area = area;
+                locationDetails.Container = container;
+                locationDetails.Location_Status = status;
+                locationDetails.LocName = location.LocName;
+
+                db.Locations.Add(locationDetails);
                 db.SaveChanges();
-                toReturn.Message = "Add Succsessful";
+
+                toReturn.Message = "Location Succesfully Created";
             }
-            catch (Exception)
+            else
             {
-                toReturn.Message = "Oops!";
-
-
+                toReturn.Message = "Location Not Found";
             }
+            ////}
+            ////catch (Exception)
+            ////{
+            ////toReturn.Message = "Oops!";
+
+
+            ////}
 
             return toReturn;
 
@@ -140,32 +223,28 @@ namespace ORDRA_API.Controllers
         //Update Location
         [HttpPut]
         [Route("updateLocation")]
-        public object updateLocation(Location LocationUpdate)
+        public object updateLocation(Location location)
         {
             db.Configuration.ProxyCreationEnabled = false;
-
-            Location objectLocation = new Location();
             dynamic toReturn = new ExpandoObject();
-            var id = LocationUpdate.LocationID;
+            Location locationDetails = new Location();
 
             try
             {
-                objectLocation = db.Locations.Where(x => x.LocationID == id).FirstOrDefault();
-                if (objectLocation != null)
+                //Set Location Details To Return object
+                locationDetails = db.Locations.Include(x => x.Area).Include(x => x.Container).Include(x => x.Location_Status).Where(x => x.LocationID == location.LocationID).FirstOrDefault();
+                if (locationDetails != null)
                 {
-                    objectLocation.LocName = LocationUpdate.LocName;
-                    objectLocation.LocationStatusID = LocationUpdate.LocationStatusID;
-                    objectLocation.AreaID = LocationUpdate.AreaID;
-                    objectLocation.ContainerID = LocationUpdate.ContainerID;
+                    locationDetails.LocName = location.LocName;
 
                     db.SaveChanges();
-
-                    toReturn.Message = "Update Done.";
+                    toReturn.Message = "Update Successful";
                 }
                 else
                 {
-                    toReturn.Message = "Record Not Found";
+                    toReturn.Message = "Location Not Found";
                 }
+
             }
 
             catch (Exception)
