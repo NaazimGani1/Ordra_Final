@@ -19,4 +19,9 @@ export class CreateLocationComponent implements OnInit {
     this.router.navigate(['/user/login']);
   }
 
+  onHome() {
+    this.router.navigate(['/home']);
+  }
+
+
 }
