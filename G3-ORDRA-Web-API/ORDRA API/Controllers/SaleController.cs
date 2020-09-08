@@ -92,12 +92,12 @@ namespace ORDRA_API.Controllers
                 db.Sales.Add(sale);
                 db.SaveChanges();
 
+
                 //get the sale record just added
                 Sale addedSale = db.Sales.ToList().LastOrDefault();
 
-
                 //get list of products in new Sale
-                 List<Product_Sale> product_Sales = newSale.Product_Sale.ToList();
+                List<Product_Sale> product_Sales = newSale.Product_Sale.ToList();
 
 
                 //Add the Product_Sale Records for each product
@@ -114,12 +114,17 @@ namespace ORDRA_API.Controllers
 
                 }
 
+               
+
 
                 //Add Payment details to sale reord, note a sale can have more than one payment method
                 List<Payment> payment = newSale.Payments.ToList();
                 foreach(var item in payment)
                 {
+                    item.Sale = addedSale;
+                    item.PayDate = DateTime.Now;
                     addedSale.Payments.Add(item);
+                    db.SaveChanges();
                 }
                 
 
