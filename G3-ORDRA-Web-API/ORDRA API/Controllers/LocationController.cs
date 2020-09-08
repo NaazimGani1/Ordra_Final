@@ -6,104 +6,179 @@ using System.Net.Http;
 using System.Web.Http;
 using ORDRA_API.Models;
 using System.Data.Entity;
+using System.Dynamic;
+using System.Web.Http.Cors;
 
 namespace ORDRA_API.Controllers
 {
-    [RoutePrefix("Api/Location")]
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
+
+    [RoutePrefix("API/Location")]
     public class LocationController : ApiController
     {
-        //database
+        //DATABASE INITIALIZING
         OrdraDBEntities db = new OrdraDBEntities();
 
-        //get all product category details
+        //Getting all Locations
         [HttpGet]
-        [Route("AllLocationDetails")]
-        public IQueryable<Location> GetLocation()
+        [Route("getAllLocations")]
+        public object getAllLocations()
         {
+            db.Configuration.ProxyCreationEnabled = false;
+            dynamic toReturn = new ExpandoObject();
+
             try
             {
-                return db.Locations;
+                toReturn = db.Locations.ToList();
             }
-            catch (Exception)
+            catch (Exception error)
             {
-                throw;
+                toReturn = "Something Went Wrong" + error;
             }
+
+            return toReturn;
+
         }
 
-        //get location by ID
-
+        //Getting Location by id
         [HttpGet]
-        [Route("GetLocationDetailsById/{LocationId}")]
-        public IHttpActionResult GetLocationById(string LocationId)
+        [Route("getLocation/{id}")]
+
+        public object getLocation(int id)
         {
+            db.Configuration.ProxyCreationEnabled = false;
+
             Location objectLocation = new Location();
-            int ID = Convert.ToInt32(LocationId);
+            dynamic toReturn = new ExpandoObject();
 
             try
             {
-                objectLocation = db.Locations.Find(ID);
+                objectLocation = db.Locations.Find(id);
+
                 if (objectLocation == null)
                 {
-                    return NotFound();
+                    toReturn.Message = "Record Not Found";
+                }
+                else
+                {
+
+                    toReturn = objectLocation;
+                }
+
+            }
+            catch (Exception error)
+            {
+                toReturn = "Something Went Wrong: " + error.Message;
+            }
+
+            return toReturn;
+        }
+
+        //searching Location by name
+        [HttpGet]
+        [Route("searchLocation")]
+        public object searchLocation(string name)
+        {
+
+            db.Configuration.ProxyCreationEnabled = false;
+            dynamic toReturn = new ExpandoObject();
+
+            try
+            {
+                //Search Location in database
+                var Location = db.Locations.Where(x => x.LocName == name).FirstOrDefault();
+
+                if (Location != null)
+                {
+
+                    toReturn = Location;
+                }
+                else
+                {
+
+                    toReturn.Message = "Record Not Found";
+
                 }
             }
-            catch (Exception)
+
+            catch (Exception error)
             {
-                throw;
+                toReturn = "Something Went Wrong " + error.Message;
             }
-            return Ok(objectLocation);
+
+            return toReturn;
         }
 
-        //insert a new location
+
+        //add location
         [HttpPost]
-        [Route("InsertLocationDetails")]
-        public IHttpActionResult PostLocation(Location data)
+        [Route("addLocation")]
+        public object addLocation(Location newLocation)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+
+            db.Configuration.ProxyCreationEnabled = false;
+            dynamic toReturn = new ExpandoObject();
 
             try
             {
-                db.Locations.Add(data);
+                db.Locations.Add(newLocation);
                 db.SaveChanges();
+                toReturn.Message = "Add Succsessful";
             }
             catch (Exception)
             {
-                throw;
+                toReturn.Message = "Oops!";
+
+
             }
-            return Ok(data);
+
+            return toReturn;
+
+
         }
 
-        //update a location
+        //Update Location
         [HttpPut]
-        [Route("UpdateLocationDetails")]
-        public IHttpActionResult PutLocation(Location Location)
+        [Route("updateLocation")]
+        public object updateLocation(Location LocationUpdate)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            db.Configuration.ProxyCreationEnabled = false;
+
+            Location objectLocation = new Location();
+            dynamic toReturn = new ExpandoObject();
+            var id = LocationUpdate.LocationID;
 
             try
             {
-                Location objectLocation = new Location();
-                objectLocation = db.Locations.Find(Location.LocationID);
+                objectLocation = db.Locations.Where(x => x.LocationID == id).FirstOrDefault();
                 if (objectLocation != null)
                 {
-                    objectLocation.LocName = Location.LocName;
+                    objectLocation.LocName = LocationUpdate.LocName;
+                    objectLocation.LocationStatusID = LocationUpdate.LocationStatusID;
+                    objectLocation.AreaID = LocationUpdate.AreaID;
+                    objectLocation.ContainerID = LocationUpdate.ContainerID;
 
+                    db.SaveChanges();
+
+                    toReturn.Message = "Update Done.";
                 }
-
-                int i = this.db.SaveChanges();
+                else
+                {
+                    toReturn.Message = "Record Not Found";
+                }
             }
+
             catch (Exception)
             {
-                throw;
+                toReturn.Message = "Update not successful.";
+
             }
-            return Ok(Location);
+
+
+            return toReturn;
         }
+
+
 
 
     }
