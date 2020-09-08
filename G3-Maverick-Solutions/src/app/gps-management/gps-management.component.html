@@ -49,7 +49,7 @@
                 <div class="card" id="location">
                     <label>Location</label>
                     <br>
-                    <button routerLink="/create-location" type="submit" >Add Location</button>
+                    <button (click)="CreateLoc()" type="submit">Create Location</button>
                    
                     <button routerLink="/search-location" type="submit">Search Location</button>
                    
@@ -123,11 +123,12 @@
           <div class="row">
             <div class="input-field col s12">
               <button class="btn-large btn-submit" type="submit" [disabled]="form.invalid">Create Area</button>
+              <button class="btn-large btn-submit" (click)="clear()">Cancel</button> 
             </div>
           </div>      
         </div>
       </form>
-      <button class="btn-large btn-submit" (click)="clear()">Cancel</button>  
+      
       </div>
          <!--Search-->
          <div *ngIf='search'>
@@ -185,7 +186,7 @@
         <tr *ngFor="let item of service.allareaList">
           <td>{{item.ArName}}</td>
           <td>{{item.ProvinceID}}</td>
-          <td>{{item.PostalCode}}</td>
+          <td>{{item.ArPostalCode}}</td>
           <td>{{item.AreaID}}</td>
       </table>
     </div>
@@ -233,6 +234,59 @@
 
 
         <!--Put Div-->
+
+        <!--Put Div-->
+
+        <!--Create-->
+      <div *ngIf='addLoc'>
+        <h1>Create Location </h1>
+      <br>
+        <form class="mb-4"  #form='ngForm' autocomplete="off" (submit)="submitLocation(form)">
+        <h3>Please enter Location details:</h3>
+        <div class="card"> 
+         <p style="text-align: left;color: orange;"><u>Location Details:</u></p>
+          <div style="width: 50%; overflow: hidden;">
+            <div class="divleft" >
+                    <label>Location Name:</label>
+                    <input type="text"name="LocName" #LocName="ngModel"[(ngModel)]="formModel1.LocName" >
+                    <br>
+                    <label>Area:</label>
+                    <select name="AreaID" #AreaID="ngModel" [(ngModel)]="serv.areaList.AreaID"  (change)="selectArea($event.target)">
+                        <option value="0">-- Select --</option>
+                        <option *ngFor="let item of serv.areaList" value="{{item.AreaID}}">{{item.ArName}}
+                        </option>
+                    </select>
+                    <br>
+                
+               <label>Container:</label>
+                <select name="ContainerID" #ContainerID="ngModel" [(ngModel)]="serv.containerList.ContainerID"  (change)="selectContainer($event.target)">
+                    <option value="0">-- Select --</option>
+                    <option *ngFor="let item of serv.containerList" value="{{item.ContainerID}}">{{item.ConName}}
+                    </option>
+                </select>
+              <br>
+                
+                <label>Location Status:</label>
+                <select name="LocationStatusID" #LocationStatusID="ngModel" [(ngModel)]="serv.locationstatusList.LocationStatusID"  (change)="selectLocatonStatus($event.target)">
+                    <option value="0">-- Select --</option>
+                    <option *ngFor="let item of serv.locationstatusList" value="{{item.LocationStatusID}}">{{item.LSDescription}}
+                    </option>
+                </select>
+                
+             </div> 
+            </div> 
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <button class="btn-large btn-submit" type="submit" [disabled]="form.invalid">Create Location</button>
+              <button class="btn-large btn-submit" (click)="clear()">Cancel</button> 
+            </div>
+          </div>      
+        
+      </form>
+      
+      </div>
+         <!--Search-->
 
         </body>        
     </div>

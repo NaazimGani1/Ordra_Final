@@ -48,6 +48,8 @@ import { UserService } from './login-subsystem/service/user.service';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
+import { CreditorPaymentComponent } from './creditor-management/creditor-payment/creditor-payment.component';
+import { SearchPaymentComponent } from './creditor-management/creditor-payment/search-payment/search-payment.component';
 
 @NgModule({
   declarations: [
@@ -84,6 +86,8 @@ import { ForbiddenComponent } from './forbidden/forbidden.component';
     NavbarComponent,
     HomeComponent,
     ForbiddenComponent,
+    CreditorPaymentComponent,
+    SearchPaymentComponent,
   ],
   imports: [
     BrowserModule,

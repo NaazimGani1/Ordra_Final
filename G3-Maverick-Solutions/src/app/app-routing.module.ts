@@ -41,6 +41,7 @@ import { NgModule } from '@angular/core';
     //-----Customer subsytem Imports----//
     import { AddCustomerComponent} from './add-customer/add-customer.component';
     import { ViewCustomerComponent } from './view-customer/view-customer.component';
+import { SearchPaymentComponent } from './creditor-management/creditor-payment/search-payment/search-payment.component';
 
 
 
@@ -140,6 +141,10 @@ import { NgModule } from '@angular/core';
         {
             path: 'search-location',
             component: SearchLocationComponent,
+        },
+        {
+            path: 'search-payment',
+            component: SearchPaymentComponent,
         },
     ];
 

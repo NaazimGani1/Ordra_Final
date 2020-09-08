@@ -53,16 +53,22 @@
             <label>Location Name:</label>
             <input class="searchinput" type ="text" id="LocNameid" name="LocName" required style="width:580px"> <br/>
   
-                <label for="credpayment">Area:</label>
-                <select class="smallselect" name="Creditor" required id="Creditor" required style="width:580px">
-                  <option>---</option>
-                </select>          
+            <div class="divleft" >
+              <label for="AreaID">Area:   </label>
+              <select required>
+                <option value="0">--Select--</option>
+                <option [value]="type" *ngFor= "let area of areas">{{area.ArName}}</option>
+              </select>
+            </div>        
             <br/>
             
-            <label for="credpayment">Container:</label>
-                <select class="smallselect" name="Creditor" required id="Creditor" required style="width:580px">
-                  <option>---</option>
-                </select>          
+            <div class="divleft" >
+              <label for="ContainerID">Container:   </label>
+              <select required>
+                <option value="0">--Select--</option>
+                <option [value]="type" *ngFor= "let container of containers">{{container.ConName}}</option>
+              </select>
+            </div>   
             <br/>
   
             <label for="credpayment">Location Status:</label>
@@ -73,8 +79,8 @@
                 </select>          
             <br/>
   
-            <button type="submit">Create Location</button>
-            <button routerLink="/gps-management" type="submit" >Cancel</button>
+            <button type="button" (click)="addLocation()">Create Location</button> 
+            <button type="button" (click)="gotoGPSManagement()">Cancel</button>
           </div>
         </div>
         <br><br>
