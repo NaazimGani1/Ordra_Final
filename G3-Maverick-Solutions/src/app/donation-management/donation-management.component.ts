@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-donation-management',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DonationManagementComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
+
+  gotoAddDonationRecipient(){
+    this.router.navigate(['add-donation-recipient']);
+  }
+
+  gotoSearchDonationRecipient(){
+    this.router.navigate(['search-donation-recipient']);
+  }
+
 
 }
