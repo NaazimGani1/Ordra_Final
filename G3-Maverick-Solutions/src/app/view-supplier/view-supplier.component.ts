@@ -4,7 +4,7 @@ import {Supplier} from '../supplier-management/supplier';
 import { NgModule } from '@angular/core';
 import {SupplierService} from '../supplier-management/supplier.service';
 
-var inputEnabled = false;
+
 
 @Component({
   selector: 'app-view-supplier',
@@ -16,6 +16,7 @@ export class ViewSupplierComponent implements OnInit {
   constructor(private api: SupplierService, private router: Router) { }
   supplier : Supplier = new Supplier();
   responseMessage: string = "Request Not Submitted";
+  //inputEnabled = false;
 
   showSave: boolean = false;
   showButtons: boolean = true;
@@ -23,6 +24,7 @@ export class ViewSupplierComponent implements OnInit {
   showSearch: boolean = true;
   showResults: boolean = false;
   name : string;
+  dateVal: Date;
 
   ngOnInit(): void {
   }
@@ -93,6 +95,15 @@ export class ViewSupplierComponent implements OnInit {
     
     this.showSearch = true;
     this.showResults = false;
+  }
+
+  onLogout() {
+    localStorage.removeItem('token');
+    this.router.navigate(['/user/login']);
+  }
+
+  onHome() {
+    this.router.navigate(['/home']);
   }
 
 

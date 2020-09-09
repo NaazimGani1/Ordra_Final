@@ -20,7 +20,8 @@ import{map} from 'rxjs/operators';
 export class ViewOrderComponent implements OnInit {
 
   constructor(private api: CustomerOrderService,private router: Router) { }
-
+  dateVal: Date;
+  
   cell:string;
   orderNo: string;
 
@@ -148,6 +149,15 @@ export class ViewOrderComponent implements OnInit {
   gotoCustomerOrderManagement()
   {
     this.router.navigate(["customer-order-management"])
+  }
+
+  onLogout() {
+    localStorage.removeItem('token');
+    this.router.navigate(['/user/login']);
+  }
+
+  onHome() {
+    this.router.navigate(['/home']);
   }
 
 }

@@ -10,6 +10,8 @@ export class SupplierManagementComponent implements OnInit {
 
   constructor(private router: Router) { }
 
+  dateVal: Date;
+
   ngOnInit(): void {
   }
 
@@ -22,6 +24,14 @@ export class SupplierManagementComponent implements OnInit {
 
   }
 
+  onLogout() {
+    localStorage.removeItem('token');
+    this.router.navigate(['/user/login']);
+  }
+
+  onHome() {
+    this.router.navigate(['/home']);
+  }
 
 }
 

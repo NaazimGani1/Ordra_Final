@@ -10,6 +10,8 @@ export class ManagerManagementComponent implements OnInit {
 
   constructor(private router: Router) { }
 
+  dateVal: Date;
+
   ngOnInit(): void {
   }
 
@@ -19,6 +21,14 @@ export class ManagerManagementComponent implements OnInit {
 
   gotoSearchManager(){
     this.router.navigate(['view-manager']);
+  }
+  onLogout() {
+    localStorage.removeItem('token');
+    this.router.navigate(['/user/login']);
+  }
+
+  onHome() {
+    this.router.navigate(['/home']);
   }
 
 

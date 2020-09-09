@@ -85,6 +85,10 @@ import { PlaceSupplierOrderComponent } from './supplier-order-management/place-s
      import {ViewOrderComponent} from './view-order/view-order.component';
      import {SendNotificationComponent} from './send-notification/send-notification.component';
 
+     //--Sale Subsystem Imports---//
+     import{MakeSaleComponent}  from './sales-management/make-sale/make-sale.component';
+     import {SearchSaleComponent} from './sales-management/search-sale/search-sale.component';
+
  //---Container Subsystem Imports---//
  import { CreateContainerComponent } from './create-container/create-container.component';
  import { SearchContainerComponent } from './search-container/search-container.component';
@@ -249,6 +253,18 @@ import { AddPaymentComponent } from './creditor-management/add-payment/add-payme
         component: SendNotificationComponent,
     },
 
+    //--Sale Subsystem Routing--//
+    {
+        path: 'make-sale',
+        component: MakeSaleComponent,
+    },
+
+    {
+        path: 'search-sale',
+        component: SearchSaleComponent,
+    },
+
+    //-----//
         
         {
             path: 'create-location',

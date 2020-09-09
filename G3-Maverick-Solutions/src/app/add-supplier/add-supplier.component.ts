@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { Supplier} from '../supplier-management/supplier';
-import { NgModule } from '@angular/core';
 import {SupplierService} from '../supplier-management/supplier.service';
+import { Router } from '@angular/router';
+import {Supplier} from '../supplier-management/supplier';
+
 
 @Component({
   selector: 'app-add-supplier',
@@ -11,7 +11,11 @@ import {SupplierService} from '../supplier-management/supplier.service';
 })
 export class AddSupplierComponent implements OnInit {
 
+
   constructor(private api: SupplierService, private router: Router) { }
+
+  dateVal: Date;
+
   supplier : Supplier = new Supplier();
   responseMessage: string = "Request Not Submitted";
 
@@ -31,6 +35,14 @@ export class AddSupplierComponent implements OnInit {
 
   gotoSupplierManagement(){
     this.router.navigate(['supplier-management']);
+  }
+  onLogout() {
+    localStorage.removeItem('token');
+    this.router.navigate(['/user/login']);
+  }
+
+  onHome() {
+    this.router.navigate(['/home']);
   }
 
 }

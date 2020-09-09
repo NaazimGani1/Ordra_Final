@@ -33,7 +33,7 @@ export class CreateManagerComponent implements OnInit {
  selectedContainers: Container[] = [];
 
 
-  
+ dateVal: Date;
   
 
   showTable: boolean = false;
@@ -141,6 +141,15 @@ export class CreateManagerComponent implements OnInit {
     
     this.showSearch = true;
     this.showResults = false;
+  }
+
+  onLogout() {
+    localStorage.removeItem('token');
+    this.router.navigate(['/user/login']);
+  }
+
+  onHome() {
+    this.router.navigate(['/home']);
   }
 }
 
