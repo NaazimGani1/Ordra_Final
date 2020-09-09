@@ -57,6 +57,24 @@ import { MakeSaleComponent } from './sales-management/make-sale/make-sale.compon
 import { SearchSaleComponent } from './sales-management/search-sale/search-sale.component';
 import { CreditorPaymentComponent } from './creditor-management/creditor-payment/creditor-payment.component';
 import { SearchPaymentComponent } from './creditor-management/creditor-payment/search-payment/search-payment.component';
+
+
+import { AddProvinceComponent } from './gps-management/add-province/add-province.component';
+import { SearchProvinceComponent } from './gps-management/search-province/search-province.component';
+import { CreditorReportComponent } from './reporting-management/creditor-report/creditor-report.component';
+import { CustomerOrderReportComponent } from './reporting-management/customer-order-report/customer-order-report.component';
+import { SupplierOrderReportComponent } from './reporting-management/supplier-order-report/supplier-order-report.component';
+import { MarkedOffProductReportComponent } from './reporting-management/marked-off-product-report/marked-off-product-report.component';
+import { SalesReportComponent } from './reporting-management/sales-report/sales-report.component';
+import { ProductReportComponent } from './reporting-management/product-report/product-report.component';
+import { DonationReportComponent } from './reporting-management/donation-report/donation-report.component';
+import { AddCreditorComponent } from './creditor-management/add-creditor/add-creditor.component';
+import { SearchCreditorComponent } from './creditor-management/search-creditor/search-creditor.component';
+import { CreateDonationComponent } from './donation-management/create-donation/create-donation.component';
+import { SearchDonationComponent } from './donation-management/search-donation/search-donation.component';
+import { DonatedProductComponent } from './donation-management/donated-product/donated-product.component';
+
+import { PlaceSupplierOrderComponent } from './supplier-order-management/place-supplier-order/place-supplier-order.component';
 import { CreateContainerComponent } from './create-container/create-container.component';
 import { SearchContainerComponent } from './search-container/search-container.component';
 import { DonationRecipientComponent } from './donation-management/donation-recipient/donation-recipient.component';
@@ -74,6 +92,9 @@ import { SearchProductComponent } from './product-management/product/search-prod
 import { SearchedProductDetailsComponent } from './product-management/product/searched-product-details/searched-product-details.component';
 import { StockTakeComponent } from './product-management/product/stock-take/stock-take.component';
 import { AddSupplierComponent } from './add-supplier/add-supplier.component';
+import { SearchSupplierOrderComponent } from './supplier-order-management/search-supplier-order/search-supplier-order.component';
+import { AddPaymentComponent } from './creditor-management/add-payment/add-payment.component';
+
 
 @NgModule({
   declarations: [
@@ -119,6 +140,26 @@ import { AddSupplierComponent } from './add-supplier/add-supplier.component';
     SearchSaleComponent,
     CreditorPaymentComponent,
     SearchPaymentComponent,
+
+
+    AddProvinceComponent,
+    SearchProvinceComponent,
+    CreditorReportComponent,
+    CustomerOrderReportComponent,
+    SupplierOrderReportComponent,
+    MarkedOffProductReportComponent,
+    SalesReportComponent,
+    ProductReportComponent,
+    DonationReportComponent,
+    AddCreditorComponent,
+    SearchCreditorComponent,
+    CreateDonationComponent,
+    SearchDonationComponent,
+    DonatedProductComponent,
+
+
+    PlaceSupplierOrderComponent,
+
     CreateContainerComponent,
     SearchContainerComponent,
     DonationRecipientComponent,
@@ -135,9 +176,8 @@ import { AddSupplierComponent } from './add-supplier/add-supplier.component';
     SearchProductComponent,
     SearchedProductDetailsComponent,
     StockTakeComponent,
-    AddSupplierComponent,
-    
-    
+    SearchSupplierOrderComponent,
+    AddPaymentComponent,
   ],
   imports: [
     BrowserModule,

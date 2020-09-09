@@ -8,3 +8,19 @@ npm i @angular/material
 npm i @material/dialog
 
 
+reports
+npm install jspdf --save
+npm install #types/jspdf --save-dev
+npm install jspdf-autotable --save
+npm install chart.js --save
+
+global 
+npm install -g jspdf --save
+npm install -g #types/jspdf --save-dev
+npm install -g jspdf-autotable --save
+npm install -g chart.js --save
+
+
+scripts [
+ "node_modules/jspdf/dist/jspdf.min.js",
+   "node_modules/jspdf-autotable/dist/jspdf.plugin.autotable.js" ]

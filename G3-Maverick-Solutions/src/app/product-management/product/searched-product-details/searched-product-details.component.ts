@@ -4,7 +4,6 @@ import { ProductService } from '../../product.service';
 import { ProductCategory } from '../../product-category';
 import { Price } from '../../price';
 import { Product } from '../../product';
-import { NavbarService } from 'src/app/navbar/navbar.service';
 import { UserService } from 'src/app/login-subsystem/service/user.service';
 
 @Component({
@@ -14,7 +13,7 @@ import { UserService } from 'src/app/login-subsystem/service/user.service';
 })
 export class SearchedProductDetailsComponent implements OnInit {
   dateVal = new Date();
-  constructor(private productService: ProductService, private router: Router,public nav: NavbarService,  private service: UserService) { }
+  constructor(private productService: ProductService, private router: Router, private service: UserService) { }
 
   ngOnInit(): void {
   }

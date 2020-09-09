@@ -12,6 +12,7 @@ import { filter } from 'rxjs/operators';
   styleUrls: ['./search-payment.component.scss']
 })
 export class SearchPaymentComponent implements OnInit {
+  dateVal = new Date();
   private _allPayments: Observable<CreditorPayment[]>;  
   public get allPayments(): Observable<CreditorPayment[]> {  
     return this._allPayments;  
@@ -29,6 +30,15 @@ export class SearchPaymentComponent implements OnInit {
   }  
 
   ngOnInit(): void {
+  }
+
+  onLogout() {
+    localStorage.removeItem('token');
+    this.router.navigate(['/user/login']);
+  }
+
+  onHome() {
+    this.router.navigate(['/home']);
   }
 
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import {DonationRecipient} from '../../donation-recipient';
+import { DonationRecipient } from 'src/app/donation-management/Models/donation-recipient';
 import { NgModule } from '@angular/core';
 import {DonationService} from '../../donation.service';
 import { UserService } from 'src/app/login-subsystem/service/user.service';

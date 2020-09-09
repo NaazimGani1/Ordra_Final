@@ -14,6 +14,7 @@ import { NgModule } from '@angular/core';
     import { DonationManagementComponent } from './donation-management/donation-management.component';
     import { CreditorManagementComponent } from './creditor-management/creditor-management.component';
     import { ReportingManagementComponent } from './reporting-management/reporting-management.component';
+    
 
         //-----Login Subsystem Imports----//
     import { UserComponent } from './login-subsystem/user/user.component';
@@ -41,8 +42,36 @@ import { NgModule } from '@angular/core';
     //-----Customer subsytem Imports----//
     import { AddCustomerComponent} from './add-customer/add-customer.component';
     import { ViewCustomerComponent } from './view-customer/view-customer.component';
-import { SearchPaymentComponent } from './creditor-management/creditor-payment/search-payment/search-payment.component';
 
+
+import { SearchPaymentComponent } from './creditor-management/creditor-payment/search-payment/search-payment.component';
+import { PlaceSupplierOrderComponent } from './supplier-order-management/place-supplier-order/place-supplier-order.component';
+
+    
+
+    //---Reporting Subsystem Imports---//
+    import { CreditorReportComponent } from './reporting-management/creditor-report/creditor-report.component';
+    import { CustomerOrderReportComponent } from './reporting-management/customer-order-report/customer-order-report.component';
+    import { SupplierOrderReportComponent } from './reporting-management/supplier-order-report/supplier-order-report.component';
+    import { MarkedOffProductReportComponent } from './reporting-management/marked-off-product-report/marked-off-product-report.component';
+    import { ProductReportComponent } from './reporting-management/product-report/product-report.component';
+    import { DonationReportComponent } from './reporting-management/donation-report/donation-report.component';
+    import { SalesReportComponent } from './reporting-management/sales-report/sales-report.component';
+
+    //---Donation Subsystem Imports---//
+    import { CreateDonationComponent } from './donation-management/create-donation/create-donation.component';
+    import { DonatedProductComponent } from './donation-management/donated-product/donated-product.component';
+    import { SearchDonationComponent } from './donation-management/search-donation/search-donation.component';
+    //import { SearchedDonationDetailsComponent } from './donation-management/searched-donation-details/searched-donation-details.component';
+    
+     //-----Province subsytem Imports----//
+     import { AddProvinceComponent } from './gps-management/add-province/add-province.component';
+     import { SearchProvinceComponent } from './gps-management/search-province/search-province.component';
+     
+    //-----Creditor subsytem Imports----//
+    import { AddCreditorComponent } from './creditor-management/add-creditor/add-creditor.component';
+    import { SearchCreditorComponent } from './creditor-management/search-creditor/search-creditor.component';
+ 
      //----Supplier Subsystem Imports----//
      import { AddSupplierComponent} from './add-supplier/add-supplier.component';
      import { ViewSupplierComponent} from './view-supplier/view-supplier.component';
@@ -79,7 +108,8 @@ import { SearchPaymentComponent } from './creditor-management/creditor-payment/s
  import { StockTakeComponent } from './product-management/product/stock-take/stock-take.component';
  import { AddVatComponent } from './product-management/vat/add-vat/add-vat.component';
  import { UpdateVatComponent } from './product-management/vat/update-vat/update-vat.component';
-
+import { SearchSupplierOrderComponent } from './supplier-order-management/search-supplier-order/search-supplier-order.component';
+import { AddPaymentComponent } from './creditor-management/add-payment/add-payment.component';
 
 
     const routes: Routes = [
@@ -105,7 +135,18 @@ import { SearchPaymentComponent } from './creditor-management/creditor-payment/s
        //
        {path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
 
-
+       {
+        path: 'place-supplier-order',
+        component: PlaceSupplierOrderComponent,
+    },
+    {
+        path: 'search-supplier-order',
+        component: SearchSupplierOrderComponent,
+    },
+    {
+    path: 'add-payment',
+        component: AddPaymentComponent,
+    },
         {
             path: 'employee-management',
             component: EmployeeManagementComponent,
@@ -237,7 +278,32 @@ import { SearchPaymentComponent } from './creditor-management/creditor-payment/s
             path: 'search-payment',
             component: SearchPaymentComponent,
         },
+        
 
+
+        ///---Province Subsystem Routing---//
+        { path: 'add-province', component: AddProvinceComponent },
+        { path: 'search-province', component: SearchProvinceComponent },
+       
+        //---Creditor Subsystem Routing---//
+        { path: 'add-creditor', component: AddCreditorComponent },
+        { path: 'search-creditor', component: SearchCreditorComponent },
+    
+        //---reporting Subsystem Routing---//
+        { path: 'creditors-report', component: CreditorReportComponent},
+        { path: 'customer-report', component: CustomerOrderReportComponent },
+        { path: 'supplier-report', component: SupplierOrderReportComponent },
+        { path: 'markedoff-product-report', component: MarkedOffProductReportComponent},
+        { path: 'product-report', component: ProductReportComponent },
+        { path: 'donation-report', component: DonationReportComponent },
+        { path: 'sales-report', component: SalesReportComponent },
+       
+        //---Donation Subsystem Routing---//
+        { path: 'create-donation', component: CreateDonationComponent },
+        { path: 'search-donated-product', component: SearchCreditorComponent},
+        { path: 'search-donation', component: SearchDonationComponent },
+        //{ path: 'searched-donation-details', component: SearchedDonationDetailsComponent},
+  
          //----Container Subsystem Routing---//
         {
             path: 'create-container',

@@ -437,7 +437,7 @@ namespace ORDRA_API.Controllers
 
                     toReturn.ChartData = categories;
 
-                    /*//table data
+                    //table data
                     //group by the product categories
                     var products = markedProducts.GroupBy(z => z.Product.ProdName);
                     List<dynamic> productGroups = new List<dynamic>();
@@ -467,7 +467,7 @@ namespace ORDRA_API.Controllers
                         productGroups.Add(product);
                     }
 
-                    toReturn.TableData = productGroups;*/
+                    toReturn.TableData = productGroups;
                 }
                 else
                 {
@@ -500,7 +500,7 @@ namespace ORDRA_API.Controllers
                 if (products != null)
                 {
                     //chart data
-                    var prodList = products.GroupBy(z => z.Product.Product_Category.PCatName);
+                    var prodList = products.GroupBy(z => z.Product.ProductCategoryID);    ///Product.Product_Category.PCatName);
 
                     foreach (var item in prodList)
                     {
@@ -574,7 +574,7 @@ namespace ORDRA_API.Controllers
                 {
                     //table data
                     //group by the donation recipients 
-                    var recipients = donations.GroupBy(z => new { z.Donation_Recipient.DrName, z.Donation_Recipient.DrSurname, z.Donation_Recipient.DrEmail });
+                    var recipients = donations.GroupBy(z => z.RecipientID);
                     List<dynamic> recipGroups = new List<dynamic>();
                     foreach (var item in recipients)
                     {
