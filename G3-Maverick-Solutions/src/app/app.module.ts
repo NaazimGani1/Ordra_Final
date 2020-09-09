@@ -50,6 +50,15 @@ import { HomeComponent } from './home/home.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { CreditorPaymentComponent } from './creditor-management/creditor-payment/creditor-payment.component';
 import { SearchPaymentComponent } from './creditor-management/creditor-payment/search-payment/search-payment.component';
+import { AddProvinceComponent } from './gps-management/add-province/add-province.component';
+import { SearchProvinceComponent } from './gps-management/search-province/search-province.component';
+import { CreditorReportComponent } from './reporting-management/creditor-report/creditor-report.component';
+import { CustomerOrderReportComponent } from './reporting-management/customer-order-report/customer-order-report.component';
+import { SupplierOrderReportComponent } from './reporting-management/supplier-order-report/supplier-order-report.component';
+import { MarkedOffProductReportComponent } from './reporting-management/marked-off-product-report/marked-off-product-report.component';
+import { SalesReportComponent } from './reporting-management/sales-report/sales-report.component';
+import { ProductReportComponent } from './reporting-management/product-report/product-report.component';
+import { DonationReportComponent } from './reporting-management/donation-report/donation-report.component';
 
 @NgModule({
   declarations: [
@@ -88,6 +97,15 @@ import { SearchPaymentComponent } from './creditor-management/creditor-payment/s
     ForbiddenComponent,
     CreditorPaymentComponent,
     SearchPaymentComponent,
+    AddProvinceComponent,
+    SearchProvinceComponent,
+    CreditorReportComponent,
+    CustomerOrderReportComponent,
+    SupplierOrderReportComponent,
+    MarkedOffProductReportComponent,
+    SalesReportComponent,
+    ProductReportComponent,
+    DonationReportComponent,
   ],
   imports: [
     BrowserModule,

@@ -41,9 +41,15 @@ import { NgModule } from '@angular/core';
     //-----Customer subsytem Imports----//
     import { AddCustomerComponent} from './add-customer/add-customer.component';
     import { ViewCustomerComponent } from './view-customer/view-customer.component';
-import { SearchPaymentComponent } from './creditor-management/creditor-payment/search-payment/search-payment.component';
+    import { SearchPaymentComponent } from './creditor-management/creditor-payment/search-payment/search-payment.component';
 
-
+    //-----Reporting subsytem Imports----//
+    //-----Donation subsytem Imports----//
+    //-----Creditor subsytem Imports----//
+    //-----Province subsytem Imports----//
+    import { AddProvinceComponent } from './gps-management/add-province/add-province.component';
+    //import { SearchProvinceComponent } from '';
+    
 
 
     const routes: Routes = [
@@ -146,6 +152,13 @@ import { SearchPaymentComponent } from './creditor-management/creditor-payment/s
             path: 'search-payment',
             component: SearchPaymentComponent,
         },
+
+        //Province routes
+        {path: 'add-province', component: AddProvinceComponent},
+        //Donation routes
+        //Reporting routes
+        //Creditor routes
+
     ];
 
     @NgModule({
