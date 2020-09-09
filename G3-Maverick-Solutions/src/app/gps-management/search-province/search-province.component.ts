@@ -6,7 +6,6 @@ import { Province } from '../model/province.model';
 import { Router } from '@angular/router';
 import { Observable, from } from 'rxjs';
 import { UserService } from 'src/app/login-subsystem/service/user.service';
-import { NavbarService } from 'src/app/navbar/navbar.service';
 
 
 @Component({
@@ -18,7 +17,7 @@ export class SearchProvinceComponent implements OnInit {
   
   dateVal = new Date();
 
-  constructor(public nav: NavbarService, private provinceService: ProvinceService, private formBuilder: FormBuilder, private router: Router, private userService: UserService) { };
+  constructor(private provinceService: ProvinceService, private formBuilder: FormBuilder, private router: Router, private userService: UserService) { };
 
   province : Province = new Province();
   responseMessage: string = "Request Not Submitted";

@@ -3,7 +3,6 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ProvinceService } from '../services/province.service';
 import { Province } from '../model/province.model';
 import { Router } from '@angular/router';
-import { NavbarService } from 'src/app/navbar/navbar.service';
 import { UserService } from 'src/app/login-subsystem/service/user.service';
 
 @Component({
@@ -20,7 +19,7 @@ export class AddProvinceComponent implements OnInit {
 
   dateVal = new Date();
 
-  constructor(public nav: NavbarService, private provinceService: ProvinceService, private formBuilder: FormBuilder, private router: Router, private userService: UserService) { };
+  constructor( private provinceService: ProvinceService, private formBuilder: FormBuilder, private router: Router, private userService: UserService) { };
 
   province : Province = new Province();
   responseMessage: string = "Request Not Submitted";
@@ -42,5 +41,47 @@ export class AddProvinceComponent implements OnInit {
     this.router.navigate(['/home']);
   }
 
-
+  addProvince()
+  {
+     this.provinceService.addProvince(this.province).subscribe( (res:any)=> 
+    {
+      console.log(res);
+      if(res.Message)
+      {
+        this.responseMessage = res.Message;
+      }
+      alert(this.responseMessage)
+      this.router.navigate(["gps-management"])
+    }) 
+  
+    
+  
+  
+    /*  if (this.provinceIDUpdate == null)
+    {
+      this.provinceService.addProvince(this.province).subscribe(
+        (res:any) => {
+          this.dataSaved = true;
+          this.provinceIDUpdate = null;
+          
+        }
+      );
+    }
+    else
+    {
+      this.province.ProvinceID = this.provinceIDUpdate;
+      this.provinceService.updateProvince(this.province).subscribe(
+        () => {
+          this.dataSaved = true;
+          this.provinceIDUpdate = null;
+        }
+      );
+    }  */
+  
+  }
+  
+  
+    Cancel(){
+      this.router.navigate(["gps-management"])
+    }
 }

@@ -19,7 +19,7 @@ export class SearchManagerComponent implements OnInit {
   manager: Manager = new Manager();
   user: User = new User();
   employee: Employee = new Employee();
-
+  dateVal = new Date();
   
   containerSelected: Container = new Container();
   selection:number;
@@ -38,7 +38,6 @@ export class SearchManagerComponent implements OnInit {
  showSearch: boolean = true;
  showResults: boolean = false;
  showConatinerSelect: boolean = false;
- dateVal: Date;
 
  name : string;
  surname : string;

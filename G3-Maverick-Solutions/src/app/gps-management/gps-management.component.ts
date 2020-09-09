@@ -13,6 +13,7 @@ import { Locationstatus } from '../gps-management/model/locationstatus.model';
 
 
 
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-gps-management',
@@ -23,11 +24,14 @@ export class GPSManagementComponent implements OnInit {
   title = 'ORDRA';
   dateVal = new Date();
   
+  allareaList: Area[];
   main = true;
   add = false;
   addLoc = false;
   search = false;
   searchFound = false;
+  searchDelete = false;
+  searchDeleteFound = false;
 
   formModel1 = {
     AreaStatusID:0,
@@ -46,6 +50,7 @@ export class GPSManagementComponent implements OnInit {
   constructor(public service: AreaserviceService, public serv: LocationserviceService, private router: Router,private toastr: ToastrService) { }
 
   ngOnInit() {
+   this.resetForm();
    this.refreshList();
    console.log(this.service.provinceList)
    this.refreshList();
@@ -60,17 +65,79 @@ export class GPSManagementComponent implements OnInit {
     this.router.navigate(['/home']);
   }
 
+  
+
+  resetForm() {
+    this.service.areaData = {
+      AreaID: 0,
+      ArName: '',
+      AreaStatusID: 0,
+      ProvinceID: 0,
+      ArPostalCode: ''
+    };
+
+
+    this.service.allareaData = {
+      AreaID: 0,
+      ArName: '',
+      AreaStatusID: 0,
+      ProvinceID: 0,
+      ArPostalCode: ''
+    };
+
+    this.service.statusData = {
+      AreaStatusID: 0,
+      ASDescription: ''
+    };
+
+    this.service.provinceData = {
+      ProvinceID: 0,
+      ProvName: ''
+    };
+
+
+
+    this.service.areaList = [];
+    this.service.allareaList = [];
+    this.service.statusList = [];
+  }
+
 
   refreshList() {
-    this.service.getAreas().then(res => this.service.allareaList = res as Area[]);
+    this.service.getAreas().then(res => this.allareaList = res as Area[]);
     this.service.getStatus().then(res => this.service.statusList = res as Status[]);
     this.service.getProvince().then(res => this.service.provinceList = res as Province[]);
     this.serv.getAllLocations().then(res => this.serv.alllocationList = res as Location[]);
     this.serv.getAllAreas().then(res => this.serv.areaList = res as Area[]);
     this.serv.getAllContainers().then(res => this.serv.containerList = res as Container[]);
     this.serv.getAllStatusses().then(res => this.serv.locationstatusList = res as Locationstatus[]);
+    debugger
+    console.log(this.service.provinceList);
+    console.log(this.service.statusList);
+    console.log(this.allareaList);
   }
 
+
+
+
+  submitLocation(form: NgForm) {
+    console.log(form);
+      this.serv.postLocation(form.value).subscribe((res: any) => {
+        console.log(res);
+        if (res !='Error' && res !='Nothing')
+        {
+          console.log(res);
+          this.main = true;
+          this.addLoc = false;
+          this.toastr.success('Success', 'Location has been added');
+        }
+        else
+        {
+          console.log(res);
+          this.toastr.error('Uh Oh ', 'Something Went Wrong. Please Try again');
+        }
+      });  
+  }
 
   onSearchArea(form: NgForm) {
     this.service.search(form.value).subscribe(
@@ -135,16 +202,21 @@ export class GPSManagementComponent implements OnInit {
       });  
   }
 
-  submitLocation(form: NgForm) {
+  onSubmitUpdate(form: NgForm) {
     console.log(form);
-      this.serv.postLocation(form.value).subscribe((res: any) => {
+      this.service.postArea(form.value).subscribe((res: any) => {
         console.log(res);
         if (res !='Error' && res !='Nothing')
         {
           console.log(res);
           this.main = true;
-          this.addLoc = false;
-          this.toastr.success('Success', 'Location has been added');
+          this.add = false;
+          this.add = false;
+          this.search = false;
+          this.searchFound = false;
+          this.searchDelete = false;
+          this.searchDeleteFound = false;
+          this.toastr.success('Success', 'Employee Recorded Modified :)');
         }
         else
         {
@@ -153,6 +225,7 @@ export class GPSManagementComponent implements OnInit {
         }
       });  
   }
+
 
 
 //Selectors
@@ -218,6 +291,7 @@ export class GPSManagementComponent implements OnInit {
     this.main = false;
     this.search = true;
   }
+
   
   onLogout() {
     localStorage.removeItem('token');

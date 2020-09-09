@@ -42,10 +42,7 @@
         
              </div> 
             <div class="info">   
-                   
-            </div>
-           </div>
-        </div>
+            
    </div>
     <h1>Create Manager Profile</h1>
     <form>
@@ -57,10 +54,10 @@
             <label class="subheadinglabel" >Enter Manager Name and Surname To search:</label>
         <br>
         <label for="name">Name:       </label>
-        <input class="searchinput" class="form-control" [(ngModel)]="name" type="text" id="name" name="name">
+        <input class="searchinput"  [(ngModel)]="name" type="text" id="name" name="name"><br>
    
         <label for="cusSurname">Surname:   </label>
-        <input class="searchinput" class="form-control" [(ngModel)]="surname" type="text" id="surname" name="surname">
+        <input class="searchinput"  [(ngModel)]="surname" type="text" id="surname" name="surname">
         
             <div class="divleft">
                 <button type="submit" (click) ="searchManager()">Search</button>

@@ -17,7 +17,7 @@ import { Container } from '../Models/container';
 })
 export class SearchDonationComponent implements OnInit {
 
-  constructor(public nav: NavbarService, private donationService: DonationService, private formBuilder: FormBuilder, private router: Router, private userService: UserService) { };
+  constructor(private donationService: DonationService, private formBuilder: FormBuilder, private router: Router, private userService: UserService) { };
 
   donation: Donation = new Donation();
   donations: Donation[];
@@ -33,7 +33,7 @@ export class SearchDonationComponent implements OnInit {
   showAddDon: boolean = false
   showResults: boolean = false;
   cell : string;
-
+  dateVal = new Date();
   statuses: DonationStatus[];
   containers: Container[];
 

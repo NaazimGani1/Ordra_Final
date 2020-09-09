@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { NavbarService } from 'src/app/navbar/navbar.service';
 import { UserService } from 'src/app/login-subsystem/service/user.service';
 
 @Component({
@@ -11,7 +10,7 @@ import { UserService } from 'src/app/login-subsystem/service/user.service';
 })
 export class DonationManagementComponent implements OnInit {
 
-  constructor(public nav: NavbarService, private formBuilder: FormBuilder, private router: Router, private userService: UserService) { };
+  constructor(private formBuilder: FormBuilder, private router: Router, private userService: UserService) { };
 
 
   dateVal = new Date();

@@ -51,7 +51,7 @@
                 
                             <div class="divleft">
                                 <label for="name">Name:</label>
-                                <input  class="searchinput" class="Form-control" [(ngModel)]="name"  type="text" id="name" name="name" required>
+                                <input  class="searchinput"  [(ngModel)]="name"  type="text" id="name" name="name" required>
                             </div>
                         
                             <div class="divleft">
@@ -72,12 +72,12 @@
                             
                             <br>
                             <div class="divleft">
-                                <label for="ConName">Name:</label><input  type="text" class="form-control" [(ngModel)]="container.ConName" id="ConName" name="ConName" required [readonly] = "this.inputEnabled">
+                                <label for="ConName">Name:</label><input  type="text"  [(ngModel)]="container.ConName" id="ConName" name="ConName" required [readonly] = "this.inputEnabled">
                             </div>    
                             
                             <br>
                             <div class="divleft">
-                                <label for="ConDescription">Description:</label><input type="text" class="form-control" [(ngModel)]="container.ConDescription" id="ConDescription" name="ConDescription" required [readonly] = "this.inputEnabled"> 
+                                <label for="ConDescription">Description:</label><input type="text"  [(ngModel)]="container.ConDescription" id="ConDescription" name="ConDescription" required [readonly] = "this.inputEnabled"> 
                            </div>
                         
                             <div class="divleft" *ngIf="showButtons">

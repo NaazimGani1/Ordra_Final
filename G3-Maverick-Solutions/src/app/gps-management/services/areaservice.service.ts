@@ -45,6 +45,7 @@ export class AreaserviceService {
     return this.http.post(environment.ApiUrl  + '/Search/searchArea', formData);
   }
 
+  //Use for update 
 
   getArea(obj: Area) {
     return this.http.get(environment.ApiUrl + '/Areas/' + obj.AreaID).toPromise();

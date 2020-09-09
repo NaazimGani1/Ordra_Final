@@ -73,7 +73,6 @@ import { PlaceSupplierOrderComponent } from './supplier-order-management/place-s
     import { SearchCreditorComponent } from './creditor-management/search-creditor/search-creditor.component';
  
      //----Supplier Subsystem Imports----//
-     import { AddSupplierComponent} from './add-supplier/add-supplier.component';
      import { ViewSupplierComponent} from './view-supplier/view-supplier.component';
  
      //---Manager Subsystem Imports---//
@@ -213,10 +212,7 @@ import { AddPaymentComponent } from './creditor-management/add-payment/add-payme
 
     //----Supplier Subsystem Routing---//
 
-    {
-        path: 'add-supplier',
-        component: AddSupplierComponent,
-    },
+    
 
     {
         path: 'view-supplier',

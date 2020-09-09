@@ -1,5 +1,4 @@
-<nav *ngIf="nav.visible"> 
-    <div class="wrapper">      
+      
         <div class="wrapper">
             <div class="sidebar">
             <h2><img width="170"  src="https://www.ordra.co.za/image/catalog/info/ORDRAA1%20(2).png" (click)="onHome()"></h2>
@@ -42,9 +41,37 @@
         
              </div> 
             <div class="info">   
-                   
+                <body>
+                    <h1>Add Province</h1>
+                    <br>
+                    <form [formGroup]= "provinceForm">
+                        
+                        <div class="card" >
+                            <div class="divleft">
+                            <label class="subheadinglabel">Enter the new province details:</label> 
+                         <br>
+                                
+                                <label for="Name">Province Name:</label>
+                                <input type = "text" formControlName="province.ProvName" id="ProvName" placeholder="Example: Gauteng" required name = "ProvName">     
+                                <br>
+                
+                            </div>
+                
+                            <div class="divleft">
+                                <button type="submit" (click)="addProvince()" >Save</button>       
+                                <button type="button" (click)="Cancel()">Cancel</button>
+                             </div>    
+                            
+                
+                        </div>
+                
+                
+                    </form>
+                
+                <router-outlet></router-outlet>
+                
+                </body>
             </div>
            </div>
         </div>
-   </div>
-</nav>
+   

@@ -4,7 +4,6 @@ import { formatDate} from '@angular/common';
 import { Router } from '@angular/router';
 import { ReportService } from '../report.service';
 import { UserService } from 'src/app/login-subsystem/service/user.service';
-import { NavbarService } from 'src/app/navbar/navbar.service';
 
 
 //import * as jsPDF from 'jspdf';
@@ -23,7 +22,7 @@ export class SalesReportComponent implements OnInit {
 
   dateVal = new Date();
 
-  constructor(public nav: NavbarService, private reportService: ReportService, private router: Router, private userService: UserService) { }
+  constructor( private reportService: ReportService, private router: Router, private userService: UserService) { }
 
   selectedOption: any;
   showErrorMessage: boolean = false;

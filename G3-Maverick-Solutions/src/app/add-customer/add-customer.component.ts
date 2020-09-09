@@ -16,7 +16,7 @@ export class AddCustomerComponent implements OnInit {
    customer : Customer = new Customer();
    responseMessage: string = "Request Not Submitted";
   
-   dateVal: Date;
+   dateVal= new Date();
   
 
   ngOnInit(): void {

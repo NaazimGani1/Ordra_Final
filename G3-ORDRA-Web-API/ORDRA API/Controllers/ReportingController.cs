@@ -595,9 +595,11 @@ namespace ORDRA_API.Controllers
                                 {
                                     List<Price> prices = db.Prices.Include(z => z.Product).ToList();
                                     var prodID = prod.ProductID.ToString();
+                                    var product = db.Products.Where(z => Convert.ToString(z.ProductID) == prodID);
+                                    
                                     var price = prices.Where(z => Convert.ToString(z.ProductID) == prodID).FirstOrDefault();
                                     dynamic productObject = new ExpandoObject();
-                                    productObject.Name = prod.Product.ProdName;
+                                    //productObject.Name = p
                                     productObject.Price = price.UPriceR;
                                     productObject.Quantity = prod.DPQuantity;
                                     productObject.ProdTot = Convert.ToDecimal(price.UPriceR) * Convert.ToDecimal(prod.DPQuantity);
