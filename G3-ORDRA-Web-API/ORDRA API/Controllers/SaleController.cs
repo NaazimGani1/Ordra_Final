@@ -281,7 +281,7 @@ namespace ORDRA_API.Controllers
 
                             //set Sale date to return object
                             saleDate = Convert.ToDateTime(searchedSale.SaleDate);
-                            toReturn.saleDate = saleDate;
+                            toReturn.saleDate = saleDate.ToString("yyy-MM-dd");
                             
                         }
                         else
