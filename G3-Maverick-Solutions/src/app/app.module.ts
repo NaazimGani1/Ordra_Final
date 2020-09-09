@@ -55,6 +55,17 @@ import { SearchContainerComponent } from './search-container/search-container.co
 import { DonationRecipientComponent } from './donation-management/donation-recipient/donation-recipient.component';
 import { AddDonationRecipientComponent } from './donation-management/donation-recipient/add-donation-recipient/add-donation-recipient.component';
 import { SearchDonationRecipientComponent } from './donation-management/donation-recipient/search-donation-recipient/search-donation-recipient.component';
+import { ProductComponent } from './product-management/product/product.component';
+import { ProductCategoryComponent } from './product-management/product-category/product-category.component';
+import { VatComponent } from './product-management/vat/vat.component';
+import { AddVatComponent } from './product-management/vat/add-vat/add-vat.component';
+import { UpdateVatComponent } from './product-management/vat/update-vat/update-vat.component';
+import { AddProductCategoryComponent } from './product-management/product-category/add-product-category/add-product-category.component';
+import { SearchProductCategoryComponent } from './product-management/product-category/search-product-category/search-product-category.component';
+import { AddProductComponent } from './product-management/product/add-product/add-product.component';
+import { SearchProductComponent } from './product-management/product/search-product/search-product.component';
+import { SearchedProductDetailsComponent } from './product-management/product/searched-product-details/searched-product-details.component';
+import { StockTakeComponent } from './product-management/product/stock-take/stock-take.component';
 
 @NgModule({
   declarations: [
@@ -98,6 +109,18 @@ import { SearchDonationRecipientComponent } from './donation-management/donation
     DonationRecipientComponent,
     AddDonationRecipientComponent,
     SearchDonationRecipientComponent,
+    ProductComponent,
+    ProductCategoryComponent,
+    VatComponent,
+    AddVatComponent,
+    UpdateVatComponent,
+    AddProductCategoryComponent,
+    SearchProductCategoryComponent,
+    AddProductComponent,
+    SearchProductComponent,
+    SearchedProductDetailsComponent,
+    StockTakeComponent,
+    
     
   ],
   imports: [
