@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { ProductService } from '../../product.service';
 import { Vat } from '../../vat';
 import { NgModule } from '@angular/core';
-import { NavbarService } from 'src/app/navbar/navbar.service';
 import { UserService } from 'src/app/login-subsystem/service/user.service';
 @Component({
   selector: 'app-update-vat',
@@ -12,11 +11,12 @@ import { UserService } from 'src/app/login-subsystem/service/user.service';
 })
 export class UpdateVatComponent implements OnInit {
   dateVal = new Date();
-  constructor(private productService: ProductService, private router: Router, public nav: NavbarService,  private service: UserService) { }
+  constructor(private productService: ProductService, private router: Router,   private service: UserService) { }
   responseMessage: string = "Request Not Submitted";
 
   vat : Vat = new Vat();
-
+  responseErrorMessage: string = "Error: Unable to display vat details";
+  
   ngOnInit() {
     this.loadVat();
   }
@@ -34,6 +34,8 @@ export class UpdateVatComponent implements OnInit {
       this.vat.VATPerc = res.VATPerc;
       this.vat.VATStartDate = res.VATStartDate;
       this.vat.VATEndDate = res.VATEndDate;
+      alert(this.responseErrorMessage),
+        this.router.navigate(["product-management"])
       })
   }
   Save(){

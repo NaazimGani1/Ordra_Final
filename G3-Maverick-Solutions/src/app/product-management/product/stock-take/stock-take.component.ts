@@ -5,7 +5,6 @@ import { ProductCategory } from '../../product-category';
 import { MarkedOffReason } from '../../marked-off-reason'
 import { MarkedOff } from '../../marked-off';
 import { Product } from '../../product';
-import { NavbarService } from 'src/app/navbar/navbar.service';
 import { UserService } from 'src/app/login-subsystem/service/user.service';
 @Component({
   selector: 'app-stock-take',
@@ -37,7 +36,7 @@ export class StockTakeComponent implements OnInit {
   markedOffProducts: MarkedOff = new MarkedOff();
   responseMessage: string = "Request Not Submitted";
 
-  constructor(private productService: ProductService, private router: Router,public nav: NavbarService,  private service: UserService) { }
+  constructor(private productService: ProductService, private router: Router,  private service: UserService) { }
   ngOnInit() {
     this.productService.getAllProductCategory()
       .subscribe(value => {
