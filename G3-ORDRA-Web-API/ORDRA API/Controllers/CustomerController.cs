@@ -12,13 +12,11 @@ using ORDRA_API.Models;
 namespace ORDRA_API.Controllers
 {
 
-
     [EnableCors(origins: "*", headers: "*", methods: "*")]
 
     [RoutePrefix("API/Customer")]
     public class CustomerController : ApiController
     {
-
         //DATABASE INITIALIZING
         OrdraDBEntities db = new OrdraDBEntities();
 
@@ -138,7 +136,9 @@ namespace ORDRA_API.Controllers
                 }
                 else
                 {
-                    toReturn.Message = "Duplicate Record Found";
+                    db.Customers.Add(newcustomer);
+                    db.SaveChanges();
+                    toReturn.Message = "Add Successful";
                 }
             }
             catch (Exception)
@@ -233,4 +233,11 @@ namespace ORDRA_API.Controllers
 
 
     }
+
+
+
+
+
+
+
 }

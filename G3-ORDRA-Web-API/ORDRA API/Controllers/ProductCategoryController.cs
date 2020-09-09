@@ -6,124 +6,204 @@ using System.Net.Http;
 using System.Web.Http;
 using ORDRA_API.Models;
 using System.Data.Entity;
+using System.Web.Http.Cors;
+using System.Dynamic;
 
 namespace ORDRA_API.Controllers
 {
+
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
+
     [RoutePrefix("Api/ProductCategory")]
     public class ProductCategoryController : ApiController
     {
-        //database
+        //database initializing
         OrdraDBEntities db = new OrdraDBEntities();
 
         //get all product category details
         [HttpGet]
-        [Route("AllProductCategoryDetails")]
-        public IQueryable<Product_Category> GetProductCategory()
+        [Route("GetAllProductCategories")]
+        public object GetAllProductCategories()
         {
+            db.Configuration.ProxyCreationEnabled = false;
+            dynamic toReturn = new ExpandoObject();
+
             try
             {
-                db.Configuration.ProxyCreationEnabled = false;
-                return db.Product_Category;
-            }        
-            catch(Exception)
-            {
-                throw;
+                toReturn = db.Product_Category.ToList();
             }
+            catch (Exception error)
+            {
+                toReturn = "Something Went Wrong" + error;
+            }
+
+            return toReturn;
+
         }
+
 
         //get product category by ID
         [HttpGet]
-        [Route("GetProductCategoryDetailsById/{productCategoryId}")]
-        public IHttpActionResult GetProductCategoryById(string productCategoryId)
+        [Route("GetProductCategory/{id}")]
+
+        public object GetProductCategory(int id)
         {
             db.Configuration.ProxyCreationEnabled = false;
+
             Product_Category objectProductCategory = new Product_Category();
-            int ID = Convert.ToInt32(productCategoryId);
+            dynamic toReturn = new ExpandoObject();
 
             try
             {
-                objectProductCategory = db.Product_Category.Find(ID);
+                objectProductCategory = db.Product_Category.Find(id);
+
                 if (objectProductCategory == null)
                 {
-                    return NotFound();
+                    toReturn.Message = "Record Not Found";
                 }
+                else
+                {
+
+                    toReturn = objectProductCategory;
+                }
+
             }
-            catch (Exception)
+            catch (Exception error)
             {
-                throw;
+                toReturn = "Something Went Wrong: " + error.Message;
             }
-            return Ok(objectProductCategory);
+
+            return toReturn;
         }
 
         //insert a new product category
         [HttpPost]
-        [Route("InsertProductCategoryDetails")]
-        public IHttpActionResult PostProductCategory(Product_Category data)
+        [Route("AddProductCategory")]
+        public object AddProductCategory(Product_Category newProductCategory)
         {
+
             db.Configuration.ProxyCreationEnabled = false;
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            dynamic toReturn = new ExpandoObject();
 
             try
             {
-                db.Product_Category.Add(data);
+                db.Product_Category.Add(newProductCategory);
                 db.SaveChanges();
+                toReturn.Message = "Add Succsessful";
             }
             catch (Exception)
             {
-                throw;
+                toReturn.Message = "Add UnSuccsessful";
+
+
             }
-            return Ok(data);
+
+            return toReturn;
+        }
+
+        //searching product category by the product category name
+        [HttpGet]
+        [Route("SearchProductCategory")]
+        public object SearchProductCategory(string name)
+        {
+
+            db.Configuration.ProxyCreationEnabled = false;
+            dynamic toReturn = new ExpandoObject();
+
+            try
+            {
+                var productCategory = db.Product_Category.Where((z => (z.PCatName == name))).FirstOrDefault();
+
+                if (productCategory != null)
+                {
+
+                    toReturn = productCategory;
+                }
+                else
+                {
+
+                    toReturn.Message = "Record Not Found";
+
+                }
+            }
+
+            catch (Exception error)
+            {
+                toReturn = "Something Went Wrong " + error.Message;
+            }
+
+            return toReturn;
         }
 
         //update a product category
         [HttpPut]
-        [Route("UpdateProductCategoryDetails")]
-        public IHttpActionResult PutProductCategory(Product_Category product_Category)
+        [Route("UpdateProductCategory")]
+        public object UpdateProductCategory(Product_Category productCategoryUpdate)
         {
             db.Configuration.ProxyCreationEnabled = false;
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+
+            Product_Category objectProductCategory = new Product_Category();
+            dynamic toReturn = new ExpandoObject();
+            var id = productCategoryUpdate.ProductCategoryID;
 
             try
             {
-                Product_Category objectProductCategory = new Product_Category();
-                objectProductCategory = db.Product_Category.Find(product_Category.ProductCategoryID);
+                objectProductCategory = db.Product_Category.Where(x => x.ProductCategoryID == id).FirstOrDefault();
                 if (objectProductCategory != null)
                 {
-                    objectProductCategory.PCatName = product_Category.PCatName;
-                    objectProductCategory.PCatDescription = product_Category.PCatDescription;
+                    objectProductCategory.PCatName = productCategoryUpdate.PCatName;
+                    objectProductCategory.PCatDescription = productCategoryUpdate.PCatDescription;
 
+                    db.SaveChanges();
+
+                    toReturn.Message = "Update Successfull";
                 }
-
-                int i = this.db.SaveChanges();
+                else
+                {
+                    toReturn.Message = "Record Not Found";
+                }
             }
+
             catch (Exception)
             {
-                throw;
+                toReturn.Message = "Update UnSuccessfull";
+
             }
-            return Ok(product_Category);
+            return toReturn;
         }
 
         //delete a product category
         [HttpDelete]
         [Route("DeleteProductCategoryDetails")]
-        public IHttpActionResult DeleteProductCategoryDetails(int id)
+        public object DeleteProductCategoryDetails(int id)
         {
             db.Configuration.ProxyCreationEnabled = false;
-            Product_Category productCategory = db.Product_Category.Find(id);
-            if (productCategory == null)
+
+            Product_Category objectProductCategory = new Product_Category();
+            dynamic toReturn = new ExpandoObject();
+
+            try
             {
-                return NotFound();
+                objectProductCategory = db.Product_Category.Find(id);
+
+                if (objectProductCategory == null)
+                {
+                    toReturn.Message = "Record Not Found";
+                }
+                else
+                {
+                    db.Product_Category.Remove(objectProductCategory);
+                    db.SaveChanges();
+                    toReturn.Message = "Delete Successful";
+                }
+
+            }
+            catch (Exception error)
+            {
+                toReturn = "Something Went Wrong " + error.Message;
             }
 
-            db.Product_Category.Remove(productCategory);
-            db.SaveChanges();
-            return Ok(productCategory);
+            return toReturn;
         }
     }
 }

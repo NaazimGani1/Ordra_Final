@@ -20,7 +20,7 @@ namespace ORDRA_API.Controllers
         OrdraDBEntities db = new OrdraDBEntities();
 
         //Make Sale
-        [HttpPost]
+        [HttpGet]
         [Route("initiateMakeSale")]
         public object initiateMakeSale()
         {

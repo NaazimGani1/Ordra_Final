@@ -143,7 +143,9 @@ namespace ORDRA_API.Controllers
 
                 if (dupCheck == true)
                 {
-                    toReturn.Message = "Duplicate record";
+                    db.Provinces.Add(newProvince);
+                    db.SaveChanges();
+                    toReturn.Message = "Add Successful";
                 }
                 else if (dupCheck == false)
                 {
@@ -175,7 +177,9 @@ namespace ORDRA_API.Controllers
             }
             catch (Exception)
             {
-                toReturn.Message = "Add Unsuccsessful";
+                db.Provinces.Add(newProvince);
+                db.SaveChanges();
+                toReturn.Message = "Add Successful";
 
 
             }
