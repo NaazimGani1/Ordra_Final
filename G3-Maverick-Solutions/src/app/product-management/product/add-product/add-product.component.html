@@ -50,24 +50,26 @@
                                 <label class="subheadinglabel">Enter Product Details:</label>
                                 <br>
                                 <label for="Category">Product Category:</label>
-                                  <select  required name="catSelection" [(ngModel)]="catSelection" (ngModelChange)="loadProducts($event)">
+                                
+                                  <select  class="select" required name="catSelection" [(ngModel)]="catSelection" (ngModelChange)="loadProducts($event)">
                                     <option value="0">--Select--</option>  
                                     <option  *ngFor="let category of categoryList"  [ngValue]="category">{{category.PCatName}}</option>
                                   </select>
+                          
                                 <br>
-                                <label for="ProdName">Name:</label><input type="text" class="form-control" [(ngModel)]="product.ProdName" id="ProdName" name="ProdName" required>
+                                <label for="ProdName">Name:</label><input type="text" [(ngModel)]="product.ProdName" id="ProdName" name="ProdName" required>
                                 <br>
-                                <label for="ProdDesciption">Description:</label><input type="text" class="form-control" [(ngModel)]="product.ProdDesciption" id="ProdDesciption" name="ProdDesciption" required>
+                                <label for="ProdDesciption">Description:</label><input type="text"  [(ngModel)]="product.ProdDesciption" id="ProdDesciption" name="ProdDesciption" required>
                                 <br>
-                                <label for="ProdReLevel">Reorder level:</label><input type="number" class="form-control" [(ngModel)]="product.ProdReLevel" id="ProdReLevel" name="ProdReLevel" required>
+                                <label for="ProdReLevel">Reorder level:</label><input type="number"  [(ngModel)]="product.ProdReLevel" id="ProdReLevel" name="ProdReLevel" required>
                                 <br>
-                                <label for="CPriceR">Cost Price(R):</label><input type="number" class="form-control" [(ngModel)]="price.CPriceR" id="CPriceR" name="CPriceR" required>
+                                <label for="CPriceR">Cost Price(R):</label><input type="number"  [(ngModel)]="price.CPriceR" id="CPriceR" name="CPriceR" required>
                                 <br>
-                                <label for="UPriceR">Unit Price(R):</label><input type="number" class="form-control" [(ngModel)]="price.UPriceR" id="UPriceR" name="UPriceR" required>
+                                <label for="UPriceR">Unit Price(R):</label><input type="number"  [(ngModel)]="price.UPriceR" id="UPriceR" name="UPriceR" required>
                                 <br>
-                                <label for="PriceStartDate">Price Start Date:</label> <input type="date" class="form-control" [(ngModel)]="price.PriceStartDate" id="PriceStartDate" name="PriceStartDate" required>
+                                <label for="PriceStartDate">Price Start Date:</label> <input type="date"  [(ngModel)]="price.PriceStartDate" id="PriceStartDate" name="PriceStartDate" required>
                                 <br>
-                                <label for="PriceEndDate">Price End Date:</label> <input type="date" class="form-control" [(ngModel)]="price.PriceEndDate" id="PriceEndDate" name="PriceEndDate" required>
+                                <label for="PriceEndDate">Price End Date:</label> <input type="date"  [(ngModel)]="price.PriceEndDate" id="PriceEndDate" name="PriceEndDate" required>
                                 <br>
                                 <button type="submit" (click)="Save()">Save</button>
                                 <button type="submit" (click)="Cancel()">Cancel</button>

@@ -32,13 +32,13 @@ export class MakeSaleComponent implements OnInit {
   responseMessage: string = "Request Not Submitted";
   dateVal: Date;
 
-  showProd = false;
+  showProd = true;
   prodNotSelected: boolean = false;
   paymentNotSelected= false;
-  quantyNull: boolean = false;
-  showTable: boolean = false;
+  quantyNull: boolean = true;
+  showTable: boolean = true;
   showChange: boolean = false;
-  ShowOustanding: boolean = false;
+  ShowOustanding: boolean = true;
  
   displayTotal  ="0";
   displaySubtotal ="0";

@@ -59,7 +59,10 @@ export class EmployeeManagementComponent implements OnInit {
     this.btnLabel = 'Create Employee';
   }
 
-  
+  onHome() {
+    this.router.navigate(['/home']);
+  }
+
 
 
   submitEmployee(form: NgForm) {
