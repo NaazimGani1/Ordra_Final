@@ -14,6 +14,7 @@ import { Supplier } from './supplier';
   styleUrls: ['./place-supplier-order.component.scss']
 })
 export class PlaceSupplierOrderComponent implements OnInit {
+  dateVal = new Date();
   private _allProducts: Observable<Product[]>;  
   public get allProducts(): Observable<Product[]> {  
     return this._allProducts;  
@@ -57,6 +58,15 @@ export class PlaceSupplierOrderComponent implements OnInit {
     this.loadDisplay();  
 
   }  
+
+  onLogout() {
+    localStorage.removeItem('token');
+    this.router.navigate(['/user/login']);
+  }
+
+  onHome() {
+    this.router.navigate(['/home']);
+  }
 
   getSuppliers(){
     this.api.getSuppliers(this.name).subscribe( (res:any)=> {

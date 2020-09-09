@@ -67,6 +67,8 @@ import { AddProductComponent } from './product-management/product/add-product/ad
 import { SearchProductComponent } from './product-management/product/search-product/search-product.component';
 import { SearchedProductDetailsComponent } from './product-management/product/searched-product-details/searched-product-details.component';
 import { StockTakeComponent } from './product-management/product/stock-take/stock-take.component';
+import { SearchSupplierOrderComponent } from './supplier-order-management/search-supplier-order/search-supplier-order.component';
+import { AddPaymentComponent } from './creditor-management/add-payment/add-payment.component';
 
 @NgModule({
   declarations: [
@@ -122,6 +124,8 @@ import { StockTakeComponent } from './product-management/product/stock-take/stoc
     SearchProductComponent,
     SearchedProductDetailsComponent,
     StockTakeComponent,
+    SearchSupplierOrderComponent,
+    AddPaymentComponent,
     
     
   ],
