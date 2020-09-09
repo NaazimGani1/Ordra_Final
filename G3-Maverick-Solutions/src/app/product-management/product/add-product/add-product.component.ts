@@ -45,7 +45,7 @@ export class AddProductComponent implements OnInit {
   }
 
   Save(){
-    this.product.Prices.push(this.price);
+    //this.product.Prices.push(this.price);
     this.productService.addProduct(this.product).subscribe( (res: any)=> {
       console.log(res);
       if(res.Message){
