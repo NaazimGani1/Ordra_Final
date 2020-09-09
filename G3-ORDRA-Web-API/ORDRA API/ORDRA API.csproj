@@ -505,6 +505,7 @@
     </Compile>
     <Compile Include="Models\searchArea.cs" />
     <Compile Include="Models\searchEmployee.cs" />
+    <Compile Include="Models\searchLocation.cs" />
     <Compile Include="Models\Shift.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
