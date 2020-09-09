@@ -3,15 +3,15 @@ import { Router } from '@angular/router';
 import {DonationRecipient} from '../../donation-recipient';
 import { NgModule } from '@angular/core';
 import {DonationService} from '../../donation.service';
-
+import { UserService } from 'src/app/login-subsystem/service/user.service';
 @Component({
   selector: 'app-search-donation-recipient',
   templateUrl: './search-donation-recipient.component.html',
   styleUrls: ['./search-donation-recipient.component.scss']
 })
 export class SearchDonationRecipientComponent implements OnInit {
-
-  constructor(private donationSerive: DonationService, private router: Router) { }
+  dateVal = new Date();
+  constructor(private donationSerive: DonationService, private router: Router,  private service: UserService) { }
 
   donationRecipient : DonationRecipient = new DonationRecipient();
   responseMessage: string = "Request Not Submitted";
@@ -27,7 +27,14 @@ export class SearchDonationRecipientComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  onLogout() {
+    localStorage.removeItem('token');
+    this.router.navigate(['/user/login']);
+  }
 
+  onHome() {
+    this.router.navigate(['/home']);
+  }
   Search(){
     this.donationSerive.searchDonationRecipient(this.name,this.surname).subscribe( (res:any)=> {
       console.log(res);

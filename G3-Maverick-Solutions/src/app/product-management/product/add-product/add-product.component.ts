@@ -4,15 +4,15 @@ import { ProductService } from '../../product.service';
 import { ProductCategory } from '../../product-category';
 import { Price } from '../../price';
 import { Product } from '../../product';
-
+import { UserService } from 'src/app/login-subsystem/service/user.service';
 @Component({
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',
   styleUrls: ['./add-product.component.scss']
 })
 export class AddProductComponent implements OnInit {
-  
-  constructor(private productService: ProductService, private router: Router) { }
+  dateVal = new Date();
+  constructor(private productService: ProductService, private router: Router,   private service: UserService) { }
 
   catSelection: number;
   selectedCatID: number;
@@ -28,6 +28,14 @@ export class AddProductComponent implements OnInit {
           this.categoryList = value;
         }
       });
+  }
+  onLogout() {
+    localStorage.removeItem('token');
+    this.router.navigate(['/user/login']);
+  }
+
+  onHome() {
+    this.router.navigate(['/home']);
   }
 
   loadProducts(val: ProductCategory){

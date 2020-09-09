@@ -5,14 +5,15 @@ import { ProductCategory } from '../../product-category';
 import { MarkedOffReason } from '../../marked-off-reason'
 import { MarkedOff } from '../../marked-off';
 import { Product } from '../../product';
-
+import { NavbarService } from 'src/app/navbar/navbar.service';
+import { UserService } from 'src/app/login-subsystem/service/user.service';
 @Component({
   selector: 'app-stock-take',
   templateUrl: './stock-take.component.html',
   styleUrls: ['./stock-take.component.scss']
 })
 export class StockTakeComponent implements OnInit {
-
+  dateVal = new Date();
   showStockTake = false;
   showMarkedOff = false;
 
@@ -36,7 +37,7 @@ export class StockTakeComponent implements OnInit {
   markedOffProducts: MarkedOff = new MarkedOff();
   responseMessage: string = "Request Not Submitted";
 
-  constructor(private productService: ProductService, private router: Router) { }
+  constructor(private productService: ProductService, private router: Router,public nav: NavbarService,  private service: UserService) { }
   ngOnInit() {
     this.productService.getAllProductCategory()
       .subscribe(value => {
@@ -59,7 +60,14 @@ export class StockTakeComponent implements OnInit {
         }
       })
   }
+  onLogout() {
+    localStorage.removeItem('token');
+    this.router.navigate(['/user/login']);
+  }
 
+  onHome() {
+    this.router.navigate(['/home']);
+  }
   //Stock Take
   StockTake(){
     this.showStockTake=true;

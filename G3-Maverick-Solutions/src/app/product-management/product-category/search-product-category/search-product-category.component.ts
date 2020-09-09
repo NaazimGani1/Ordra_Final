@@ -3,15 +3,16 @@ import { Router } from '@angular/router';
 import { ProductCategoryService } from '../../product-category.service';
 import { ProductCategory } from '../../product-category';
 import { NgModule } from '@angular/core';
-
+import { NavbarService } from 'src/app/navbar/navbar.service';
+import { UserService } from 'src/app/login-subsystem/service/user.service';
 @Component({
   selector: 'app-search-product-category',
   templateUrl: './search-product-category.component.html',
   styleUrls: ['./search-product-category.component.scss']
 })
 export class SearchProductCategoryComponent implements OnInit {
-
-  constructor(private productCategoryService: ProductCategoryService, private router: Router) { }
+  dateVal = new Date();
+  constructor(private productCategoryService: ProductCategoryService, private router: Router, public nav: NavbarService,  private service: UserService) { }
 
   productCategory : ProductCategory = new ProductCategory();
   responseMessage: string = "Request Not Submitted";
@@ -25,6 +26,14 @@ export class SearchProductCategoryComponent implements OnInit {
 
 
   ngOnInit(): void {
+  }
+  onLogout() {
+    localStorage.removeItem('token');
+    this.router.navigate(['/user/login']);
+  }
+
+  onHome() {
+    this.router.navigate(['/home']);
   }
   Search(){
     this.productCategoryService.searchProductCategory(this.name).subscribe( (res:any)=> {

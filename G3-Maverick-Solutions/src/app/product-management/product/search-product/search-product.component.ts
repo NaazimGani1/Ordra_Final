@@ -4,15 +4,15 @@ import { ProductService } from '../../product.service';
 import { ProductCategory } from '../../product-category';
 import { Price } from '../../price';
 import { Product } from '../../product';
-
+import { UserService } from 'src/app/login-subsystem/service/user.service';
 @Component({
   selector: 'app-search-product',
   templateUrl: './search-product.component.html',
   styleUrls: ['./search-product.component.scss']
 })
 export class SearchProductComponent implements OnInit {
-  
-  constructor(private productService: ProductService, private router: Router) { }
+  dateVal = new Date();
+  constructor(private productService: ProductService, private router: Router,  private service: UserService) { }
 
   catSelection: number;
   
@@ -34,7 +34,14 @@ export class SearchProductComponent implements OnInit {
       }
     });
   }
+  onLogout() {
+    localStorage.removeItem('token');
+    this.router.navigate(['/user/login']);
+  }
 
+  onHome() {
+    this.router.navigate(['/home']);
+  }
   Search(){
     this.name = this.catName;
     this.productService.searchProductByCategory(this.name).subscribe((res:any)=>{
