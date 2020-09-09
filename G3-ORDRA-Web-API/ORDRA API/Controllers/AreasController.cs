@@ -75,20 +75,38 @@ namespace ORDRA_API.Controllers
         [ResponseType(typeof(Area))]
         public async Task<object> PostArea(Area area)
         {
-            var message = "Nothing";
-
+            var message = "nothing";
             if (!ModelState.IsValid)
             {
                 message = "Error";
+                return message;
+            }
+            //find app employee 
+            Area areaf = await db.Areas.Where(x => x.ArName == area.ArName && x.AreaStatusID == area.AreaStatusID).FirstOrDefaultAsync();
+
+            //check for id
+            if (areaf != null)
+            {
+                //fill in missing app employee
+                db.Entry(area).State = EntityState.Modified;
+                await db.SaveChangesAsync();
+                message = "Updated Records";
             }
             else
             {
-                db.Areas.Add(area);
+                //createAppEmployee
+                Area newArea = new Area();
+                newArea.ArName = area.ArName;
+                newArea.ArPostalCode = area.ArPostalCode;
+                newArea.AreaStatusID = area.AreaStatusID;
+                newArea.Province = area.Province;
                 await db.SaveChangesAsync();
-                message = "Success";
+                message = "Created Records";
+
             }
-            return message;
+           return message;
         }
+
 
         // DELETE: api/Areas/5
         [ResponseType(typeof(Area))]

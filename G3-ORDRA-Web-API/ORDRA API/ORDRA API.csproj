@@ -505,6 +505,7 @@
     <Compile Include="Models\Province.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ResetModel.cs" />
     <Compile Include="Models\Return_Product.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
