@@ -50,6 +50,11 @@ import { HomeComponent } from './home/home.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { CreditorPaymentComponent } from './creditor-management/creditor-payment/creditor-payment.component';
 import { SearchPaymentComponent } from './creditor-management/creditor-payment/search-payment/search-payment.component';
+import { CreateContainerComponent } from './create-container/create-container.component';
+import { SearchContainerComponent } from './search-container/search-container.component';
+import { DonationRecipientComponent } from './donation-management/donation-recipient/donation-recipient.component';
+import { AddDonationRecipientComponent } from './donation-management/donation-recipient/add-donation-recipient/add-donation-recipient.component';
+import { SearchDonationRecipientComponent } from './donation-management/donation-recipient/search-donation-recipient/search-donation-recipient.component';
 
 @NgModule({
   declarations: [
@@ -88,6 +93,12 @@ import { SearchPaymentComponent } from './creditor-management/creditor-payment/s
     ForbiddenComponent,
     CreditorPaymentComponent,
     SearchPaymentComponent,
+    CreateContainerComponent,
+    SearchContainerComponent,
+    DonationRecipientComponent,
+    AddDonationRecipientComponent,
+    SearchDonationRecipientComponent,
+    
   ],
   imports: [
     BrowserModule,
