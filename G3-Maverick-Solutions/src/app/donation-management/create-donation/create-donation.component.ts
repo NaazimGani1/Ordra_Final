@@ -60,7 +60,7 @@ export class CreateDonationComponent implements OnInit {
 
   searchDonationRecipient()
   {
-    this.donationService.searchDonationRecipient(this.cell).subscribe( (res:any) =>
+    this.donationService.searchDonationRecipientD(this.cell).subscribe( (res:any) =>
     {
       console.log(res);
       if(res.Message != null)
