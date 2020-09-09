@@ -1,0 +1,155 @@
+<nav *ngIf="nav.visible"> 
+    <div class="wrapper">      
+        <div class="wrapper">
+            <div class="sidebar">
+            <h2><img width="170"  src="https://www.ordra.co.za/image/catalog/info/ORDRAA1%20(2).png" (click)="onHome()"></h2>
+        
+           <ul style="width: 200px; height: 600px; overflow-y: scroll;">
+                
+                <li><i class="tiny material-icons">people_outline</i><a [routerLink]="'/employee-management'">Employee Management </a></li>
+                <li><i class="tiny material-icons">store</i><a [routerLink]="'/container-management'">Container Management</a></li>
+                <li><i class="tiny material-icons">person_pin</i><a [routerLink]="'/manager-management'">Manager Profile Management</a></li>
+                <li><i class="tiny material-icons">add_location</i><a [routerLink]="'/gps-management'">GPS Management</a></li>
+                <li><i class="tiny material-icons">shopping_basket</i><a [routerLink]="'/sales-management'">Sales </a></li>
+                <li><i class="tiny material-icons">contacts</i><a [routerLink]="'/customer-management'">Customer Management </a></li>
+                <li><i class="tiny material-icons">shopping_cart</i><a [routerLink]="'/customer-order-management'">Customer Order Management </a></li>
+                <li><i class="tiny material-icons">settings_ethernet</i><a [routerLink]="'/supplier-management'">Supplier Management </a></li>
+                <li><i class="tiny material-icons">local_shipping</i><a [routerLink]="'/supplier-order-management'">Supplier Order Management </a></li>
+                <li><i class="tiny material-icons">layers</i><a [routerLink]="'/product-management'">Product Management </a></li>
+                <li><i class="tiny material-icons">card_giftcard</i><a [routerLink]="'/donation-management'">Donation Management </a></li>
+                <li><i class="tiny material-icons">attach_money</i><a [routerLink]="'/creditor-management'">Creditor Management </a></li>
+                <li><i class="tiny material-icons">timeline</i><a [routerLink]="'/reporting-management'">Reporting </a></li>
+            
+           </ul> 
+           </div>
+        
+           <div class="main_content">
+             <div class="header-section">
+                <div class="header-section-1">
+                    Operating from Container: 
+                    <br>Betha Mamelodi
+                </div>
+            
+                <div class="header-section-2">
+                    Date:  {{dateVal | date: 'dd/MM/yyyy'}}
+                </div>
+            
+                <div class="header-section-3">
+                    <button style='font-size:15px' (click)="onLogout()"> Log out
+                    <i class="tiny material-icons" >power_settings_new</i>
+              </button>
+        </div>
+        
+             </div> 
+            <div class="info">   
+                <body>
+                    <form>
+                        <h1>Stock Take</h1>
+                        <div class="card">
+                            <button type="submit" (click)="StockTake()" >Stock Take</button>
+                            <button type="submit" (click)="MarkedOff()" > Makred-Off Products</button>
+                        
+                        </div>
+                
+                    <br>
+                        <div class="card" *ngIf="showStockTake">
+                            <div class="divleft">
+                                <label class="subheadinglabel">Enter Stock Take Details:</label>
+                                <br>
+                                <label>Employee Name:</label><input class="searchinput" type="text" required><label>Date:</label><input class="searchinput" type="text" value="06/25/2020" required  >
+                                <br>
+                                <label>Product Name:</label><input class="searchinput" type="text" value="Staedtler Pen" required ><label>Quantity:</label><input class="searchinput" type="text" required>
+                                <br>
+                                <label for="ProductCategoryID">Product Category:</label><select  required>
+                                    <option value="0">--Select--</option>  
+                                    <option [value]="type" *ngFor="let category of categories">{{category.PCatName}}</option>
+                                  </select>
+                                  <button type="submit" (click)="Add()" >Add</button>
+                                <br>
+                                <table>
+                                    <label class="subheadinglabel">List of Stock:</label>
+                                    <tr>
+                                        <th>Employee Name</th>
+                                        <th>Date</th>
+                                        <th>Product Name</th>
+                                        <th>Quantity</th>
+                                        <th>Product Category</th>
+                                        <th>Action</th>
+                                    </tr>
+                
+                
+                                    <tr>
+                                        <td>Jason</td>
+                                        <td>07/01/2020</td>
+                                        <td>Bic Pen</td>
+                                        <td>9</td>
+                                        <td>Stationery</td>
+                                        <td><button type="submit" (click)="Remove()">X</button></td>
+                                    </tr>
+                                  
+                                </table>  
+                                <button type="submit" (click)="Save()" >Save</button>
+                                <button type="submit" (click)="Cancel()" >Cancel</button>
+                            </div>
+                        
+                           
+                        </div>
+                
+                     <br>
+                        <div class="card" *ngIf="showMarkedOff">
+                            <div class="divleft">
+                                <label class="subheadinglabel">Enter Marked-Off Products Details:</label>
+                                <br>
+                                <label for="Product">Product Name:</label><select  required name="prodSelection" [(ngModle)]="prodSelection" (ngModelChange)="loadProd($event)">
+                                    <option value="0">--Select--</option>  
+                                    <option  *ngFor="let product of productList" [ngValue]="product">{{product.ProdName}}</option>
+                                  </select>
+                                <br>
+                                <label for="Reason">Reason:</label><select  required name="reSelection" [(ngModle)]="reSelection" (ngModelChange)="loadReason($event)">
+                                    <option value="0">--Select--</option>  
+                                    <option  *ngFor="let reason of reasonList" [ngValue]="reason">{{reason.MODescription}}</option>
+                                  </select>
+                                <br>
+                                <label for="quantity">Quantity:</label><input  width="5px" type="number" name="quantity" [(ngModel)]="quantity" id="quantity" required>
+                                <br>
+                                <label for="date">Date:</label><input class="searchinput" type="date" name="date" [(ngModel)]="date" id="date" required  >
+                                <button type="submit" (click)="AddMO()" >Add</button>
+                                <br>
+                                <table>
+                                    <label class="subheadinglabel">List of Marked-Off Products:</label>
+                                    <tr>
+                                        <th>Product Name</th>
+                                        <th>Reason</th>
+                                        <th>Quantity</th>
+                                        <th>Date</th>
+                                        <th>Action</th>
+                                    </tr>
+                
+                
+                                    <tr>
+                                        <td>Bic Pen</td>
+                                        <td>Product damaged</td>
+                                        <td>2</td>
+                                        <td>07/01/2020</td>
+                                        <td><button type="submit" (click)="RemoveMO()">X</button></td>
+                                    </tr>
+                                 
+                                </table>  
+                                <button type="submit" (click)="SaveMO()" >Save</button>
+                                <button type="submit" (click)="CancelMO()" >Cancel</button>
+                            </div>
+                        
+                           
+                        </div>
+                    </form>
+                </body>
+                
+                
+                
+                
+                
+            </div>
+           </div>
+        </div>
+   </div>
+</nav>

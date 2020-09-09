@@ -43,42 +43,47 @@
              </div> 
             <div class="info">   
                 <body>
-                    <h1>Product Management</h1>
+                    <h1>Search Product Category</h1>
                 
-                    <form>
-                        <div class="card">
-                            <div > 
-                                <label style="display: inline;">Produt Category</label>
-                                <br>
-                                <button type="submit" (click)="gotoAddProductCategory()">Add Product Category</button>
-                                <button type="submit" (click)="gotoSearchProductCategory()">Update Product Category</button>
-                                <button type="submit" (click)="gotoSearchProductCategory()">Search Product Category</button>
-                                <button type="submit" (click)="gotoSearchProductCategory()">Remove Product Category</button>
+                   <form>
+                        <div class="card" *ngIf= "showSearch"> 
+                            <p class="subheadinglabel">Enter Product Category Name To Search:</p>
+                
+                            <div class="divleft">
+                                <label for="name">Name:</label>
+                                <input class="searchinput" class="form-control" [(ngModel)]="name" type="text" id="name" name="name">
+                            </div>
+                        
+                            <div class="divleft">
+                                <button type="submit" (click)="Search()">Search</button>
+                                <button type="submit" (click)="Cancel()">Cancel</button>
                             </div>
                         </div>
-                        <br><br>
-                        <div class="card">
-                            <div > 
-                                <label>Product</label>
+                
+                    <br><br>
+                        <div class="card" *ngIf = "showResults">
+                            <div class="divleft">
+                                <label class="subheadinglabel">Searched Product Category Details:</label>
                                 <br>
-                                <button type="submit" (click)="gotoAddProduct()">Add Product</button>
-                                <button type="submit" (click)="gotoSearchProduct()">Update Product</button>
-                                <button type="submit" (click)="gotoSearchProduct()">Search Product</button>
-                                <button type="submit" (click)="gotoSearchProduct()">Remove Product</button>
-                                <button type="submit" (click)="gotoStockTake()">Stock Take</button>
+                                <label for="PCatName">Name:</label><input type="text" class="form-control" [(ngModel)]="productCategory.PCatName"  id="PCatName"  name ="PCatName" required [readonly] = "this.inputEnabled">
+                                <br>
+                                <label for="PCatDescription">Description:</label><input type="text" class="form-control" [(ngModel)]="productCategory.PCatDescription"  id="PCatDescription" name="PCatDescription" required [readonly] = "this.inputEnabled"> 
                             </div>
-                        </div>
-                        <br><br>
-                        <div class="card">
-                            <div > 
-                                <label>VAT</label>
-                                <br>
-                                <button type="submit" (click)="gotoAddVAT()">Add VAT</button>
-                                <button type="submit" (click)="gotoUpdateVAT()">Update VAT</button>
+                        
+                            <div class="divleft" *ngIf="showButtons">
+                               
+                                 <button type="submit" (click)="Update()"  >Update</button>
+                                <button type="submit" (click)="Delete()" > Delete</button>
+                            </div>
+                
+                            <div class="divleft" *ngIf="showSaves">
+                                 <button type="submit" (click)="Save()" >Save</button>
+                                 <button type="submit" (click)="cancel()" >Cancel</button>
                             </div>
                         </div>
                     </form>
                 </body>
+                
                  
             </div>
            </div>
