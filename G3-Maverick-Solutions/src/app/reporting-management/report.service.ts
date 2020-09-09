@@ -38,9 +38,9 @@ export class ReportService {
     return this.http.get(this.url + "getMarkedOffProductReportData").pipe(map(result => result))
   }
 
-  getProductReportData(selectedOption: number)
+  getProductReportData()
   {
-    return this.http.get(this.url + "getProductReportData?selectedOptionID=" + selectedOption).pipe(map(result => result))
+    return this.http.get(this.url + "getProductReportData").pipe(map(result => result))
   }
 
   getDonationReportData(selectedOption: number)

@@ -17,6 +17,8 @@ import { Container } from '../Models/container';
 })
 export class DonatedProductComponent implements OnInit {
 
+  dateVal = new Date();
+
   constructor(public nav: NavbarService, private donationService: DonationService, private formBuilder: FormBuilder, private router: Router, private userService: UserService) { };
 
   ngOnInit(): void {
