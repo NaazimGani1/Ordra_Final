@@ -59,6 +59,11 @@ import { MarkedOffProductReportComponent } from './reporting-management/marked-o
 import { SalesReportComponent } from './reporting-management/sales-report/sales-report.component';
 import { ProductReportComponent } from './reporting-management/product-report/product-report.component';
 import { DonationReportComponent } from './reporting-management/donation-report/donation-report.component';
+import { AddCreditorComponent } from './creditor-management/add-creditor/add-creditor.component';
+import { SearchCreditorComponent } from './creditor-management/search-creditor/search-creditor.component';
+import { CreateDonationComponent } from './donation-management/create-donation/create-donation.component';
+import { SearchDonationComponent } from './donation-management/search-donation/search-donation.component';
+import { DonatedProductComponent } from './donation-management/donated-product/donated-product.component';
 
 @NgModule({
   declarations: [
@@ -106,6 +111,11 @@ import { DonationReportComponent } from './reporting-management/donation-report/
     SalesReportComponent,
     ProductReportComponent,
     DonationReportComponent,
+    AddCreditorComponent,
+    SearchCreditorComponent,
+    CreateDonationComponent,
+    SearchDonationComponent,
+    DonatedProductComponent,
   ],
   imports: [
     BrowserModule,

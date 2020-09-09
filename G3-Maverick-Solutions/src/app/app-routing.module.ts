@@ -43,12 +43,28 @@ import { NgModule } from '@angular/core';
     import { ViewCustomerComponent } from './view-customer/view-customer.component';
     import { SearchPaymentComponent } from './creditor-management/creditor-payment/search-payment/search-payment.component';
 
-    //-----Reporting subsytem Imports----//
-    //-----Donation subsytem Imports----//
+    //---Reporting Subsystem Imports---//
+    import { CreditorReportComponent } from './reporting-management/creditor-report/creditor-report.component';
+    import { CustomerOrderReportComponent } from './reporting-management/customer-order-report/customer-order-report.component';
+    import { SupplierOrderReportComponent } from './reporting-management/supplier-order-report/supplier-order-report.component';
+    import { MarkedOffProductReportComponent } from './reporting-management/marked-off-product-report/marked-off-product-report.component';
+    import { ProductReportComponent } from './reporting-management/product-report/product-report.component';
+    import { DonationReportComponent } from './reporting-management/donation-report/donation-report.component';
+    import { SalesReportComponent } from './reporting-management/sales-report/sales-report.component';
+
+    //---Donation Subsystem Imports---//
+    import { CreateDonationComponent } from './donation-management/create-donation/create-donation.component';
+    import { DonatedProductComponent } from './donation-management/donated-product/donated-product.component';
+    import { SearchDonationComponent } from './donation-management/search-donation/search-donation.component';
+    //import { SearchedDonationDetailsComponent } from './donation-management/searched-donation-details/searched-donation-details.component';
+    
+     //-----Province subsytem Imports----//
+     import { AddProvinceComponent } from './gps-management/add-province/add-province.component';
+     import { SearchProvinceComponent } from './gps-management/search-province/search-province.component';
+     
     //-----Creditor subsytem Imports----//
-    //-----Province subsytem Imports----//
-    import { AddProvinceComponent } from './gps-management/add-province/add-province.component';
-    //import { SearchProvinceComponent } from '';
+    import { AddCreditorComponent } from './creditor-management/add-creditor/add-creditor.component';
+    import { SearchCreditorComponent } from './creditor-management/search-creditor/search-creditor.component';
     
 
 
@@ -153,11 +169,29 @@ import { NgModule } from '@angular/core';
             component: SearchPaymentComponent,
         },
 
-        //Province routes
-        {path: 'add-province', component: AddProvinceComponent},
-        //Donation routes
-        //Reporting routes
-        //Creditor routes
+        ///---Province Subsystem Routing---//
+        { path: 'add-province', component: AddProvinceComponent },
+        { path: 'search-province', component: SearchProvinceComponent },
+       
+        //---Creditor Subsystem Routing---//
+        { path: 'add-creditor', component: AddCreditorComponent },
+        { path: 'search-creditor', component: SearchCreditorComponent },
+    
+        //---reporting Subsystem Routing---//
+        { path: 'creditors-report', component: CreditorReportComponent},
+        { path: 'customer-report', component: CustomerOrderReportComponent },
+        { path: 'supplier-report', component: SupplierOrderReportComponent },
+        { path: 'markedoff-product-report', component: MarkedOffProductReportComponent},
+        { path: 'product-report', component: ProductReportComponent },
+        { path: 'donation-report', component: DonationReportComponent },
+        { path: 'sales-report', component: SalesReportComponent },
+       
+        //---Donation Subsystem Routing---//
+        { path: 'create-donation', component: CreateDonationComponent },
+        { path: 'search-donated-product', component: SearchCreditorComponent},
+        { path: 'search-donation', component: SearchDonationComponent },
+        //{ path: 'searched-donation-details', component: SearchedDonationDetailsComponent},
+       
 
     ];
 

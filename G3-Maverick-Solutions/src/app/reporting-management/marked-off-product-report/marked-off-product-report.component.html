@@ -42,7 +42,96 @@
         
              </div> 
             <div class="info">   
-                   
+                <body>
+                    <h1>Generate Marked Off Product Report</h1>
+                    <div id="FromDiv">
+                        <!--<form>
+                            <div class="form-group">
+                                <div class="card" id="customerOrder">
+                                  <div class="divleft">
+                                        <label class="subheadinglabel">Please select the report criteria </label>
+                                        <br><br>
+                                         <label for="OptionSelect">Product mark off reason</label>
+                                        <select class="form-control" id="OptionSelect" #optName name = "Option" [(ngModel)] = "selectedOption">
+                                            <option *ngFor = "let option of options" [value]= "option.id" data-name="option.data">{{option.data}}</option>
+                                        </select>
+                                    </div> 
+                                </div>
+                            </div> 
+                        </form>  -->
+                        
+                        <!-- <div class="alert alert-danger" role="alert" *ngIf="showErrorMessage">
+                            You did not select an option. Please select one.
+                        </div> -->
+                            
+                        <br>
+                        <button type="submit" (click)="GenerateChart()" >Generate Report</button> 
+                        <button type="button" (click)="DownloadPDF()" >Download Report</button>       
+                        <!-- <button type="button" (click)="PrintReport()" >Print Report</button> -->
+                        <button type="button" (click)="cancel()" >Cancel</button>
+                        <br>
+                
+                            
+                        <div class="card">
+                            <h1>Marked Off Product Report</h1>
+                            <h2><img width="190"  src="https://www.ordra.co.za/image/catalog/info/ORDRAA1%20(2).png"></h2>
+                                    
+                            <div id="ChartDiv">
+                                <canvas id="canvas"></canvas>
+                            </div>
+                
+                
+                
+                            <!-- <div id="TablesDiv">
+                                <div class="table">
+                                    <table class="table" id="jsPdfTable">
+                                        <div *ngFor="let item of TableData; let i = index">
+                                            <h1>Category details</h1>
+                                            <h2> {{item.Name}} </h2>
+                                            
+                                            <br>
+                                            <div>
+                                                <h2></h2>
+                                                <div *ngFor="let order of item.Marked" id="testing{{i}}">
+                                                    <table class= "container table-latitude" > 
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Mark off Date</th>
+                                                                <th>Product name</th>
+                                                                <th>Price(R)</th>
+                                                                <th>Quantity</th>
+                                                                <th>Reason</th>
+                                                                <th>Total(R)</th>
+                                                            </tr>
+                                                        </thead>
+                    
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>{{order.Date | date}}</td>
+                                                                <td>{{order.Product}}</td>
+                                                                <td>{{order.Price}}</td>
+                                                                <td>{{order.Quantity}}</td>
+                                                                <td>{{order.Reason}}</td>
+                                                                <td>{{order.ProdTot}}</td> 
+                                                            </tr>
+                                                        </tbody>                        
+                                                    </table>     
+                                                </div>
+                                            </div>
+                                        </div>
+                                   
+                             </table>
+                         </div> -->
+                    
+                                       <!--  <div *ngIf="TableData" id="controlBreak">  
+                                            <div *ngIf="selectedOption && selectedOption ==1"> Total amount for placed orders: TotalBal</div>
+                                        </div> -->
+                        
+                        </div>
+                    </div>
+                    
+                    <router-outlet></router-outlet>
+                    </body>
             </div>
            </div>
         </div>

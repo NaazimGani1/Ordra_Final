@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ProvinceService } from '../services/province.service';
 import { Province } from '../model/province.model';
 import { Router } from '@angular/router';
+import { NavbarService } from 'src/app/navbar/navbar.service';
 import { UserService } from 'src/app/login-subsystem/service/user.service';
 
 @Component({
@@ -19,7 +20,7 @@ export class AddProvinceComponent implements OnInit {
 
   dateVal = new Date();
 
-  constructor(private provinceService: ProvinceService, private formBuilder: FormBuilder, private router: Router, private userService: UserService) { };
+  constructor(public nav: NavbarService, private provinceService: ProvinceService, private formBuilder: FormBuilder, private router: Router, private userService: UserService) { };
 
   province : Province = new Province();
   responseMessage: string = "Request Not Submitted";
