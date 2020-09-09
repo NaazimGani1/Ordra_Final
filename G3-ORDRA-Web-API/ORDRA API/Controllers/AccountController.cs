@@ -118,6 +118,31 @@ namespace ORDRA_API.Controllers
                 return new { message = "Username or password is incorrect." };
         }
 
+        [HttpPost]
+        [Route("api/Account/Reset")]
+        public async Task<Object> Reset(ResetModel model)
+        {
+            var userStore = new UserStore<ApplicationUser>(new ApplicationDbContext());
+            var manager = new Microsoft.AspNet.Identity.UserManager<ApplicationUser>(userStore);
+
+            var user = await manager.FindByNameAsync(model.UserName);
+            var message = "no"; // still working here ;
+
+            if (user != null)
+            {
+                message = "yes";
+            }
+                else
+                {
+                    message = "no";
+                }
+
+            return message;
+        }
+
+
+
+
 
 
         [HttpGet]

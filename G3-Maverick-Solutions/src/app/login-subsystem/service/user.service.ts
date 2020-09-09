@@ -30,6 +30,16 @@ export class UserService {
     }, { validator: this.comparePasswords }),
   });
 
+  formModel1 = this.fb.group({
+    UserName: ['', Validators.required],
+    Email: ['', Validators.email],
+    Passwords: this.fb.group({
+      Password: ['', [Validators.required, Validators.minLength(4)]],
+      ConfirmPassword: ['', Validators.required]
+    }, { validator: this.comparePasswords }),
+  });
+
+
   comparePasswords(fb: FormGroup) {
     const confirmPswrdCtrl = fb.get('ConfirmPassword');
     if (confirmPswrdCtrl.errors == null || 'passwordMismatch' in confirmPswrdCtrl.errors) {
@@ -54,6 +64,16 @@ export class UserService {
 
   login(formData) {
     return this.http.post(environment.ApiUrl  + '/Account/Login', formData);
+    
+  }
+
+  reset() {
+    const body = {
+      UserName: this.formModel1.value.UserName,
+      Email: this.formModel1.value.Email,
+      Password: this.formModel1.value.Passwords.Password
+    };
+    return this.http.post(environment.ApiUrl  + '/Account/Reset', body);
     
   }
 
