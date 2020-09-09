@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-manager-management',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ManagerManagementComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
 
+  gotoCreateManager(){
+    this.router.navigate(['create-manager']);
+  }
+
+  gotoSearchManager(){
+    this.router.navigate(['view-manager']);
+  }
+
+
 }
+

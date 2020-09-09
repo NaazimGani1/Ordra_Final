@@ -42,6 +42,19 @@ import { NgModule } from '@angular/core';
     import { AddCustomerComponent} from './add-customer/add-customer.component';
     import { ViewCustomerComponent } from './view-customer/view-customer.component';
 
+     //----Supplier Subsystem Imports----//
+     import { AddSupplierComponent} from './add-supplier/add-supplier.component';
+     import { ViewSupplierComponent} from './view-supplier/view-supplier.component';
+ 
+     //---Manager Subsystem Imports---//
+     import {CreateManagerComponent} from './create-manager/create-manager.component';
+     import { SearchManagerComponent} from './view-manager/view-manager.component';
+ 
+     //---Customer Order Subsystem Imports---//
+     import {PlaceOrderComponent} from './place-order/place-order.component';
+     import {ViewOrderComponent} from './view-order/view-order.component';
+     import {SendNotificationComponent} from './send-notification/send-notification.component';
+
 
 
 
@@ -122,16 +135,59 @@ import { NgModule } from '@angular/core';
             component: ReportingManagementComponent,
         },
 
-        //---Customer Subsystem Routing---//
-        {
-            path: 'add-customer',
-            component: AddCustomerComponent,
-        },
+       //---Customer Subsystem Routing---//
+       {
+        path: 'add-customer',
+        component: AddCustomerComponent,
+    },
 
-        {
-            path: 'view-customer',
-            component: ViewCustomerComponent,
-        },
+    {
+        path: 'view-customer',
+        component: ViewCustomerComponent,
+    },
+
+    //----Supplier Subsystem Routing---//
+
+    {
+        path: 'add-supplier',
+        component: AddSupplierComponent,
+    },
+
+    {
+        path: 'view-supplier',
+        component: ViewSupplierComponent,
+    },
+
+    //----Manager Subsystem Routing---//
+    {
+        path: 'create-manager',
+        component: CreateManagerComponent,
+    },
+
+    {
+        path: 'view-manager',
+        component: SearchManagerComponent,
+    },
+
+
+    //---Customer Order Subsytem Routing---//
+    {
+        path:'place-order',
+        component: PlaceOrderComponent,
+    
+    },
+
+
+    {
+        path: 'view-order',
+        component: ViewOrderComponent,
+    },
+
+    {
+        path: 'send-notification',
+        component: SendNotificationComponent,
+    },
+
         
         {
             path: 'create-location',

@@ -1,0 +1,156 @@
+<body>
+    
+    <h1>View Customer Order</h1>
+<form>
+    <div *ngIf="showcriteria"class="card" style="padding: 2px 2px;" >
+
+        <div class="divleft">
+            <label class="subheadinglabel">Select Search Criteria</label><br>
+        </div>
+        <div class="divleft">
+            <button style="height: 30px;" (click)="selectedOrderNo()">OrderNo</button>
+             <button style="height: 30px;" (click)="selectedCell()">Cell</button>
+        </div>
+    </div> 
+    <div *ngIf="showOptions" class="card">
+        <div  class="divleft">
+            <label class="subheadinglabel">Enter Search Details:</label><br>
+            <div *ngIf="showOrdNo"class="divleft"  >
+                <label for="ordNo">Order Number:      </label>
+                <input [(ngModel)]="orderNo" type="text" id="ordNo" name="ordNo" required>
+            </div>
+        </div>
+            <div *ngIf="showCell"  class="divleft"  >
+                <label for="ordNo">Cell Number:      </label>
+                <input  [(ngModel)]="cell" type="text" id="ordNo" name="ordNo" required>
+            </div>
+
+           <!-- <div class ="diveleft">
+                <label style="color: red; font-size: 13px; width :200px">Enter search details</label>
+            </div>-->
+
+            <div class="divleft">
+            <button type="submit" (click)="search()">Search</button>
+            <button type="submit" (click)=" gotoCustomerOrderManagement()">Cancel</button>
+            <br><br>
+            </div>
+        </div>
+
+        <div *ngIf="showList" class="card">
+            <div class="divleft">
+                <br>  <label class="subheadinglabel" >Orders:</label><br>
+                <table>   
+               
+                    <tr>
+                        <th>OrderNo</th>
+                        <th>Status</th>
+                        <th>Name</th>
+                        <th>Surname</th>
+                        <th></th>
+                        
+                    </tr>
+                    <tr *ngFor="let item of searchedOrders, index as ndx">
+                        <td>{{item.CusOrdNumber}}</td>
+                        <td>{{item.CusOrdStatus}}</td>
+                        <td>{{item.CusName}}</td>
+                        <td>{{item.CusSurname}}</td>
+                        <td><button style="height: 30px;"class="btntable" (click)="view(item.CusOrdNumber)">View</button></td>
+
+                    </tr>
+                </table>
+            </div>
+            <br><br>
+         </div>
+
+        <div class="card" *ngIf="showOrder" >
+            <div class="divleft" >
+                <label class="subheadinglabel" >Customer Order Details </label>
+            </div>
+
+
+            <div class="divleft" style="float:left; width:50%;">
+                <label class="displaylabel" for="cusOrdNo">Order No:      </label>
+               <label id="cusOrdNo" name="cusOrdNo">{{orderDetails.CusOrdNumber}}</label>
+               </div>
+
+               <div class="divleft" style="float:left; width:50%;">
+               <label class="displaylabel" for="OrdDate" style="width:100px">Date:      </label>
+                 <label  id="OrdDate" name="OrdDate">{{orderDetails.CusOrdDate}}</label>
+               </div>
+            
+            <div class="divleft" style="float:left; width:50%;">
+            <label  class="displaylabel" for="cusCell">Cell:</label>
+            <label id="cusCell" name="cusCell" >{{customer.CusCell}}</label>
+        
+            </div>
+
+            <div class="divleft" style="float:left; width:50%;">
+                
+            <label class="displaylabel" for="cusName" style="width:100px">Name:       </label>
+             <label  id="cusName" name="cusName" >{{customer.CusName}}</label>
+            </div>
+
+            <div class="divleft" style="float:left; width:50%;">
+            <label class="displaylabel" for="cusName" >Surname:       </label>
+            <label  id="cusSurname" name="cusSurname">{{customer.CusSurname}}</label>
+            </div>
+
+            <div class="divleft" style="float:left; width:50%;">   
+            <label  class="displaylabel" for="cusCell" style="width:100px">Email:</label>
+            <label id="cusCell" name="cusCell" >{{customer.CusEmail}}</label>
+            </div>
+        </div>
+    
+
+    <br>
+    <div class="card"*ngIf="showOrder" >
+            <table>    
+                <tr>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Subtotal</th>
+                    <th></th>
+                </tr>
+                <tr *ngFor="let item of orderProducts, index as ndx">
+                    <td>{{item.Prodname}}</td>
+                     <td>{{item.Quantity}}</td>
+                     <td>R{{item.Price}}</td>
+                    <td>R{{item.Subtotal}}</td>
+                    <td><button class="btntable" style="height: 30px;" (click) ="remove(ndx)">X</button></td>
+                </tr>
+
+                <tr >
+                    
+                    <th></th>
+                    <th></th>
+                    <th>Subtotal (Exc VAT):</th>
+                    <th>R{{calculatedValues.TotalExcVat}}</th>
+                </tr>
+
+                <tr>
+                    
+                    
+                    <th></th>
+                    <th></th>
+                    <th>VAT:</th>
+                    <th>{{calculatedValues.Vat}}</th>
+                </tr>
+            
+                <tr>
+                    
+                    <th></th>
+                    <th></th>
+                    <th>TOTAL:</th>
+                    <th>R{{calculatedValues.TotalExcVat}}</th>
+                </tr>
+            </table>
+
+        <div class="divleft">
+        <button  type="submit" (click)="cancelOrder()" >Collect Order</button>
+        <button type="submit" (click)="collectOrder()">Cancel Order</button>
+        <button  type="submit" (click)="gotoCustomerOrderManagement()">Back</button>
+        </div>
+    </div>
+       
+

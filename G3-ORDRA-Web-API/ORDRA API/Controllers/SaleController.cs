@@ -26,7 +26,7 @@ namespace ORDRA_API.Controllers
         {
            db.Configuration.ProxyCreationEnabled = false;
            dynamic toReturn = new ExpandoObject();
-            toReturn.product = new ExpandoObject();
+            toReturn.products = new ExpandoObject();
             toReturn.SaleDate = new ExpandoObject();
             toReturn.paymetTypes = new ExpandoObject();
 
@@ -58,7 +58,7 @@ namespace ORDRA_API.Controllers
 
                     products.Add(productDetails);
                 }
-                toReturn = products;
+                toReturn.products = products;
 
                 
 

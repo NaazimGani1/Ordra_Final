@@ -48,6 +48,13 @@ import { UserService } from './login-subsystem/service/user.service';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
+import { CreateManagerComponent } from './create-manager/create-manager.component';
+import { PlaceOrderComponent } from './place-order/place-order.component';
+import { SearchManagerComponent } from './view-manager/view-manager.component';
+import { SendNotificationComponent } from './send-notification/send-notification.component';
+import { ViewOrderComponent } from './view-order/view-order.component';
+import { MakeSaleComponent } from './sales-management/make-sale/make-sale.component';
+import { SearchSaleComponent } from './sales-management/search-sale/search-sale.component';
 
 @NgModule({
   declarations: [
@@ -84,6 +91,13 @@ import { ForbiddenComponent } from './forbidden/forbidden.component';
     NavbarComponent,
     HomeComponent,
     ForbiddenComponent,
+    CreateManagerComponent,
+    PlaceOrderComponent,
+    SearchManagerComponent,
+    SendNotificationComponent,
+    ViewOrderComponent,
+    MakeSaleComponent,
+    SearchSaleComponent,
   ],
   imports: [
     BrowserModule,

@@ -389,7 +389,7 @@ namespace ORDRA_API.Controllers
         //collect Order Function
         [HttpPost]
         [Route("collectOrder")]
-        public dynamic collectOrder(Customer_Order order)
+        public dynamic collectOrder(int CustomerOrderID)
         {
             db.Configuration.ProxyCreationEnabled = false;
             dynamic toReturn = new ExpandoObject();
@@ -397,7 +397,7 @@ namespace ORDRA_API.Controllers
             try
             {
                 //Get the Order from the db
-                Customer_Order cus_order = db.Customer_Order.Include(x => x.Customer_Order_Status).Where(x => x.CustomerOrderID == order.CustomerOrderID).FirstOrDefault();
+                Customer_Order cus_order = db.Customer_Order.Include(x => x.Customer_Order_Status).Where(x => x.CustomerOrderID == CustomerOrderID).FirstOrDefault();
 
                 //get the collected customer order status
                 Customer_Order_Status order_Status = db.Customer_Order_Status.Where(x => x.CODescription == "collected").FirstOrDefault();

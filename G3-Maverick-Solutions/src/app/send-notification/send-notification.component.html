@@ -1,0 +1,47 @@
+<form>
+    <h1>Send Order Arrival Notification</h1>
+    <body>
+      
+        <div class="card">
+            <div class="divleft">
+                <button (click)= "getOrders()">Show Fulfilled Orders</button>
+            </div>
+            
+         <div *ngIf="showList" class="card">
+                <div class="divleft">
+                    <br>  <label class="subheadinglabel">Orders:</label><br>
+                    <table>   
+                   
+                        <tr>
+                            <th>OrderNo</th>
+                            <th>Status</th>
+                            <th>Name</th>
+                            <th>Surname</th>
+                            <th></th>
+                            
+                        </tr>
+                        <tr *ngFor="let item of searchedOrders, index as ndx">
+                            <td>{{item.CusOrdNumber}}</td>
+                            <td>{{item.CusOrdStatus}}</td>
+                            <td>{{item.CusName}}</td>
+                            <td>{{item.CusSurname}}</td>
+                            <td><input type="checkbox" style="height: 30px;"class="btntable" (click)="select(item.CusOrdNumber)">
+    
+                        </tr>
+                    </table>
+                </div>
+                <br><br>
+             </div>
+            <button type="submit">Send Notification</button>
+            <button type="submit">Cancel</button>
+            <br><br>
+         </div>
+        
+           
+       
+
+       
+
+    </body>
+</form>
+
