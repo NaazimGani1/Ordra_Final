@@ -38,7 +38,7 @@ export class SearchManagerComponent implements OnInit {
  showSearch: boolean = true;
  showResults: boolean = false;
  showConatinerSelect: boolean = false;
-
+ dateVal: Date;
 
  name : string;
  surname : string;
@@ -137,6 +137,15 @@ export class SearchManagerComponent implements OnInit {
     
     this.showSearch = true;
     this.showResults = false;
+  }
+
+  onLogout() {
+    localStorage.removeItem('token');
+    this.router.navigate(['/user/login']);
+  }
+
+  onHome() {
+    this.router.navigate(['/home']);
   }
 
 }

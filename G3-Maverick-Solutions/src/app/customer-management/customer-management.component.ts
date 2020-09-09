@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 export class CustomerManagementComponent implements OnInit {
 
   constructor(private router: Router) { }
+  dateVal: Date;
 
   ngOnInit(): void {
   }
@@ -22,5 +23,13 @@ export class CustomerManagementComponent implements OnInit {
 
   }
 
+  onLogout() {
+    localStorage.removeItem('token');
+    this.router.navigate(['/user/login']);
+  }
+
+  onHome() {
+    this.router.navigate(['/home']);
+  }
 
 }

@@ -1,4 +1,53 @@
-<!--<body>
+<div class="wrapper">      
+    <div class="wrapper">
+        <div class="sidebar">
+        <h2><img width="170"  src="https://www.ordra.co.za/image/catalog/info/ORDRAA1%20(2).png" (click)="onHome()"></h2>
+    
+       <ul style="width: 200px; height: 600px; overflow-y: scroll;">
+            
+            <li><i class="tiny material-icons">people_outline</i><a [routerLink]="'/employee-management'">Employee Management </a></li>
+            <li><i class="tiny material-icons">store</i><a [routerLink]="'/container-management'">Container Management</a></li>
+            <li><i class="tiny material-icons">person_pin</i><a [routerLink]="'/manager-management'">Manager Profile Management</a></li>
+            <li><i class="tiny material-icons">add_location</i><a [routerLink]="'/gps-management'">GPS Management</a></li>
+            <li><i class="tiny material-icons">shopping_basket</i><a [routerLink]="'/sales-management'">Sales </a></li>
+            <li><i class="tiny material-icons">contacts</i><a [routerLink]="'/customer-management'">Customer Management </a></li>
+            <li><i class="tiny material-icons">shopping_cart</i><a [routerLink]="'/customer-order-management'">Customer Order Management </a></li>
+            <li><i class="tiny material-icons">settings_ethernet</i><a [routerLink]="'/supplier-management'">Supplier Management </a></li>
+            <li><i class="tiny material-icons">local_shipping</i><a [routerLink]="'/supplier-order-management'">Supplier Order Management </a></li>
+            <li><i class="tiny material-icons">layers</i><a [routerLink]="'/product-management'">Product Management </a></li>
+            <li><i class="tiny material-icons">card_giftcard</i><a [routerLink]="'/donation-management'">Donation Management </a></li>
+            <li><i class="tiny material-icons">attach_money</i><a [routerLink]="'/creditor-management'">Creditor Management </a></li>
+            <li><i class="tiny material-icons">timeline</i><a [routerLink]="'/reporting-management'">Reporting </a></li>
+        
+       </ul> 
+       </div>
+    
+       <div class="main_content">
+         <div class="header-section">
+            <div class="header-section-1">
+                Operating from Container: 
+                <br>Betha Mamelodi
+            </div>
+        
+            <div class="header-section-2">
+                Date:  {{dateVal | date: 'dd/MM/yyyy'}}
+            </div>
+        
+            <div class="header-section-3">
+                <button style='font-size:15px' (click)="onLogout()"> Log out
+                <i class="tiny material-icons" >power_settings_new</i>
+          </button>
+    </div>
+    
+         </div> 
+        <div class="info">   
+               
+        </div>
+       </div>
+    </div>
+</div>
+
+<body>
     
     <h1>Search Sale</h1>
 <form>
@@ -8,12 +57,12 @@
             <label class="subheadinglabel">Select Search Criteria</label><br>
         </div>
         <div class="divleft">
-            <button style="height: 30px;" (click)="selectedOrderNo()">Date</button>
-             <button style="height: 30px;" (click)="selectedCell()">Product</button>
+            <button style="height: 30px;" (click)="selectedDate()">Date</button>
+             <button style="height: 30px;" (click)="productSelected()">Product</button>
         </div>
     </div> 
     <div *ngIf="showOptions" class="card">
-        <div  class="divleft">
+        <div  class="divleft" *ngIf = "showProduct">
             <label class="subheadinglabel">Select Search Details:</label><br>
             <div class="divleft" >
                 <label for="Product">Product: </label>
@@ -25,7 +74,7 @@
                  <label style="color: red; font-size: 13px; width :200px">Select a product</label>
              </div>
 
-            <div *ngIf="showCell"  class="divleft"  >
+            <div *ngIf="showDate"  class="divleft"  >
                 <label for="date">Date:      </label>
                 <input  [(ngModel)]="date" type="text" id="date" name="date" required placeholder="yyyy-MM-dd">
             </div>
@@ -34,7 +83,7 @@
 
             <div class="divleft">
             <button type="submit" (click)="search()">Search</button>
-            <button (click)=" gotoCustomerOrderManagement()">Cancel</button>
+            <button (click)=" gotoSalesManagement()">Cancel</button>
             <br><br>
             </div>
         </div>
@@ -54,7 +103,7 @@
                     <tr *ngFor="let item of searchedSales, index as ndx">
                         <td>{{item.SaleID}}</td>
                         <td>{{item.SaleDate}}</td>
-                        <td>{{item.CashierName}}</td>
+                        <td>{{item.User.UserName}}</td>
                         <td><button style="height: 30px;"class="btntable" (click)="view(item.SaleID)">View</button></td>
 
                     </tr>
@@ -63,9 +112,9 @@
             <br><br>
          </div>
 
-        <div class="card" *ngIf="showOrder" >
+        <div class="card" *ngIf="showSale" >
             <div class="divleft" >
-                <label class="subheadinglabel" >Customer Order Details </label>
+                <label class="subheadinglabel" >Sale Details </label>
                 
                 
         <div class="divleft">
@@ -73,13 +122,9 @@
 
             <div class="divleft" style="float:left; width:50%;">
             <label class="displaylabel" for="saleDate" style="width:100px">Date:      </label>
-              <label  id="saleDate" name="saleDate">{{sale.SaleDate}}</label>
+              <label  id="saleDate" name="saleDate">{{sale}}</label>
             </div>
-         
-                
-            <label class="displaylabel" for="cusName" style="width:100px">Name:       </label>
-             <label  id="cusName" name="cusName" >{{sale.Cashier}}</label>
-            </div>
+     
         </div>
         
         <table>    
@@ -99,7 +144,7 @@
     
 
     <br>
-    <div class="card"*ngIf="showOrder" >
+    <div class="card" >
             <table>    
                 <tr>
                     <th>Product</th>
@@ -147,5 +192,5 @@
         </div>
     </div>
        
--->
+
 

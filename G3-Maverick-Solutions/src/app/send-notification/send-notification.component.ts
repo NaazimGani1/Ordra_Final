@@ -18,6 +18,7 @@ export class SendNotificationComponent implements OnInit {
   searchedOrders: SearchedOrder[] = [];
   status: string = "fulfilled";
   showList:boolean= false;
+  dateVal: Date;
 
   ngOnInit(): void {
   }
@@ -46,5 +47,14 @@ export class SendNotificationComponent implements OnInit {
 
     getOrders(){
       
+    }
+
+    onLogout() {
+      localStorage.removeItem('token');
+      this.router.navigate(['/user/login']);
+    }
+  
+    onHome() {
+      this.router.navigate(['/home']);
     }
 }

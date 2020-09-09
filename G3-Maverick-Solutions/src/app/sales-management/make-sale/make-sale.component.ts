@@ -30,6 +30,7 @@ export class MakeSaleComponent implements OnInit {
   change = 0;
   outstandingAmt = 0;
   responseMessage: string = "Request Not Submitted";
+  dateVal: Date;
 
   showProd = false;
   prodNotSelected: boolean = false;
@@ -205,6 +206,15 @@ export class MakeSaleComponent implements OnInit {
         this.displayTotal = this.TotalIncVat.toFixed(2);
        this.displayVat = this.Vat.toFixed(2);
        this.displaySubtotal = this.TotalExcVat.toFixed(2);
+      }
+
+      onLogout() {
+        localStorage.removeItem('token');
+        this.router.navigate(['/user/login']);
+      }
+    
+      onHome() {
+        this.router.navigate(['/home']);
       }
 
 }

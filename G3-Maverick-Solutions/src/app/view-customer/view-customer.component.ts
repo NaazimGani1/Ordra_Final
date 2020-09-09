@@ -28,6 +28,7 @@ export class ViewCustomerComponent implements OnInit {
   showSearch: boolean = true;
   showResults: boolean = false;
   showTable: boolean = false;
+  dateVal: Date;
 
   name : string;
   surname : string;
@@ -109,6 +110,14 @@ export class ViewCustomerComponent implements OnInit {
 
     this.interaction.changeCustomerID(this.customer.CustomerID);
     this.router.navigate(['place-order'])
+  }
+  onLogout() {
+    localStorage.removeItem('token');
+    this.router.navigate(['/user/login']);
+  }
+
+  onHome() {
+    this.router.navigate(['/home']);
   }
 
 }

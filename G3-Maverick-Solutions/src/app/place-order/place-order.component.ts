@@ -47,7 +47,7 @@ export class PlaceOrderComponent implements OnInit {
   TotalExcVat: number;
   Vat: number;
  
-
+  dateVal: Date;
   customer: Customer = new Customer();
 
   catSelection: number;
@@ -241,6 +241,15 @@ remove(index: any){
   gotoCustomerOrderManagement()
   {
     this.router.navigate(["customer-order-management"])
+  }
+
+  onLogout() {
+    localStorage.removeItem('token');
+    this.router.navigate(['/user/login']);
+  }
+
+  onHome() {
+    this.router.navigate(['/home']);
   }
 }
 

@@ -4,6 +4,7 @@ import {Customer} from '../customer-management/customer';
 import { NgModule } from '@angular/core';
 import {CustomerService} from '../customer-management/customer.service';
 
+
 @Component({
   selector: 'app-add-customer',
   templateUrl: './add-customer.component.html',
@@ -15,7 +16,7 @@ export class AddCustomerComponent implements OnInit {
    customer : Customer = new Customer();
    responseMessage: string = "Request Not Submitted";
   
-
+   dateVal: Date;
   
 
   ngOnInit(): void {
@@ -34,6 +35,16 @@ export class AddCustomerComponent implements OnInit {
 
   gotoCustomerManagment(){
     this.router.navigate(['customer-management']);
+  }
+
+  
+  onLogout() {
+    localStorage.removeItem('token');
+    this.router.navigate(['/user/login']);
+  }
+
+  onHome() {
+    this.router.navigate(['/home']);
   }
 
 }
