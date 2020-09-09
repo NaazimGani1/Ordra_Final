@@ -6,6 +6,7 @@ import { NgForm } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Status } from '../gps-management/model/status.model';
 import { Province } from '../gps-management/model/province.model';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-gps-management',
@@ -20,6 +21,8 @@ export class GPSManagementComponent implements OnInit {
   add = false;
   search = false;
   searchFound = false;
+  searchDelete = false;
+  searchDeleteFound = false;
 
   formModel1 = {
     AreaStatusID:0,
@@ -35,17 +38,59 @@ export class GPSManagementComponent implements OnInit {
     ArPostalCode:''
   };
 
+  allareaList: Area[];
+
   constructor(public service: AreaserviceService,private router: Router,private toastr: ToastrService) { }
 
   ngOnInit() {
+   this.resetForm();
    this.refreshList();
-   console.log(this.service.provinceList)
   }
 
+  resetForm() {
+    this.service.areaData = {
+      AreaID: 0,
+      ArName: '',
+      AreaStatusID: 0,
+      ProvinceID: 0,
+      ArPostalCode: ''
+    };
+
+
+    this.service.allareaData = {
+      AreaID: 0,
+      ArName: '',
+      AreaStatusID: 0,
+      ProvinceID: 0,
+      ArPostalCode: ''
+    };
+
+    this.service.statusData = {
+      AreaStatusID: 0,
+      ASDescription: ''
+    };
+
+    this.service.provinceData = {
+      ProvinceID: 0,
+      ProvName: ''
+    };
+
+
+
+    this.service.areaList = [];
+    this.service.allareaList = [];
+    this.service.statusList = [];
+  }
+
+
   refreshList() {
-    this.service.getAreas().then(res => this.service.allareaList = res as Area[]);
+    this.service.getAreas().then(res => this.allareaList = res as Area[]);
     this.service.getStatus().then(res => this.service.statusList = res as Status[]);
     this.service.getProvince().then(res => this.service.provinceList = res as Province[]);
+    debugger
+    console.log(this.service.provinceList);
+    console.log(this.service.statusList);
+    console.log(this.allareaList);
   }
 
 
@@ -90,6 +135,31 @@ export class GPSManagementComponent implements OnInit {
       });  
   }
 
+  onSubmitUpdate(form: NgForm) {
+    console.log(form);
+      this.service.postArea(form.value).subscribe((res: any) => {
+        console.log(res);
+        if (res !='Error' && res !='Nothing')
+        {
+          console.log(res);
+          this.main = true;
+          this.add = false;
+          this.add = false;
+          this.search = false;
+          this.searchFound = false;
+          this.searchDelete = false;
+          this.searchDeleteFound = false;
+          this.toastr.success('Success', 'Employee Recorded Modified :)');
+        }
+        else
+        {
+          console.log(res);
+          this.toastr.error('Uh Oh ', 'Something Went Wrong. Please Try again');
+        }
+      });  
+  }
+
+
 
 //Selectors
   selectStatus(ctrl) {
@@ -124,6 +194,7 @@ export class GPSManagementComponent implements OnInit {
     this.main = false;
     this.search = true;
   }
+
   
   onLogout() {
     localStorage.removeItem('token');
