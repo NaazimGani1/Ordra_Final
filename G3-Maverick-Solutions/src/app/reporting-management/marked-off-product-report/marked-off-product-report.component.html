@@ -1,0 +1,140 @@
+<nav *ngIf="nav.visible"> 
+    <div class="wrapper">      
+        <div class="wrapper">
+            <div class="sidebar">
+            <h2><img width="170"  src="https://www.ordra.co.za/image/catalog/info/ORDRAA1%20(2).png" (click)="onHome()"></h2>
+        
+           <ul style="width: 200px; height: 600px; overflow-y: scroll;">
+                
+                <li><i class="tiny material-icons">people_outline</i><a [routerLink]="'/employee-management'">Employee Management </a></li>
+                <li><i class="tiny material-icons">store</i><a [routerLink]="'/container-management'">Container Management</a></li>
+                <li><i class="tiny material-icons">person_pin</i><a [routerLink]="'/manager-management'">Manager Profile Management</a></li>
+                <li><i class="tiny material-icons">add_location</i><a [routerLink]="'/gps-management'">GPS Management</a></li>
+                <li><i class="tiny material-icons">shopping_basket</i><a [routerLink]="'/sales-management'">Sales </a></li>
+                <li><i class="tiny material-icons">contacts</i><a [routerLink]="'/customer-management'">Customer Management </a></li>
+                <li><i class="tiny material-icons">shopping_cart</i><a [routerLink]="'/customer-order-management'">Customer Order Management </a></li>
+                <li><i class="tiny material-icons">settings_ethernet</i><a [routerLink]="'/supplier-management'">Supplier Management </a></li>
+                <li><i class="tiny material-icons">local_shipping</i><a [routerLink]="'/supplier-order-management'">Supplier Order Management </a></li>
+                <li><i class="tiny material-icons">layers</i><a [routerLink]="'/product-management'">Product Management </a></li>
+                <li><i class="tiny material-icons">card_giftcard</i><a [routerLink]="'/donation-management'">Donation Management </a></li>
+                <li><i class="tiny material-icons">attach_money</i><a [routerLink]="'/creditor-management'">Creditor Management </a></li>
+                <li><i class="tiny material-icons">timeline</i><a [routerLink]="'/reporting-management'">Reporting </a></li>
+            
+           </ul> 
+           </div>
+        
+           <div class="main_content">
+             <div class="header-section">
+                <div class="header-section-1">
+                    Operating from Container: 
+                    <br>Betha Mamelodi
+                </div>
+            
+                <div class="header-section-2">
+                    Date:  {{dateVal | date: 'dd/MM/yyyy'}}
+                </div>
+            
+                <div class="header-section-3">
+                    <button style='font-size:15px' (click)="onLogout()"> Log out
+                    <i class="tiny material-icons" >power_settings_new</i>
+              </button>
+        </div>
+        
+             </div> 
+            <div class="info">   
+                <body>
+                    <h1>Generate Marked Off Product Report</h1>
+                    <div id="FromDiv">
+                        <!--<form>
+                            <div class="form-group">
+                                <div class="card" id="customerOrder">
+                                  <div class="divleft">
+                                        <label class="subheadinglabel">Please select the report criteria </label>
+                                        <br><br>
+                                         <label for="OptionSelect">Product mark off reason</label>
+                                        <select class="form-control" id="OptionSelect" #optName name = "Option" [(ngModel)] = "selectedOption">
+                                            <option *ngFor = "let option of options" [value]= "option.id" data-name="option.data">{{option.data}}</option>
+                                        </select>
+                                    </div> 
+                                </div>
+                            </div> 
+                        </form>  -->
+                        
+                        <!-- <div class="alert alert-danger" role="alert" *ngIf="showErrorMessage">
+                            You did not select an option. Please select one.
+                        </div> -->
+                            
+                        <br>
+                        <button type="submit" (click)="GenerateChart()" >Generate Report</button> 
+                        <button type="button" (click)="DownloadPDF()" >Download Report</button>       
+                        <!-- <button type="button" (click)="PrintReport()" >Print Report</button> -->
+                        <button type="button" (click)="cancel()" >Cancel</button>
+                        <br>
+                
+                            
+                        <div class="card">
+                            <h1>Marked Off Product Report</h1>
+                            <h2><img width="190"  src="https://www.ordra.co.za/image/catalog/info/ORDRAA1%20(2).png"></h2>
+                                    
+                            <div id="ChartDiv">
+                                <canvas id="canvas"></canvas>
+                            </div>
+                
+                
+                
+                            <!-- <div id="TablesDiv">
+                                <div class="table">
+                                    <table class="table" id="jsPdfTable">
+                                        <div *ngFor="let item of TableData; let i = index">
+                                            <h1>Category details</h1>
+                                            <h2> {{item.Name}} </h2>
+                                            
+                                            <br>
+                                            <div>
+                                                <h2></h2>
+                                                <div *ngFor="let order of item.Marked" id="testing{{i}}">
+                                                    <table class= "container table-latitude" > 
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Mark off Date</th>
+                                                                <th>Product name</th>
+                                                                <th>Price(R)</th>
+                                                                <th>Quantity</th>
+                                                                <th>Reason</th>
+                                                                <th>Total(R)</th>
+                                                            </tr>
+                                                        </thead>
+                    
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>{{order.Date | date}}</td>
+                                                                <td>{{order.Product}}</td>
+                                                                <td>{{order.Price}}</td>
+                                                                <td>{{order.Quantity}}</td>
+                                                                <td>{{order.Reason}}</td>
+                                                                <td>{{order.ProdTot}}</td> 
+                                                            </tr>
+                                                        </tbody>                        
+                                                    </table>     
+                                                </div>
+                                            </div>
+                                        </div>
+                                   
+                             </table>
+                         </div> -->
+                    
+                                       <!--  <div *ngIf="TableData" id="controlBreak">  
+                                            <div *ngIf="selectedOption && selectedOption ==1"> Total amount for placed orders: TotalBal</div>
+                                        </div> -->
+                        
+                        </div>
+                    </div>
+                    
+                    <router-outlet></router-outlet>
+                    </body>
+            </div>
+           </div>
+        </div>
+   </div>
+</nav>
+

@@ -8,3 +8,9 @@ npm i @angular/material
 npm i @material/dialog
 
 
+reports
+npm install jspdf --save
+npm install #types/jspdf --save-dev
+npm install jspdf-autotable --save
+
+

@@ -1,0 +1,119 @@
+<nav *ngIf="nav.visible"> 
+    <div class="wrapper">      
+        <div class="wrapper">
+            <div class="sidebar">
+            <h2><img width="170"  src="https://www.ordra.co.za/image/catalog/info/ORDRAA1%20(2).png" (click)="onHome()"></h2>
+        
+           <ul style="width: 200px; height: 600px; overflow-y: scroll;">
+                
+                <li><i class="tiny material-icons">people_outline</i><a [routerLink]="'/employee-management'">Employee Management </a></li>
+                <li><i class="tiny material-icons">store</i><a [routerLink]="'/container-management'">Container Management</a></li>
+                <li><i class="tiny material-icons">person_pin</i><a [routerLink]="'/manager-management'">Manager Profile Management</a></li>
+                <li><i class="tiny material-icons">add_location</i><a [routerLink]="'/gps-management'">GPS Management</a></li>
+                <li><i class="tiny material-icons">shopping_basket</i><a [routerLink]="'/sales-management'">Sales </a></li>
+                <li><i class="tiny material-icons">contacts</i><a [routerLink]="'/customer-management'">Customer Management </a></li>
+                <li><i class="tiny material-icons">shopping_cart</i><a [routerLink]="'/customer-order-management'">Customer Order Management </a></li>
+                <li><i class="tiny material-icons">settings_ethernet</i><a [routerLink]="'/supplier-management'">Supplier Management </a></li>
+                <li><i class="tiny material-icons">local_shipping</i><a [routerLink]="'/supplier-order-management'">Supplier Order Management </a></li>
+                <li><i class="tiny material-icons">layers</i><a [routerLink]="'/product-management'">Product Management </a></li>
+                <li><i class="tiny material-icons">card_giftcard</i><a [routerLink]="'/donation-management'">Donation Management </a></li>
+                <li><i class="tiny material-icons">attach_money</i><a [routerLink]="'/creditor-management'">Creditor Management </a></li>
+                <li><i class="tiny material-icons">timeline</i><a [routerLink]="'/reporting-management'">Reporting </a></li>
+            
+           </ul> 
+           </div>
+        
+           <div class="main_content">
+             <div class="header-section">
+                <div class="header-section-1">
+                    Operating from Container: 
+                    <br>Betha Mamelodi
+                </div>
+            
+                <div class="header-section-2">
+                    Date:  {{dateVal | date: 'dd/MM/yyyy'}}
+                </div>
+            
+                <div class="header-section-3">
+                    <button style='font-size:15px' (click)="onLogout()"> Log out
+                    <i class="tiny material-icons" >power_settings_new</i>
+              </button>
+        </div>
+        
+             </div> 
+            <div class="info">   
+                 
+<body>
+
+    <h1>Search Creditor</h1>
+<form>
+    <div class="card" *ngIf = "showSearch">
+            
+        <div class="divleft">
+            <label class="subheadinglabel">Enter name of supplier you wish to add as a creditor</label>
+            <br><br>
+            <label for="Name">Name</label>
+            <input type = "text" id="name"  class="searchInput" class="form-control" [(ngModel)]="name" name="name">     
+            <br>
+        </div> 
+
+        <div class="divleft">
+            <button type="submit" (click)= "searchSupplier()">Search</button>
+            <button type="button" (click)= "gotoCreditorManagement()">Cancel</button>
+            
+        </div>
+
+    </div>
+    
+    <div id ="creditor" *ngIf = "showResults">
+            <div class="card">
+                    <label> <span style="white-space: nowrap;">Creditor</span></label>
+                    
+                    <div class="divleft">
+                        <br>
+                        <label for="Name">Name</label>
+                        <input type = "text" id="name" class="form-control" [(ngModel)]="supplier.SupName" name="SupName"  required [readonly] = "this.inputEnabled" >  
+                        <br>
+                    </div> 
+
+                    <div class="divleft">
+                        <label for="CellNumber">Cell Number</label>
+                        <input type = "text" id="cellNumber" class="form-control" [(ngModel)]="supplier.SupCell" name="SupCell"  required [readonly] = "this.inputEnabled">  
+                        <br>
+                    </div>
+
+                    <div class="divleft">
+                        <label for="Email">Email</label>
+                        <input type = "text" id="email" class="form-control" [(ngModel)]="supplier.SupEmail" name="SupEmail"  required [readonly] = "this.inputEnabled" >  
+                        <br>
+                    </div>
+                </div>
+            
+        
+            <div class="card">
+                <label > <span style="white-space: nowrap;">Creditor Account</span></label>
+                <br>
+                <label class="subheadinglabel">Enter account details of new creditor:</label>
+                <div class="divleft">
+                    <label></label>
+                    <label for="Name">Account Balance in R</label>
+                    <input type = "number"  min=0.00 class="form-control" [(ngModel)]="creditor.CredAccountBalance" name="CredAccountBalance" id="CredAccountBalance" >  
+                    <br>
+                </div> 
+                
+                <div class="divleft" >
+                    <button type="submit" (click)="addCreditor()">Save</button>
+                    <button type="button" (click)="cancel()">Cancel</button>
+                </div>
+            </div>   
+     </div>
+
+</form>
+
+    <router-outlet></router-outlet>
+</body>
+            </div>
+           </div>
+        </div>
+   </div>
+</nav>
