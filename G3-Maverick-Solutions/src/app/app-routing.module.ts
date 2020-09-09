@@ -14,6 +14,7 @@ import { NgModule } from '@angular/core';
     import { DonationManagementComponent } from './donation-management/donation-management.component';
     import { CreditorManagementComponent } from './creditor-management/creditor-management.component';
     import { ReportingManagementComponent } from './reporting-management/reporting-management.component';
+    
 
         //-----Login Subsystem Imports----//
     import { UserComponent } from './login-subsystem/user/user.component';
@@ -42,7 +43,11 @@ import { NgModule } from '@angular/core';
     import { AddCustomerComponent} from './add-customer/add-customer.component';
     import { ViewCustomerComponent } from './view-customer/view-customer.component';
 
-    import { SearchPaymentComponent } from './creditor-management/creditor-payment/search-payment/search-payment.component';
+
+import { SearchPaymentComponent } from './creditor-management/creditor-payment/search-payment/search-payment.component';
+import { PlaceSupplierOrderComponent } from './supplier-order-management/place-supplier-order/place-supplier-order.component';
+
+    
 
     //---Reporting Subsystem Imports---//
     import { CreditorReportComponent } from './reporting-management/creditor-report/creditor-report.component';
@@ -99,7 +104,8 @@ import { NgModule } from '@angular/core';
  import { StockTakeComponent } from './product-management/product/stock-take/stock-take.component';
  import { AddVatComponent } from './product-management/vat/add-vat/add-vat.component';
  import { UpdateVatComponent } from './product-management/vat/update-vat/update-vat.component';
-
+import { SearchSupplierOrderComponent } from './supplier-order-management/search-supplier-order/search-supplier-order.component';
+import { AddPaymentComponent } from './creditor-management/add-payment/add-payment.component';
 
 
     const routes: Routes = [
@@ -125,7 +131,18 @@ import { NgModule } from '@angular/core';
        //
        {path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
 
-
+       {
+        path: 'place-supplier-order',
+        component: PlaceSupplierOrderComponent,
+    },
+    {
+        path: 'search-supplier-order',
+        component: SearchSupplierOrderComponent,
+    },
+    {
+    path: 'add-payment',
+        component: AddPaymentComponent,
+    },
         {
             path: 'employee-management',
             component: EmployeeManagementComponent,
@@ -245,6 +262,7 @@ import { NgModule } from '@angular/core';
             path: 'search-payment',
             component: SearchPaymentComponent,
         },
+        
 
 
         ///---Province Subsystem Routing---//

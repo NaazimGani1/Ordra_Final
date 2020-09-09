@@ -40,40 +40,82 @@
   </div>
   
        </div> 
-      <div class="info"> 
+      <div class="info">   
 <body>
-    <h1>Creditor Payment Details</h1>
+    <h1>Place Supplier Order</h1>
+    <br>
     <form>
-        <div class="card" >
-            
-          <div class="conatiner" style="padding-top:20px;">  
-            <div class="col-sm-5" style="padding-top:20px;padding-bottom:20px;" >  
-                 <input class="form-control" type="text" placeholder="Search..."  >        
-            </div>  
-          </div>  
-            <table class="table table-striped">  
+            <div class="subheadinglabel" id="creditor">Backlog Products:</div>
+            <br>
+
+
+            <table>
+              <thead class="thead-dark">  
                 <tr>  
-                  <th>ID</th>  
-                  <th>Creditor</th>  
-                  <th>Date</th>  
-                  <th>Amount</th> 
+                  <th>Product</th>  
+                  <th>Quantity Needed</th>
                 </tr>  
+              </thead>  
               <tbody>  
-                <tr *ngFor="let creditorpayment of allPayments | async">  
-                  <td>{{creditorpayment.CreditorPaymentID}}</td>  
-                  <td>{{creditorpayment.CreditorID}}</td>  
-                  <td>{{creditorpayment.CredPaymentDate}}</td>  
-                  <td>{{creditorpayment.CredPaymentAmount}}</td> 
+                <tr *ngFor="let product of allProducts | async">  
+                  <td>{{product.ProdName}}</td>
+                  <td>{{product.QauntityToOrder}}</td>
                 </tr>  
               </tbody>
             </table>  
-  
-          <br>
+            <br>
+            <div class="divleft">
+            <label>Search Product for Supplier Information:</label>
+            <input class="searchinput" [(ngModel)]="name" type="text" id="name" name="name">
           </div>
-      
-      </form>
+        
+  <div class="divleft">
+    <button type="submit" (click) ="getSuppliers()">Search</button>
+    <button routerLink="/supplier-order-management" type="submit" >Cancel</button><br>
+          </div>
+
     
-    </body>
+        <div *ngIf = "showResults" class="card">
+            <div class="divleft">
+
+              <div class="divleft">
+                <br>
+                <label class="subheadinglabel">Supplier Details:</label>
+                <br>  
+                
+                <div class="card" id="creditor"> 
+                  <table>
+                      <thead class="thead-dark">  
+                        <tr>  
+                          <th>Product</th>  
+                          <th>Supplier</th> 
+                          <th>Cell Number</th> 
+                          <th>Email</th> 
+                          <th>Street No</th> 
+                          <th>Street</th> 
+                          <th>Postal Code</th> 
+                          <th>Suburb</th> 
+                        </tr>  
+                      </thead>  
+                      <tbody>  
+                        <tr> 
+                          <td>{{product.ProdName}}</td>
+                          <td>{{supplier.SupName}}</td>
+                          <td>{{supplier.SupCell}}</td>
+                          <td>{{supplier.SupEmail}}</td>
+                          <td>{{supplier.SupStreetNr}}</td>
+                          <td>{{supplier.SupStreet}}</td>
+                          <td>{{supplier.SupCode}}</td>
+                          <td>{{supplier.SupSuburb}}</td>
+                        </tr>  
+                      </tbody>
+                    </table>  
+                </div>
+              </div>
+            </div>
+        </div>
+    </form>
+</body>
       </div>
      </div>
   </div>

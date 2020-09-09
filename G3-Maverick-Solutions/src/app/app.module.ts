@@ -58,6 +58,7 @@ import { SearchSaleComponent } from './sales-management/search-sale/search-sale.
 import { CreditorPaymentComponent } from './creditor-management/creditor-payment/creditor-payment.component';
 import { SearchPaymentComponent } from './creditor-management/creditor-payment/search-payment/search-payment.component';
 
+
 import { AddProvinceComponent } from './gps-management/add-province/add-province.component';
 import { SearchProvinceComponent } from './gps-management/search-province/search-province.component';
 import { CreditorReportComponent } from './reporting-management/creditor-report/creditor-report.component';
@@ -73,6 +74,7 @@ import { CreateDonationComponent } from './donation-management/create-donation/c
 import { SearchDonationComponent } from './donation-management/search-donation/search-donation.component';
 import { DonatedProductComponent } from './donation-management/donated-product/donated-product.component';
 
+import { PlaceSupplierOrderComponent } from './supplier-order-management/place-supplier-order/place-supplier-order.component';
 import { CreateContainerComponent } from './create-container/create-container.component';
 import { SearchContainerComponent } from './search-container/search-container.component';
 import { DonationRecipientComponent } from './donation-management/donation-recipient/donation-recipient.component';
@@ -89,6 +91,8 @@ import { AddProductComponent } from './product-management/product/add-product/ad
 import { SearchProductComponent } from './product-management/product/search-product/search-product.component';
 import { SearchedProductDetailsComponent } from './product-management/product/searched-product-details/searched-product-details.component';
 import { StockTakeComponent } from './product-management/product/stock-take/stock-take.component';
+import { SearchSupplierOrderComponent } from './supplier-order-management/search-supplier-order/search-supplier-order.component';
+import { AddPaymentComponent } from './creditor-management/add-payment/add-payment.component';
 
 
 @NgModule({
@@ -136,6 +140,7 @@ import { StockTakeComponent } from './product-management/product/stock-take/stoc
     CreditorPaymentComponent,
     SearchPaymentComponent,
 
+
     AddProvinceComponent,
     SearchProvinceComponent,
     CreditorReportComponent,
@@ -150,6 +155,9 @@ import { StockTakeComponent } from './product-management/product/stock-take/stoc
     CreateDonationComponent,
     SearchDonationComponent,
     DonatedProductComponent,
+
+
+    PlaceSupplierOrderComponent,
 
     CreateContainerComponent,
     SearchContainerComponent,
@@ -167,7 +175,8 @@ import { StockTakeComponent } from './product-management/product/stock-take/stoc
     SearchProductComponent,
     SearchedProductDetailsComponent,
     StockTakeComponent,
- 
+    SearchSupplierOrderComponent,
+    AddPaymentComponent,
   ],
   imports: [
     BrowserModule,
