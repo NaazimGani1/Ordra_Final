@@ -28,7 +28,7 @@ export class ViewCustomerComponent implements OnInit {
   showSearch: boolean = true;
   showResults: boolean = false;
   showTable: boolean = false;
-  dateVal: Date;
+  dateVal= new Date();
 
   name : string;
   surname : string;

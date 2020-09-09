@@ -74,13 +74,13 @@
                 <div class="card" id="province ">
                     <label>Province </label>
                     <br>
-                    <button routerLink="/addProvince" type="submit">Add Province</button>
+                    <button routerLink="/add-province" type="submit">Add Province</button>
                     
-                    <button routerLink="/searchProvince" type="submit">Search Province</button>
+                    <button routerLink="/search-province" type="submit">Search Province</button>
                     
-                    <button routerLink="/searchProvince" type="submit">Update Province </button>
+                    <button routerLink="/search-province" type="submit">Update Province </button>
                    
-                    <button routerLink="/searchProvince" type="submit">Remove Province </button>
+                    <button routerLink="/search-province" type="submit">Remove Province </button>
                                
                 </div>
             </form>
@@ -91,25 +91,22 @@
         <h1>Create Area </h1>
       <br>
         <form class="mb-4"  #form='ngForm' autocomplete="off" (submit)="submitArea(form)">
-        <h3>Please add Area below :)</h3>
+       
         <div class="card"> 
          <p style="text-align: left;color: orange;"><u>Area Details:</u></p>
           <div style="width: 50%; overflow: hidden;">
-              <div style="width: 300px; float: left;">
+              
                     <label>Area Name:</label>
-                    <input type="text"name="ArName" #ArName="ngModel"[(ngModel)]="formModel1.ArName" >
-                    <label>Province</label>
-                    <div class="input-field col s6">
+                    <input type="text"name="ArName" #ArName="ngModel"[(ngModel)]="formModel1.ArName" ><br>
+                    <label>Province:</label>
                     <select name="ProvinceID" #ProvinceID="ngModel" [(ngModel)]="service.provinceList.ProvinceID"  (change)="selectProvince($event.target)">
                         <option value="0">-- Select --</option>
                         <option *ngFor="let item of service.provinceList" value="{{item.ProvinceID}}">{{item.ProvName}}
                         </option>
                     </select>
-                    </div>
-               </div>  
-               <div style="width: 300px; float: right;">
+                    <br>
                 <label>Postal Code:</label>
-                <input type="text" name="ArPostalCode" #ArPostalCode="ngModel" [(ngModel)]="formModel1.ArPostalCode" >
+                <input type="text" name="ArPostalCode" #ArPostalCode="ngModel" [(ngModel)]="formModel1.ArPostalCode" ><br>
                 <div class="input-field col s6">
                 <label>Area Status ID</label>
                 <select name="AreaStatusID" #AreaStatusID="ngModel" [(ngModel)]="service.statusList.AreaStatusID"  (change)="selectStatus($event.target)">
@@ -118,7 +115,7 @@
                     </option>
                 </select>
                 </div>
-             </div> 
+             
           </div>
           <div class="row">
             <div class="input-field col s12">
@@ -135,49 +132,43 @@
           <h1>Search Area</h1>
         <br>
         <form class="mb-4"  #form='ngForm' autocomplete="off" (submit)="onSearchArea(form)">
-          <h3>Please Search below :)</h3>
           <div class="card"> 
            <p style="text-align: left;color: orange;"><u>Area Details:</u></p>
             <div style="width: 50%; overflow: hidden;">
-                <div style="width: 300px; float: left;">
                       <label>Area Name:</label>
-                      <input type="text"name="ArName" #ArName="ngModel"[(ngModel)]="formModel2.ArName" >
+                      <input type="text"name="ArName" #ArName="ngModel"[(ngModel)]="formModel2.ArName" ><br>
                       <label>Province</label>
-                      <div class="input-field col s6">
                       <select name="ProvinceID" #ProvinceID="ngModel" [(ngModel)]="service.provinceList.ProvinceID"  (change)="selectProvince($event.target)">
                           <option value="0">-- Select --</option>
                           <option *ngFor="let item of service.provinceList" value="{{item.ProvinceID}}">{{item.ProvName}}
                           </option>
                       </select>
-                      </div>
-                 </div>  
-                 <div style="width: 300px; float: right;">
+                    
+                  <br>
                   <label>Postal Code:</label>
-                  <input type="text" name="ArPostalCode" #ArPostalCode="ngModel" [(ngModel)]="formModel2.ArPostalCode" >
-                  <div class="input-field col s6">
+                  <input type="text" name="ArPostalCode" #ArPostalCode="ngModel" [(ngModel)]="formModel2.ArPostalCode" ><br>
                   <label>Area Status ID</label>
                   <select name="AreaStatusID" #AreaStatusID="ngModel" [(ngModel)]="service.statusList.AreaStatusID"  (change)="selectStatus($event.target)">
                       <option value="0">-- Select --</option>
                       <option *ngFor="let item of service.statusList" value="{{item.AreaStatusID}}">{{item.ASDescription}}
                       </option>
                   </select>
-                  </div>
-               </div> 
+                  
+               
             </div>
             <div class="row">
               <div class="input-field col s12">
                 <button class="btn-large btn-submit" type="submit" [disabled]="form.invalid">Search Area</button>
+                <button class="btn-large btn-submit" (click)="clear()">Cancel</button>
               </div>
             </div>      
           </div>
         </form>
-        <button class="btn-large btn-submit" (click)="clear()">Cancel</button>
         <!-- table -->
        <div class="row">
       <div class="col-md-8 offset-md-2">
       <table class="table">
         <tr>
-          <th></th>
           <th>Area Name</th>
           <th>Province</th>
           <th>Postal Code</th>

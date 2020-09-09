@@ -33,7 +33,7 @@ export class CreateManagerComponent implements OnInit {
  selectedContainers: Container[] = [];
 
 
- dateVal: Date;
+ dateVal = new Date();
   
 
   showTable: boolean = false;

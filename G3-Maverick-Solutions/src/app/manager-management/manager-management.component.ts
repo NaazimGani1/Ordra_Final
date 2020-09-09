@@ -10,7 +10,7 @@ export class ManagerManagementComponent implements OnInit {
 
   constructor(private router: Router) { }
 
-  dateVal: Date;
+  dateVal = new Date();
 
   ngOnInit(): void {
   }

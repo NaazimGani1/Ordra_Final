@@ -41,5 +41,47 @@ export class AddProvinceComponent implements OnInit {
     this.router.navigate(['/home']);
   }
 
-
+  addProvince()
+  {
+     this.provinceService.addProvince(this.province).subscribe( (res:any)=> 
+    {
+      console.log(res);
+      if(res.Message)
+      {
+        this.responseMessage = res.Message;
+      }
+      alert(this.responseMessage)
+      this.router.navigate(["gps-management"])
+    }) 
+  
+    
+  
+  
+    /*  if (this.provinceIDUpdate == null)
+    {
+      this.provinceService.addProvince(this.province).subscribe(
+        (res:any) => {
+          this.dataSaved = true;
+          this.provinceIDUpdate = null;
+          
+        }
+      );
+    }
+    else
+    {
+      this.province.ProvinceID = this.provinceIDUpdate;
+      this.provinceService.updateProvince(this.province).subscribe(
+        () => {
+          this.dataSaved = true;
+          this.provinceIDUpdate = null;
+        }
+      );
+    }  */
+  
+  }
+  
+  
+    Cancel(){
+      this.router.navigate(["gps-management"])
+    }
 }

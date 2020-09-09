@@ -41,7 +41,55 @@
         
              </div> 
             <div class="info">   
-                   
+                <body>
+
+                    <h1>Search Province</h1>
+                    <br>
+                    <form>
+                        
+                        <div class="card" *ngIf = "showSearch">
+                            
+                            <div class="divleft">
+                                <label class="subheadinglabel">Enter province name to search:</label>
+                                <br><br>
+                                <label for="Name">Province Name:</label>
+                                <input type = "text" id="name"  class="searchInput"  [(ngModel)]="name" name="name">     
+                                <br>
+                            </div> 
+                            
+                            <div class="divleft">
+                                <button type="submit" (click)= "searchProvince()">Search</button>
+                                <button type="button" (click)= "gotoGPSManagement()">Cancel</button>
+                                
+                            </div>
+                        </div>
+                        <br><br>
+                        
+                        <div class="card" *ngIf = "showResults">
+                            <div class="divleft">
+                                <label class="subheadinglabel">Searched province details:</label>
+                                <br><br>
+                            </div>
+                
+                            <div class="divleft">
+                                <label for="Name">Province Name</label>
+                                <input type = "text"  [(ngModel)]="province.ProvName" name="ProvName" id="ProvName"  required [readonly] = "this.inputEnabled">     
+                                <br><br>
+                            </div>
+                            
+                            <div class="divleft" *ngIf="showButtons">
+                                <button type="submit" (click)="enableInputs()">Update</button>
+                                <button type="submit" (click)="removeProvince()">Delete</button>
+                             </div>
+                    
+                             <div class="divleft" *ngIf="showSave" >
+                             <button type="submit" (click)="updateProvince()">Save</button>
+                             <button type="submit" (click)="cancel()">Cancel</button>
+                            </div>
+                        </div>
+                
+                    </form>
+                </body>
             </div>
            </div>
         </div>
