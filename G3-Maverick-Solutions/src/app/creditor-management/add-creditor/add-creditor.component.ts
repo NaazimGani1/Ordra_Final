@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { NavbarService } from 'src/app/navbar/navbar.service';
 import { UserService } from 'src/app/login-subsystem/service/user.service';
 import { CreditorService } from '../creditor.service';
 import { Creditor } from '../Models/creditor';
@@ -22,7 +21,7 @@ export class AddCreditorComponent implements OnInit {
   
   dateVal = new Date();
 
-  constructor(public nav: NavbarService, private creditorService: CreditorService, private formBuilder: FormBuilder, private router: Router, private userService: UserService) { };
+  constructor( private creditorService: CreditorService, private formBuilder: FormBuilder, private router: Router, private userService: UserService) { };
 
   creditor : Creditor = new Creditor();
   supplier: Supplier = new Supplier();

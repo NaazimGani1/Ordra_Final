@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { NavbarService } from 'src/app/navbar/navbar.service';
 import { UserService } from 'src/app/login-subsystem/service/user.service';
 import { DonationService } from '../donation.service';
 import { DonatedProduct } from '../Models/donated-product';
@@ -17,8 +16,9 @@ import { Container } from '../Models/container';
 })
 export class CreateDonationComponent implements OnInit {
 
-  constructor(public nav: NavbarService, private donationService: DonationService, private formBuilder: FormBuilder, private router: Router, private userService: UserService) { };
+  constructor( private donationService: DonationService, private formBuilder: FormBuilder, private router: Router, private userService: UserService) { };
 
+  dateVal = new Date();
   donation: Donation = new Donation();
   donationRecipient: DonationRecipient = new DonationRecipient();
   donatedProduct: DonatedProduct = new DonatedProduct();
