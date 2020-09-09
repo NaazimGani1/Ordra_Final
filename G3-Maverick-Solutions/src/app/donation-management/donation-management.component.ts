@@ -14,7 +14,18 @@ export class DonationManagementComponent implements OnInit {
   constructor(public nav: NavbarService, private formBuilder: FormBuilder, private router: Router, private userService: UserService) { };
 
 
+  dateVal = new Date();
+  
+
   ngOnInit(): void {
+  }
+
+  gotoAddDonationRecipient(){
+    this.router.navigate(['add-donation-recipient']);
+  }
+
+  gotoSearchDonationRecipient(){
+    this.router.navigate(['search-donation-recipient']);
   }
 
   onLogout() {

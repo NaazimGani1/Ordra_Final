@@ -41,6 +41,7 @@ import { NgModule } from '@angular/core';
     //-----Customer subsytem Imports----//
     import { AddCustomerComponent} from './add-customer/add-customer.component';
     import { ViewCustomerComponent } from './view-customer/view-customer.component';
+
     import { SearchPaymentComponent } from './creditor-management/creditor-payment/search-payment/search-payment.component';
 
     //---Reporting Subsystem Imports---//
@@ -65,7 +66,40 @@ import { NgModule } from '@angular/core';
     //-----Creditor subsytem Imports----//
     import { AddCreditorComponent } from './creditor-management/add-creditor/add-creditor.component';
     import { SearchCreditorComponent } from './creditor-management/search-creditor/search-creditor.component';
-    
+ 
+     //----Supplier Subsystem Imports----//
+     import { AddSupplierComponent} from './add-supplier/add-supplier.component';
+     import { ViewSupplierComponent} from './view-supplier/view-supplier.component';
+ 
+     //---Manager Subsystem Imports---//
+     import {CreateManagerComponent} from './create-manager/create-manager.component';
+     import { SearchManagerComponent} from './view-manager/view-manager.component';
+ 
+     //---Customer Order Subsystem Imports---//
+     import {PlaceOrderComponent} from './place-order/place-order.component';
+     import {ViewOrderComponent} from './view-order/view-order.component';
+     import {SendNotificationComponent} from './send-notification/send-notification.component';
+
+ //---Container Subsystem Imports---//
+ import { CreateContainerComponent } from './create-container/create-container.component';
+ import { SearchContainerComponent } from './search-container/search-container.component';
+
+ //---Donation Recipient Subsystem Imports---//
+ import { AddDonationRecipientComponent } from './donation-management/donation-recipient/add-donation-recipient/add-donation-recipient.component';
+ import { SearchDonationRecipientComponent } from './donation-management/donation-recipient/search-donation-recipient/search-donation-recipient.component';
+
+ //---Product Category Subsystem Imports---//
+ import { AddProductCategoryComponent } from './product-management/product-category/add-product-category/add-product-category.component';
+ import { SearchProductCategoryComponent } from './product-management/product-category/search-product-category/search-product-category.component';
+
+ //---Product Subsystem Imports---//
+ import { AddProductComponent } from './product-management/product/add-product/add-product.component';
+ import { SearchProductComponent } from './product-management/product/search-product/search-product.component';
+ import { SearchedProductDetailsComponent } from './product-management/product/searched-product-details/searched-product-details.component';
+ import { StockTakeComponent } from './product-management/product/stock-take/stock-take.component';
+ import { AddVatComponent } from './product-management/vat/add-vat/add-vat.component';
+ import { UpdateVatComponent } from './product-management/vat/update-vat/update-vat.component';
+
 
 
     const routes: Routes = [
@@ -145,16 +179,59 @@ import { NgModule } from '@angular/core';
             component: ReportingManagementComponent,
         },
 
-        //---Customer Subsystem Routing---//
-        {
-            path: 'add-customer',
-            component: AddCustomerComponent,
-        },
+       //---Customer Subsystem Routing---//
+       {
+        path: 'add-customer',
+        component: AddCustomerComponent,
+    },
 
-        {
-            path: 'view-customer',
-            component: ViewCustomerComponent,
-        },
+    {
+        path: 'view-customer',
+        component: ViewCustomerComponent,
+    },
+
+    //----Supplier Subsystem Routing---//
+
+    {
+        path: 'add-supplier',
+        component: AddSupplierComponent,
+    },
+
+    {
+        path: 'view-supplier',
+        component: ViewSupplierComponent,
+    },
+
+    //----Manager Subsystem Routing---//
+    {
+        path: 'create-manager',
+        component: CreateManagerComponent,
+    },
+
+    {
+        path: 'view-manager',
+        component: SearchManagerComponent,
+    },
+
+
+    //---Customer Order Subsytem Routing---//
+    {
+        path:'place-order',
+        component: PlaceOrderComponent,
+    
+    },
+
+
+    {
+        path: 'view-order',
+        component: ViewOrderComponent,
+    },
+
+    {
+        path: 'send-notification',
+        component: SendNotificationComponent,
+    },
+
         
         {
             path: 'create-location',
@@ -168,6 +245,7 @@ import { NgModule } from '@angular/core';
             path: 'search-payment',
             component: SearchPaymentComponent,
         },
+
 
         ///---Province Subsystem Routing---//
         { path: 'add-province', component: AddProvinceComponent },
@@ -191,8 +269,69 @@ import { NgModule } from '@angular/core';
         { path: 'search-donated-product', component: SearchCreditorComponent},
         { path: 'search-donation', component: SearchDonationComponent },
         //{ path: 'searched-donation-details', component: SearchedDonationDetailsComponent},
-       
+  
+         //----Container Subsystem Routing---//
+        {
+            path: 'create-container',
+            component: CreateContainerComponent,
+        },
 
+        {
+            path: 'search-container',
+            component: SearchContainerComponent,
+        },
+        //----Donation Recipient Subsystem Routing---//
+        {
+            path: 'add-donation-recipient',
+            component: AddDonationRecipientComponent,
+        },
+
+        {
+            path: 'search-donation-recipient',
+            component: SearchDonationRecipientComponent,
+        },
+
+         //----Product Category Subsystem Routing---//
+         {
+            path: 'add-product-category',
+            component: AddProductCategoryComponent,
+        },
+
+        {
+            path: 'search-product-category',
+            component: SearchProductCategoryComponent,
+        },
+
+        //----Product Subsystem Routing---//
+        {
+            path: 'add-product',
+            component: AddProductComponent,
+        },
+
+        {
+            path: 'search-product',
+            component: SearchProductComponent,
+        },
+
+        {
+            path: 'searched-product-details',
+            component: SearchedProductDetailsComponent,
+        },
+
+        {
+            path: 'stock-take',
+            component: StockTakeComponent,
+        },
+
+        {
+            path: 'add-vat',
+            component: AddVatComponent,
+        },
+
+        {
+            path: 'update-vat',
+            component: UpdateVatComponent,
+        },
     ];
 
     @NgModule({

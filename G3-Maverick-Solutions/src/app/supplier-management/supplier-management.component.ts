@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-supplier-management',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SupplierManagementComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
 
+  gotoAddSupplier(){
+    this.router.navigate(['add-supplier']);
+  }
+
+  gotoViewSupplier(){
+    this.router.navigate(['view-supplier']);
+
+  }
+
+
 }
+

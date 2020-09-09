@@ -48,8 +48,16 @@ import { UserService } from './login-subsystem/service/user.service';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
+import { CreateManagerComponent } from './create-manager/create-manager.component';
+import { PlaceOrderComponent } from './place-order/place-order.component';
+import { SearchManagerComponent } from './view-manager/view-manager.component';
+import { SendNotificationComponent } from './send-notification/send-notification.component';
+import { ViewOrderComponent } from './view-order/view-order.component';
+import { MakeSaleComponent } from './sales-management/make-sale/make-sale.component';
+import { SearchSaleComponent } from './sales-management/search-sale/search-sale.component';
 import { CreditorPaymentComponent } from './creditor-management/creditor-payment/creditor-payment.component';
 import { SearchPaymentComponent } from './creditor-management/creditor-payment/search-payment/search-payment.component';
+
 import { AddProvinceComponent } from './gps-management/add-province/add-province.component';
 import { SearchProvinceComponent } from './gps-management/search-province/search-province.component';
 import { CreditorReportComponent } from './reporting-management/creditor-report/creditor-report.component';
@@ -64,6 +72,24 @@ import { SearchCreditorComponent } from './creditor-management/search-creditor/s
 import { CreateDonationComponent } from './donation-management/create-donation/create-donation.component';
 import { SearchDonationComponent } from './donation-management/search-donation/search-donation.component';
 import { DonatedProductComponent } from './donation-management/donated-product/donated-product.component';
+
+import { CreateContainerComponent } from './create-container/create-container.component';
+import { SearchContainerComponent } from './search-container/search-container.component';
+import { DonationRecipientComponent } from './donation-management/donation-recipient/donation-recipient.component';
+import { AddDonationRecipientComponent } from './donation-management/donation-recipient/add-donation-recipient/add-donation-recipient.component';
+import { SearchDonationRecipientComponent } from './donation-management/donation-recipient/search-donation-recipient/search-donation-recipient.component';
+import { ProductComponent } from './product-management/product/product.component';
+import { ProductCategoryComponent } from './product-management/product-category/product-category.component';
+import { VatComponent } from './product-management/vat/vat.component';
+import { AddVatComponent } from './product-management/vat/add-vat/add-vat.component';
+import { UpdateVatComponent } from './product-management/vat/update-vat/update-vat.component';
+import { AddProductCategoryComponent } from './product-management/product-category/add-product-category/add-product-category.component';
+import { SearchProductCategoryComponent } from './product-management/product-category/search-product-category/search-product-category.component';
+import { AddProductComponent } from './product-management/product/add-product/add-product.component';
+import { SearchProductComponent } from './product-management/product/search-product/search-product.component';
+import { SearchedProductDetailsComponent } from './product-management/product/searched-product-details/searched-product-details.component';
+import { StockTakeComponent } from './product-management/product/stock-take/stock-take.component';
+
 
 @NgModule({
   declarations: [
@@ -100,8 +126,16 @@ import { DonatedProductComponent } from './donation-management/donated-product/d
     NavbarComponent,
     HomeComponent,
     ForbiddenComponent,
+    CreateManagerComponent,
+    PlaceOrderComponent,
+    SearchManagerComponent,
+    SendNotificationComponent,
+    ViewOrderComponent,
+    MakeSaleComponent,
+    SearchSaleComponent,
     CreditorPaymentComponent,
     SearchPaymentComponent,
+
     AddProvinceComponent,
     SearchProvinceComponent,
     CreditorReportComponent,
@@ -116,6 +150,24 @@ import { DonatedProductComponent } from './donation-management/donated-product/d
     CreateDonationComponent,
     SearchDonationComponent,
     DonatedProductComponent,
+
+    CreateContainerComponent,
+    SearchContainerComponent,
+    DonationRecipientComponent,
+    AddDonationRecipientComponent,
+    SearchDonationRecipientComponent,
+    ProductComponent,
+    ProductCategoryComponent,
+    VatComponent,
+    AddVatComponent,
+    UpdateVatComponent,
+    AddProductCategoryComponent,
+    SearchProductCategoryComponent,
+    AddProductComponent,
+    SearchProductComponent,
+    SearchedProductDetailsComponent,
+    StockTakeComponent,
+ 
   ],
   imports: [
     BrowserModule,
