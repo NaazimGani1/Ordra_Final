@@ -57,6 +57,7 @@ import { MakeSaleComponent } from './sales-management/make-sale/make-sale.compon
 import { SearchSaleComponent } from './sales-management/search-sale/search-sale.component';
 import { CreditorPaymentComponent } from './creditor-management/creditor-payment/creditor-payment.component';
 import { SearchPaymentComponent } from './creditor-management/creditor-payment/search-payment/search-payment.component';
+import { PlaceSupplierOrderComponent } from './supplier-order-management/place-supplier-order/place-supplier-order.component';
 import { CreateContainerComponent } from './create-container/create-container.component';
 import { SearchContainerComponent } from './search-container/search-container.component';
 import { DonationRecipientComponent } from './donation-management/donation-recipient/donation-recipient.component';
@@ -73,6 +74,8 @@ import { AddProductComponent } from './product-management/product/add-product/ad
 import { SearchProductComponent } from './product-management/product/search-product/search-product.component';
 import { SearchedProductDetailsComponent } from './product-management/product/searched-product-details/searched-product-details.component';
 import { StockTakeComponent } from './product-management/product/stock-take/stock-take.component';
+import { SearchSupplierOrderComponent } from './supplier-order-management/search-supplier-order/search-supplier-order.component';
+import { AddPaymentComponent } from './creditor-management/add-payment/add-payment.component';
 
 @NgModule({
   declarations: [
@@ -118,6 +121,7 @@ import { StockTakeComponent } from './product-management/product/stock-take/stoc
     SearchSaleComponent,
     CreditorPaymentComponent,
     SearchPaymentComponent,
+    PlaceSupplierOrderComponent,
     CreateContainerComponent,
     SearchContainerComponent,
     DonationRecipientComponent,
@@ -134,6 +138,8 @@ import { StockTakeComponent } from './product-management/product/stock-take/stoc
     SearchProductComponent,
     SearchedProductDetailsComponent,
     StockTakeComponent,
+    SearchSupplierOrderComponent,
+    AddPaymentComponent,
     
     
   ],

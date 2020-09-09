@@ -8,6 +8,9 @@ using ORDRA_API.Models;
 using System.Data.Entity;
 using System.Dynamic;
 using System.Web.Http.Cors;
+using System.Web.Http.Description;
+using System.Threading.Tasks;
+using System.Data.Entity.Infrastructure;
 
 namespace ORDRA_API.Controllers
 {
@@ -173,6 +176,24 @@ namespace ORDRA_API.Controllers
             return toReturn.location;
         }
 
+        // POST: api/Locations
+        [ResponseType(typeof(Location))]
+        public async Task<object> PostLocation(Location location)
+        {
+            var message = "Nothing";
+
+            if (!ModelState.IsValid)
+            {
+                message = "Error";
+            }
+            else
+            {
+                db.Locations.Add(location);
+                await db.SaveChangesAsync();
+                message = "Success";
+            }
+            return message;
+        }
 
         //add location
         [HttpPost]
@@ -257,7 +278,45 @@ namespace ORDRA_API.Controllers
             return toReturn;
         }
 
+        // PUT: api/Locations/5
+        [ResponseType(typeof(void))]
+        public async Task<IHttpActionResult> PutLocation(int id, Location location)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
 
+            if (id != location.LocationID)
+            {
+                return BadRequest();
+            }
+
+            db.Entry(location).State = EntityState.Modified;
+
+            try
+            {
+                await db.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!LocationExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return StatusCode(HttpStatusCode.NoContent);
+        }
+
+        private bool LocationExists(int id)
+        {
+            return db.Locations.Count(e => e.LocationID == id) > 0;
+        }
 
 
     }

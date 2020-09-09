@@ -40,27 +40,41 @@
     </div>
     
          </div> 
-        <div class="info">   
+        <div class="info"> 
 <body>
-    <h1>Supplier Order Management</h1>
-    <br/>
-    <form>
+    <h1>Add Creditor Payment</h1>
+    <form > 
         
-        <div class="card" id="supplierorder">
+        <div class="card" id="creditor">
   
-           
-            <button routerLink="/place-supplier-order" type="submit" >Place Supplier Order</button><br>
-           
-            <button routerLink="/search-supplier-order" type="submit" >Search Supplier Order</button><br>
-           
-            <button routerLink="/search-supplier-order" type="submit" >Cancel Supplier Order</button><br>
+          <div class="subheadinglabel" id="creditor">Enter Payment Details:</div>
+            <br>
+            <div class="divleft">
+              <div class="divleft" >
+                <label for="CreditorID">Creditor:  </label>
+                <select required>
+                  <option value="0">--Select--</option>
+                  <option [value]="type" *ngFor= "let supplier of suppliers">{{supplier.SupName}}</option>
+                </select>
+            </div> 
+            <br/>
+            <div class="divleft" >
+              <label for="CredPaymentDate">Date of Payment:  </label>
+              <input type="date"  [(ngModel)]="creditorpayment.CredPaymentDate" id="CredPaymentDate" name="CredPaymentDate" required>
+          </div>
+  
+          <div class="divleft" >
+            <label for="CredPaymentAmount">Amount:  </label>
+            <input type="text"  [(ngModel)]="creditorpayment.CredPaymentAmount" id="CredPaymentAmount" name="CredPaymentAmount" required>
+        </div>
+  
             
-            <button routerLink="/search-supplier-order" type="submit" >Receive Stock</button><br>
-           
+        <button type="submit" (click)="addCreditorPayment()">Add Creditor Payment</button> 
+        <button type="submit"  [routerLink]="'/creditor-management'">Cancel</button>
+          </div>
+            
         </div>
         <br><br>
-      
-       
   
     
     </form>
@@ -70,4 +84,3 @@
        </div>
     </div>
 </div>
-

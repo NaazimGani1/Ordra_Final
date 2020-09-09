@@ -53,7 +53,7 @@
                    
                     <button routerLink="/search-location" type="submit">Search Location</button>
                    
-                    <button routerLink="/searchLocation" type="submit">Update Location</button>
+                    <button routerLink="/search-location" type="submit">Update Location</button>
                       
                 </div>
                 <br><br>
@@ -275,13 +275,13 @@
                 
              </div> 
             </div> 
-          </div>
-          <div class="row">
-            <div class="input-field col s12">
-              <button class="btn-large btn-submit" type="submit" [disabled]="form.invalid">Create Location</button>
-              <button class="btn-large btn-submit" (click)="clear()">Cancel</button> 
-            </div>
-          </div>      
+            <div class="row">
+              <div class="input-field col s12">
+                <button class="btn-large btn-submit" type="submit" [disabled]="form.invalid">Create Location</button>
+                <button class="btn-large btn-submit" (click)="clear()">Cancel</button> 
+              </div>
+            </div> 
+          </div>    
         
       </form>
       

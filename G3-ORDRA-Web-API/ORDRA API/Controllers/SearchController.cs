@@ -44,6 +44,21 @@ namespace ORDRA_API.Controllers
             return Ok(appArea);
         }
 
+        [HttpPost]
+        [Route("api/Search/searchLocation")]
+        public async Task<Object> searchLocation(searchLocation Loc)
+        {
+            Location appLoc = await db.Locations.Where(x => x.LocName == Loc.LocName && x.LocationStatusID == Loc.LocationStatusID).FirstOrDefaultAsync();
+            if (appLoc == null)
+            {
+                var message = "NotFound";
+                return message;
+            }
+
+            return Ok(appLoc);
+        }
+
+
 
     }
 }

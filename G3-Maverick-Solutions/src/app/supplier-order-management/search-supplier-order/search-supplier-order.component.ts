@@ -2,13 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-supplier-order-management',
-  templateUrl: './supplier-order-management.component.html',
-  styleUrls: ['./supplier-order-management.component.scss']
+  selector: 'app-search-supplier-order',
+  templateUrl: './search-supplier-order.component.html',
+  styleUrls: ['./search-supplier-order.component.scss']
 })
-export class SupplierOrderManagementComponent implements OnInit {
+export class SearchSupplierOrderComponent implements OnInit {
   dateVal = new Date();
-
   constructor(private router: Router) { }
 
   ngOnInit(): void {
