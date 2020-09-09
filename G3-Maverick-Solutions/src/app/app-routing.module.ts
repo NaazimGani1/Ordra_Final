@@ -14,6 +14,7 @@ import { NgModule } from '@angular/core';
     import { DonationManagementComponent } from './donation-management/donation-management.component';
     import { CreditorManagementComponent } from './creditor-management/creditor-management.component';
     import { ReportingManagementComponent } from './reporting-management/reporting-management.component';
+    
 
         //-----Login Subsystem Imports----//
     import { UserComponent } from './login-subsystem/user/user.component';
@@ -42,7 +43,7 @@ import { NgModule } from '@angular/core';
     import { AddCustomerComponent} from './add-customer/add-customer.component';
     import { ViewCustomerComponent } from './view-customer/view-customer.component';
 import { SearchPaymentComponent } from './creditor-management/creditor-payment/search-payment/search-payment.component';
-
+import { PlaceSupplierOrderComponent } from './supplier-order-management/place-supplier-order/place-supplier-order.component';
 
 
 
@@ -69,7 +70,10 @@ import { SearchPaymentComponent } from './creditor-management/creditor-payment/s
        //
        {path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
 
-
+       {
+        path: 'place-supplier-order',
+        component: PlaceSupplierOrderComponent,
+    },
         {
             path: 'employee-management',
             component: EmployeeManagementComponent,
@@ -146,6 +150,7 @@ import { SearchPaymentComponent } from './creditor-management/creditor-payment/s
             path: 'search-payment',
             component: SearchPaymentComponent,
         },
+        
     ];
 
     @NgModule({

@@ -50,6 +50,7 @@ import { HomeComponent } from './home/home.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { CreditorPaymentComponent } from './creditor-management/creditor-payment/creditor-payment.component';
 import { SearchPaymentComponent } from './creditor-management/creditor-payment/search-payment/search-payment.component';
+import { PlaceSupplierOrderComponent } from './supplier-order-management/place-supplier-order/place-supplier-order.component';
 
 @NgModule({
   declarations: [
@@ -88,6 +89,7 @@ import { SearchPaymentComponent } from './creditor-management/creditor-payment/s
     ForbiddenComponent,
     CreditorPaymentComponent,
     SearchPaymentComponent,
+    PlaceSupplierOrderComponent,
   ],
   imports: [
     BrowserModule,

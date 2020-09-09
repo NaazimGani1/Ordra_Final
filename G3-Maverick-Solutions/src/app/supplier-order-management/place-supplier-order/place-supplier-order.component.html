@@ -1,0 +1,69 @@
+<body>
+    <h1>Place Supplier Order</h1>
+    <br>
+    <form>
+            <div class="subheadinglabel" id="creditor">Backlog Products:</div>
+            <br>
+
+
+            <table>
+              <thead class="thead-dark">  
+                <tr>  
+                  <th>Product</th>  
+                  <th>Quantity Needed</th>
+                </tr>  
+              </thead>  
+              <tbody>  
+                <tr *ngFor="let product of allProducts | async">  
+                  <td>{{product.ProdName}}</td>
+                  <td>{{product.QauntityToOrder}}</td>
+                </tr>  
+              </tbody>
+            </table>  
+            <br>
+            <label>Search Product for Supplier Information:</label>
+            <input class="searchinput" class="form-control" [(ngModel)]="name" type="text" id="name" name="name">
+        
+  <div class="divleft">
+    <button type="submit" (click) ="getSuppliers()">Search</button>
+    <button routerLink="/supplier-order-management" type="submit" >Cancel</button><br>
+          </div>
+
+      
+        <br><br>
+        <div *ngIf = "showResults" class="card">
+            <div class="divleft">
+
+              <div class="divleft">
+                <br>
+                <label class="subheadinglabel">Supplier Details:</label>
+                <br>  
+                
+                <div class="card" id="creditor">
+                  <table class="table table-striped">  
+                      <thead class="thead-dark">  
+                        <tr>  
+                          <th>Product</th>  
+                          <th>Supplier</th> 
+                          <th>Cell Number</th> 
+                          <th>Email</th> 
+                          <th>Street No</th> 
+                          <th>Street</th> 
+                          <th>Postal Code</th> 
+                          <th>Suburb</th> 
+                        </tr>  
+                      </thead>  
+                      <tbody>  
+                        <tr> 
+                          <td>{{product.ProdName}}</td>
+                          <td>{{supplier.SupName}}</td>
+                          <td>{{supplier.SupCell}}</td>
+                          <td>{{supplier.SupEmail}}</td>
+                          <td>{{supplier.SupStreetNr}}</td>
+                          <td>{{supplier.SupStreet}}</td>
+                          <td>{{supplier.SupCode}}</td>
+                          <td>{{supplier.SupSuburb}}</td>
+                        </tr>  
+                      </tbody>
+                    </table>  
+                </div>
