@@ -264,17 +264,24 @@ namespace ORDRA_API.Controllers
                     foreach (var prod in productsList)
                     {
                         Price price = db.Prices.Include(x => x.Product).Where(x => x.PriceStartDate <= DateTime.Now && x.PriceEndDate >= DateTime.Now && x.ProductID == prod.ProductID).FirstOrDefault();
-                        double Price = (double)price.UPriceR;
-                        dynamic productDetails = new ExpandoObject();
-                        productDetails.ProductCategoryID = prod.ProductCategoryID;
-                        productDetails.ProductID = prod.ProductID;
-                        productDetails.ProdDescription = prod.ProdDesciption;
-                        productDetails.Prodname = prod.ProdName;
-                        productDetails.Quantity = 0;
-                        productDetails.Price = Math.Round(Price, 2);
-                        productDetails.Subtotal = 0.0;
+                        if (price != null)
+                        {
+                            double Price = (double)price.UPriceR;
+                            dynamic productDetails = new ExpandoObject();
+                            productDetails.ProductCategoryID = prod.ProductCategoryID;
+                            productDetails.ProductID = prod.ProductID;
+                            productDetails.ProdDescription = prod.ProdDesciption;
+                            productDetails.Prodname = prod.ProdName;
+                            productDetails.Quantity = 0;
+                            productDetails.Price = Math.Round(Price, 2);
+                            productDetails.Subtotal = 0.0;
 
-                        products.Add(productDetails);
+                            products.Add(productDetails);
+                        }
+                        else
+                        {
+                            toReturn.Message = "Product not found";
+                        }
                     }
                     toReturn.products = products;
 

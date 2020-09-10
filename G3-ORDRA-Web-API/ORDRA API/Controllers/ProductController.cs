@@ -76,9 +76,9 @@ namespace ORDRA_API.Controllers
             return toReturn;
         }
 
-        //search  by product category
+        //search  by product Category
         [HttpGet]
-        [Route("SearchProductByCategory")]
+        [Route("SearchProductByCategory/{name}")]
         public object SearchProductByCategory(string name)
         {
 
@@ -188,39 +188,60 @@ namespace ORDRA_API.Controllers
         {
             db.Configuration.ProxyCreationEnabled = false;
 
-            Product objectProduct = new Product();
+
             Price objectPrice = new Price();
             dynamic toReturn = new ExpandoObject();
-            var id = productUpdate.ProductID;
+
 
             try
             {
-                objectProduct = db.Products.Include(z => z.Prices).Where(x => x.ProductID == id).FirstOrDefault();
+                //Get product
+                Product objectProduct = db.Products.Include(z => z.Prices).Where(x => x.ProductID == productUpdate.ProductID).FirstOrDefault();
+
+                //get product category related to product
+                Product_Category cat = db.Product_Category.Where(x => x.ProductCategoryID == productUpdate.ProductCategoryID).FirstOrDefault();
+
+
                 if (objectProduct != null)
                 {
                     objectProduct.ProdName = productUpdate.ProdName;
                     objectProduct.ProdDesciption = productUpdate.ProdDesciption;
                     objectProduct.ProdReLevel = productUpdate.ProdReLevel;
-                    objectProduct.ProductCategoryID = productUpdate.ProductCategoryID;
+                    objectProduct.ProductCategoryID = cat.ProductCategoryID;
 
                     db.SaveChanges();
-
-                    Price price = db.Prices.Include(x => x.Product).Where(x => x.ProductID == id).ToList().FirstOrDefault();
-
-                    // objectPrice.UPriceR =productUpdate.Prices.
-                    objectPrice.UPriceR = price.UPriceR;
-                    objectPrice.CPriceR = price.CPriceR;
-                    objectPrice.PriceStartDate = price.PriceStartDate;
-                    objectPrice.PriceEndDate = price.PriceEndDate;
-                    db.SaveChanges();
-
-
-                    toReturn.Message = "Update Successfull";
                 }
-                else
+
+                //extract price details from the product input, since it is sent in the form of a list
+                List<Price> prodPrices = db.Prices.ToList();
+                foreach (var pri in prodPrices)
                 {
-                    toReturn.Message = "Record Not Found";
+
+                    Price price = db.Prices.Include(x => x.Product).Where(x => x.ProductID == productUpdate.ProductID && x.PriceID == pri.PriceID).ToList().FirstOrDefault();
+
+                    if (price != null)
+                    {
+                        //set price details from extracted list
+
+
+                        price.ProductID = pri.ProductID;
+                        price.UPriceR = pri.UPriceR;
+                        price.CPriceR = pri.CPriceR;
+                        price.PriceStartDate = pri.PriceStartDate;
+                        price.PriceEndDate = pri.PriceEndDate;
+                        db.SaveChanges();
+
+                        toReturn.Message = "Update Successfull";
+
+                    }
+                     
+
+                 else { 
+                    toReturn.Message = "Update unsuccessful"; 
                 }
+
+            }
+
             }
 
             catch (Exception)
@@ -230,6 +251,7 @@ namespace ORDRA_API.Controllers
             }
             return toReturn;
         }
+
 
         //delete product
 

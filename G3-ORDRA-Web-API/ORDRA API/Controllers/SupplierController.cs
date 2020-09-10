@@ -137,7 +137,9 @@ namespace ORDRA_API.Controllers
 
                 else
                 {
-                    toReturn.Message = "Duplicate Record Found";
+                    db.Suppliers.Add(newSupplier);
+                    db.SaveChanges();
+                    toReturn.Message = "Add Successful";
                 }
             }
             catch (Exception)
