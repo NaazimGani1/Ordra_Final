@@ -19,4 +19,5 @@ export class HomeComponent implements OnInit {
     localStorage.removeItem('token');
     this.router.navigate(['/user/login']);
   }
+
 }

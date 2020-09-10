@@ -79,7 +79,7 @@ export class ViewOrderComponent implements OnInit {
 
   view(val: any){
     this.orderNo = val;
-    this.searchByOrderNo;
+    this.searchByOrderNo();
   }
 
   searchByOrderNo(){

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sales-management',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SalesManagementComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
+  dateVal = new Date();
 
   ngOnInit(): void {
+  }
+
+  onLogout() {
+    localStorage.removeItem('token');
+    this.router.navigate(['/user/login']);
+  }
+
+  onHome() {
+    this.router.navigate(['/home']);
   }
 
 }

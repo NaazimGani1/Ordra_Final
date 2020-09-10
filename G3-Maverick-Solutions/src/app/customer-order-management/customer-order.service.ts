@@ -41,11 +41,11 @@ export class CustomerOrderService {
   url = 'https://localhost:44399/Api/CustomerOrders'
 
   searchByCell(cell : string){  
-    return this.http.get(this.url + '/searchByCell?cell='+cell).pipe(map(result => result));  
+    return this.http.get(this.url + '/searchByCell/'+cell).pipe(map(result => result));  
   } 
   
   searchByOrderNo(orderNo : string){  
-    return this.http.get(this.url + '/searchByOrderNo?orderNo='+orderNo).pipe(map(result => result));  
+    return this.http.get(this.url + '/searchByOrderNo/'+orderNo).pipe(map(result => result));  
   } 
 
   initiatePlaceOrder(customerID : number ){

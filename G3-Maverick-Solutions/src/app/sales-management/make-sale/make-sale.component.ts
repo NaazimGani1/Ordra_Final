@@ -83,6 +83,7 @@ export class MakeSaleComponent implements OnInit {
     })
   }
 
+
   addProduct(val: ProductDetails){
     if(val == null){
       this.prodNotSelected= true
