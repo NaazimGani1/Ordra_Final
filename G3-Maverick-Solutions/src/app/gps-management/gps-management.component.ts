@@ -40,7 +40,7 @@ export class GPSManagementComponent implements OnInit {
 
   allareaList: Area[];
 
-  constructor(public service: AreaserviceService,private router: Router,private toastr: ToastrService) { }
+  constructor(private service: AreaserviceService,private router: Router,private toastr: ToastrService) { }
 
   ngOnInit() {
    this.resetForm();
