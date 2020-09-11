@@ -93,6 +93,8 @@ import { SearchedProductDetailsComponent } from './product-management/product/se
 import { StockTakeComponent } from './product-management/product/stock-take/stock-take.component';
 import { SearchSupplierOrderComponent } from './supplier-order-management/search-supplier-order/search-supplier-order.component';
 import { AddPaymentComponent } from './creditor-management/add-payment/add-payment.component';
+import { AddSupplierComponent } from './add-supplier/add-supplier.component';
+import { ViewSupplierComponent } from './view-supplier/view-supplier.component';
 
 
 @NgModule({
@@ -177,6 +179,8 @@ import { AddPaymentComponent } from './creditor-management/add-payment/add-payme
     StockTakeComponent,
     SearchSupplierOrderComponent,
     AddPaymentComponent,
+    AddSupplierComponent,
+    ViewSupplierComponent,
   ],
   imports: [
     BrowserModule,

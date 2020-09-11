@@ -47,7 +47,7 @@ export class PlaceOrderComponent implements OnInit {
   TotalExcVat: number;
   Vat: number;
  
-  dateVal: Date;
+  dateVal = new Date();
   customer: Customer = new Customer();
 
   catSelection: number;

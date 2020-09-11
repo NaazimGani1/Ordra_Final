@@ -25,7 +25,7 @@ export class MakeSaleComponent implements OnInit {
   subtotal:number = 0;
   total: number = 0;
   quantity: number = 0;
-  vatPerc: number = 0;
+  vatPerc: number = 15;
   amount = 0;
   change = 0;
   outstandingAmt = 0;
@@ -135,7 +135,7 @@ export class MakeSaleComponent implements OnInit {
 
       makeSale(){
         if ( this.total == 0){
-          this.api.initiateSale().subscribe((res:any) =>{
+          this.api.makeSale(this.sale).subscribe((res:any) =>{
         if (res.Message != null){
           this.responseMessage = res.Message
           alert(this.responseMessage)
@@ -216,6 +216,10 @@ export class MakeSaleComponent implements OnInit {
     
       onHome() {
         this.router.navigate(['/home']);
+      }
+
+      gotoSaleManagement(){
+        this.router.navigate(['sales-management']);
       }
 
 }

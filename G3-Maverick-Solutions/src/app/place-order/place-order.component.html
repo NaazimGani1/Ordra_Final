@@ -58,11 +58,11 @@
      
         <div class="divleft"  style="float:left; width:40%;">
             <label for="name" style="width:100px">Name:       </label>
-            <input  class="searchinput" class="form-control" [(ngModel)]="name" type="text" id="name" name="name">
+            <input  class="searchinput"  [(ngModel)]="name" type="text" id="name" name="name">
        </div>
        <div class="divleft"  style="float:left; width:60%;">
             <label for="cusSurname">Surname:   </label>
-            <input class="searchinput" class="form-control" [(ngModel)]="surname" type="text" id="surname" name="surname" >
+            <input class="searchinput"  [(ngModel)]="surname" type="text" id="surname" name="surname" ><br>
             <button style="height: 30px;" (click) = "getCustomer()" >Add</button>
             <div *ngIf="customerNull" class ="diveleft">
                 <label style="color: red; font-size: 13px; width :200px">Enter customer details</label>

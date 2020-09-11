@@ -21,9 +21,10 @@ export class ViewOrderComponent implements OnInit {
 
   constructor(private api: CustomerOrderService,private router: Router) { }
 
+  dateVal = new Date();
   cell:string;
   orderNo: string;
-  dateVal: Date;
+
 
   customer: Customer = new Customer();
   orderDetails: CustomerOrder = new CustomerOrder();

@@ -1,6 +1,6 @@
 <head>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNf0u91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-<script src="script.js"></script>
+<script src="https://kit.fontawesome.com/c8a7aa8e86.js" crossorigin="anonymous"></script>
 </head>
 <div class="wrapper">
     <div class="sidebar">
@@ -47,14 +47,29 @@
     <div class="info">
         <body>
         <div class="divLeft">  
-            <div class="weather-container">
-                <img class="icon">
-                <p class="weather"></p>
-                <p class="temp"></p>
+            <div>
+            <div id="divWeatherMain" style="float:left; width:15%;"> 
+                <div *ngIf="WeatherData.isDay" class="weatherWidgetRow">
+                    <i class="fas fa-3x fa-sun sun"></i>  
+                </div>   
+                <div *ngIf="!WeatherData.isDay" class="weatherWidgetRow">
+                    <i class="fas fa-3x fa-moon moon"></i>  
+                </div>   
+                <div class="weatherWidgetRow cloudDiv">
+                    <i class="fas fa-cloud fa-3x cloud"></i>
+                </div>
+                <div class="weatherWidgetRow" style="font-size: 32px;margin-top: 5px;">{{WeatherData.temp_celcius}}°</div>
+                <div class="weatherWidgetRow" style="font-size: 12px;">{{WeatherData.temp_min}}° / {{WeatherData.temp_max}}°</div>
+                <div class="weatherWidgetRow" style="font-size: 12px;">Feels Like: {{WeatherData.temp_feels_like}}°</div>
+                <div class="weatherWidgetRow" style="font-size: 25px;margin-top: 10px;">{{WeatherData.name}}</div>
+                <div class="weatherWidgetRow" style="font-size: 12px;">Humidity: {{WeatherData.main.humidity}}%</div>
             </div>
-
+          <div style="float:left; width:75%;">
         <iframe src="https://calendar.google.com/calendar/htmlembed?src=addressbook%23contacts%40group.v.calendar.google.com&ctz=Africa%2FJohannesburg" style="border: 0" display:left width="1100" height="600" frameborder="0" scrolling="no"></iframe>
-   </div>
+    </div>
+</div>
+    
+    </div>
 </body>
     </div>
    </div>

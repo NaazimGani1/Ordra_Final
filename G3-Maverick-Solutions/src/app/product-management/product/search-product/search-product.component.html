@@ -58,8 +58,8 @@
                             </div>
                         
                          <div class="divleft">
-                                <button type="submit" (click)="Search()">Search</button>
-                                <button type="submit" (click)="Cancel()">Cancel</button>
+                                <button  (click)="Search()">Search</button>
+                                <button (click)="Cancel()">Cancel</button>
                             </div>
                         </div>
                 
@@ -73,18 +73,56 @@
                                     <tr>
                                         <th>Name</th>
                                         <th>Description</th>
-                                        <th>Action</th>
+                                        <th></th>
                                     </tr>
                 
                 
-                                    <tr *ngFor="let product of products">
-                                        <td>{{product.ProdName}}</td>
-                                        <td>{{product.ProdDesciption}}</td>
-                                        <td><button type="submit" (click)="View()">View</button></td>
+                                    <tr *ngFor="let prod of products">
+                                        <td>{{prod.ProdName}}</td>
+                                        <td>{{prod.ProdDesciption}}</td>
+                                        <td><button (click)="View(prod.ProdName)">View</button></td>
                                     </tr>
                                 </table>  
                            </div>
                          </div>
+
+			<div class="card" *ngIf="showResults" class="divleft">
+				<label>Name:</label>
+				<input type="text" name="name" [(ngModel)] = "ProdName" required [readonly] = "this.inputEnabled">
+                               	<br>
+                               
+                                <label for="description">Description:</label>
+				<input  name="description" type="text"[(ngModel)] = "ProdDescription" required [readonly] = "this.inputEnabled">
+                                <br>
+	
+                                <label for="level">Reorder level:</label>
+				<input type="text" name="level" [(ngModel)] = "ProdReLevel" required [readonly] = "this.inputEnabled">
+                <br>
+                                <label for="costP">Cost Price(R):</label>
+				<input type="number" name="costP" [(ngModel)] = "CPriceR" required [readonly] = "this.inputEnabled">
+                <br>
+                               
+                                <label for = "unitP">Unit Price(R):</label>
+				<input type="number" name="unitP" [(ngModel)] = "UPriceR" required [readonly] = "this.inputEnabled">
+                <br>
+                                
+                                
+                                <label for ="start">Price Start Date:</label>
+				<input type="text" name="start" [(ngModel)] = "PriceStartDate" required [readonly] = "this.inputEnabled">
+                              
+                <br>
+                                <label for="end">Price End Date:</label>
+				<input type="text" name="end" [(ngModel)] = "PriceEndDate" required [readonly] = "this.inputEnabled">
+                               <div class="divleft">
+				<button  (click)="update()">Update</button>
+				<button  (click)="save()">Save</button>
+				<button  (click)="delete()">Delete</button>
+				</div>
+                                
+                            </div>
+                        
+				
+			
                      </form>  
                 </body>
                 

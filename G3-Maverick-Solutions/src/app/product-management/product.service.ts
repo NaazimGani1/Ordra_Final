@@ -32,8 +32,12 @@ export class ProductService {
   } 
 
   searchProductByCategory(name: string): Observable<Product> {  
-    return this.http.get<Product>(this.url + '/SearchProductByCategory?name=' + name );  
+    return this.http.get<Product>(this.url + '/SearchProductByCategory/' + name );  
   }  
+
+searchProductByName(name: string): Observable<Product> {  
+    return this.http.get<Product>(this.url + '/SearchProductByName/' + name );  
+  }
 
 
   addProduct(product: Product): Observable<Product>   {  
@@ -41,9 +45,9 @@ export class ProductService {
     return this.http.post<Product>(this.url + '/AddProduct',  
     product, httpOptions);  
   }  
-  updateProduct(product: Product): Observable<Product> {  
+  UpdateProduct(product: Product): Observable<Product> {  
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'}) };  
-    return this.http.put<Product>(this.url + '/UpdateProduct/',  
+    return this.http.put<Product>(this.url + '/UpdateProduct',  
     product, httpOptions);  
   }  
 

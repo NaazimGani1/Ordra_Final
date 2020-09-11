@@ -42,45 +42,70 @@
         
              </div> 
             <div class="info">   
-                <body>
-                    <form>
-                        <h1>Add Product</h1>
-                        <div class="card">
-                            <div class="divleft">
-                                <label class="subheadinglabel">Enter Product Details:</label>
-                                <br>
-                                <label for="Category">Product Category:</label>
-                                
-                                  <select  class="select" required name="catSelection" [(ngModel)]="catSelection" (ngModelChange)="loadProducts($event)">
-                                    <option value="0">--Select--</option>  
-                                    <option  *ngFor="let category of categoryList"  [ngValue]="category">{{category.PCatName}}</option>
-                                  </select>
-                          
-                                <br>
-                                <label for="ProdName">Name:</label><input type="text" [(ngModel)]="product.ProdName" id="ProdName" name="ProdName" required>
-                                <br>
-                                <label for="ProdDesciption">Description:</label><input type="text"  [(ngModel)]="product.ProdDesciption" id="ProdDesciption" name="ProdDesciption" required>
-                                <br>
-                                <label for="ProdReLevel">Reorder level:</label><input type="number"  [(ngModel)]="product.ProdReLevel" id="ProdReLevel" name="ProdReLevel" required>
-                                <br>
-                                <label for="CPriceR">Cost Price(R):</label><input type="number"  [(ngModel)]="price.CPriceR" id="CPriceR" name="CPriceR" required>
-                                <br>
-                                <label for="UPriceR">Unit Price(R):</label><input type="number"  [(ngModel)]="price.UPriceR" id="UPriceR" name="UPriceR" required>
-                                <br>
-                                <label for="PriceStartDate">Price Start Date:</label> <input type="date"  [(ngModel)]="price.PriceStartDate" id="PriceStartDate" name="PriceStartDate" required>
-                                <br>
-                                <label for="PriceEndDate">Price End Date:</label> <input type="date"  [(ngModel)]="price.PriceEndDate" id="PriceEndDate" name="PriceEndDate" required>
-                                <br>
-                                <button type="submit" (click)="Save()" disabled="true">Save</button>
-                                <button type="submit" (click)="Cancel()">Cancel</button>
-                            </div>
-                        </div>
-                    </form>
-                </body>
-                
-                
-            </div>
-           </div>
+
+<body>
+    <h1>Add Supplier</h1>
+    <form>
+        
+        <br>
+        <div class="card">
+            <div class = "divleft">
+            <br><br>
+            <label class="subheadinglabel">Enter supplier Details:</label>
+        <br><br>
+        <div class="divleft" >
+            <label for="SupName">Name:       </label>
+            <input type="text"  [(ngModel)]="supplier.SupName" id="SupName" name="SupName" required>
         </div>
-   </div>
-</nav>
+
+
+        <br>
+        <div class="divleft" >
+            <label for="SupCell">Cell Number:  </label>
+            <input type="text"  [(ngModel)]="supplier.SupCell" id="SupCell" name="SupCell" required>
+        </div>
+
+        <br>
+        <div class="divleft"  >
+            <label for="SupEmail">Email:      </label>
+            <input type="text"  [(ngModel)]="supplier.SupEmail" id="SupEmail" name="SupEmail" required>
+        </div>
+
+        <br>
+        <div class="divleft" >
+            <label for="SupStreetNr">Street No: </label>
+            <input type="text"  [(ngModel)]="supplier.SupStreetNr" id="SupStreetNr" name="SupStreetNr" required> 
+        </div>
+
+        <br>
+        <div class="divleft" >
+            <label for="SupStreet">Street:    </label>
+            <input type="text"  [(ngModel)]="supplier.SupStreet" id="SupStreet" name="SupStreet" required> 
+        </div>
+        
+        <br>
+        <div class="divleft" >
+            <label for="SupCode">Postal Code:   </label>
+            <input type="text"  [(ngModel)]="supplier.SupCode" id="SupCode" name="SupCode" placeholder="0000" required> 
+        </div>
+ 
+        <br>
+        <div class="divleft" >
+            <label for="SupSuburb">Suburb:   </label>
+            <input type="text"   [(ngModel)]="supplier.SupSuburb" id="SupSuburb" name="SupSuburb" placeholder="Example: Hatfield" required> 
+        </div>
+        <br><br>
+        <div class="divleft" >
+            <button type="submit" (click)="addSupplier()">Save</button> 
+            <button type="submit" (click)="gotoSupplierManagement()">Cancel</button>
+         </div>
+         <br><br>
+        </div>
+    </div>
+      
+        
+
+        
+    </form>
+</body>
+

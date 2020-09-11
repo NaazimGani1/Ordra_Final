@@ -109,6 +109,7 @@ import { PlaceSupplierOrderComponent } from './supplier-order-management/place-s
  import { UpdateVatComponent } from './product-management/vat/update-vat/update-vat.component';
 import { SearchSupplierOrderComponent } from './supplier-order-management/search-supplier-order/search-supplier-order.component';
 import { AddPaymentComponent } from './creditor-management/add-payment/add-payment.component';
+import { AddSupplierComponent } from './add-supplier/add-supplier.component';
 
 
     const routes: Routes = [
@@ -217,6 +218,10 @@ import { AddPaymentComponent } from './creditor-management/add-payment/add-payme
     {
         path: 'view-supplier',
         component: ViewSupplierComponent,
+    },
+    {
+        path: 'add-supplier',
+        component: AddSupplierComponent,
     },
 
     //----Manager Subsystem Routing---//

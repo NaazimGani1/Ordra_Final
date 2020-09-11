@@ -65,9 +65,7 @@
         <input  style="width:40px;" type="number" min="0" name="quantity" [(ngModel)]="quantity" id="quantity" required>
         <button style="height: 30px;" (click)="listProducts()">Add</button>
  </div>
- <div *ngIf="quantyNull" class ="diveleft">
-    <label style="color: red; font-size: 13px; width :200px">Enter a quantity </label>
-</div>
+ 
 </div>
 <br>
 
@@ -77,17 +75,6 @@
     <div class="divleft">
         <div class="divleft" style="padding: 2px 2px;" >
             <label class="subheadinglabel" >Sale Details </label>
-        </div>
-
-
-        <div class="divleft">
-            
-
-           <div class="divleft" style="float:left; width:50%;">
-           <label class="displaylabel" for="saleDate" style="width:100px">Date:      </label>
-             <label  id="saleDate" name="saleDate">{{sale.SaleDate}}</label>
-           </div>
-        
         </div>
 
         <div class="divleft" >
@@ -113,7 +100,7 @@
 
          </div>
         </div>
-
+    </div>
 <br>
 <div *ngIf="showTable" class="card">
         <table>    
@@ -161,9 +148,9 @@
         
         <div class="divleft">
             <button type="submit" (click)="makeSale()">Complete Sale</button>
-            <button type="submit" (click)="gotoSaleManagementManagement()">Cancel</button>
+            <button type="submit" (click)="gotoSaleManagement()">Cancel</button>
         </div>
     </div>
 </div>
-</div>
+
 

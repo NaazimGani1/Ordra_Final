@@ -4,7 +4,7 @@ import {Supplier} from '../supplier-management/supplier';
 import { NgModule } from '@angular/core';
 import {SupplierService} from '../supplier-management/supplier.service';
 
-
+var inputEnabled = false;
 
 @Component({
   selector: 'app-view-supplier',
@@ -12,19 +12,18 @@ import {SupplierService} from '../supplier-management/supplier.service';
   styleUrls: ['./view-supplier.component.scss']
 })
 export class ViewSupplierComponent implements OnInit {
+  
 
   constructor(private api: SupplierService, private router: Router) { }
   supplier : Supplier = new Supplier();
   responseMessage: string = "Request Not Submitted";
-  //inputEnabled = false;
-
+  dateVal = new Date();
   showSave: boolean = false;
   showButtons: boolean = true;
   inputEnabled:boolean = true;
   showSearch: boolean = true;
   showResults: boolean = false;
   name : string;
-  dateVal: Date;
 
   ngOnInit(): void {
   }
